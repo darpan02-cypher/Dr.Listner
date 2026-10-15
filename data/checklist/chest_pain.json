@@ -1,0 +1,98 @@
+{
+  "checklist_id": "chest_pain_history",
+  "version": "0.1-draft",
+  "source": "Working draft from project report; derived from 2021 AHA/ACC chest pain guideline Section 2.1. ALL ITEMS UNVERIFIED.",
+  "items": [
+    {
+      "id": "onset",
+      "label": "Onset and timing",
+      "description": "Clinician establishes when the pain started and how it began.",
+      "example_questions": [
+        "When did the pain start?",
+        "Did it come on suddenly or gradually?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    },
+    {
+      "id": "exertional",
+      "label": "Exertional pattern",
+      "description": "Clinician asks whether the pain is brought on or worsened by exertion or relieved by rest.",
+      "example_questions": [
+        "Does it happen when you walk or climb stairs?",
+        "Does resting make it better?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    },
+    {
+      "id": "radiation",
+      "label": "Radiation",
+      "description": "Clinician asks whether pain spreads to the arm, jaw, neck or back.",
+      "example_questions": [
+        "Does the pain travel anywhere, like your arm or jaw?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    },
+    {
+      "id": "diaphoresis",
+      "label": "Sweating",
+      "description": "Clinician asks about sweating (diaphoresis) with the pain.",
+      "example_questions": [
+        "Do you break out in a sweat when it happens?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    },
+    {
+      "id": "dyspnea",
+      "label": "Shortness of breath",
+      "description": "Clinician asks about shortness of breath with the pain.",
+      "example_questions": [
+        "Are you short of breath when this happens?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline. Shortness of breath as an accompanying symptom/anginal equivalent is supported at summary level (take-home messages, Sections 1.4.2 and 2.1.1)."
+    },
+    {
+      "id": "syncope",
+      "label": "Fainting",
+      "description": "Clinician asks about fainting, near-fainting or lightheadedness.",
+      "example_questions": [
+        "Have you passed out or felt like you might?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    },
+    {
+      "id": "family_history",
+      "label": "Family history",
+      "description": "Clinician asks about heart disease in close relatives, especially early onset.",
+      "example_questions": [
+        "Has anyone in your family had heart problems at a young age?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    },
+    {
+      "id": "risk_factors",
+      "label": "Risk factors",
+      "description": "Clinician asks about cardiac risk factors: smoking, blood pressure, diabetes, cholesterol.",
+      "example_questions": [
+        "Do you smoke?",
+        "Any history of high blood pressure, diabetes or high cholesterol?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Guideline for the Evaluation and Diagnosis of Chest Pain (Gulati et al.), Section 2.1 History, Table 3 (item-level content unchecked)",
+      "verification_status": "UNVERIFIED",
+      "verification_note": "Section 2.1 / Table 3 existence confirmed via ACC 'Guidelines Made Simple' summary; Table 3 content could not be read (primary text returned 403). Item NOT confirmed against the guideline."
+    }
+  ]
+}

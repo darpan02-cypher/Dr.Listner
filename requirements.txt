@@ -1,0 +1,8 @@
+# Hosted app (Streamlit Community Cloud). No torch / sentence-transformers here.
+streamlit
+pydantic>=2.6
+requests
+presidio-analyzer
+presidio-anonymizer
+textstat
+pandas

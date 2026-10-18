@@ -12,6 +12,7 @@ import sys
 import tempfile
 
 from eval.io import ROOT, InputError, load_dataset, load_run, safe_run_id
+from eval.errors import errors_csv
 from eval.metrics import aggregate
 from src.schemas import EvalResult, GapType
 
@@ -75,9 +76,11 @@ def evaluate_run(run_id: str, split: str, *, data_root: Path = ROOT / "data/eval
     result["extras"]["synthetic_run"] = meta.model.startswith("FAKE/")
     payload = json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
     table = results_csv(result)
+    errors = errors_csv(run_id, visits, flags, scores.matches)
     results_root.mkdir(parents=True, exist_ok=True)
     _write_result(results_root / f"{run_id}.json", payload)
     _write_result(results_root / f"{run_id}.csv", table)
+    _write_result(results_root / f"{run_id}_errors.csv", errors)
     # Return the same JSON-native structure that callers read from disk (the
     # match audit uses immutable tuples internally).
     return json.loads(payload)
@@ -97,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     except (InputError, OSError) as error:
         print(f"Evaluation failed:\n{error}", file=sys.stderr)
         return 2
-    print(f"Wrote {args.results_root / (args.run + '.json')} and {args.run}.csv")
+    print(f"Wrote {args.results_root / (args.run + '.json')}, {args.run}.csv, and {args.run}_errors.csv")
     if result["extras"]["synthetic_run"]:
         print("FAKE run: these results validate the harness, not the detection engine.")
     return 0

@@ -1,0 +1,24 @@
+{
+  "chart_id": "chart-dev-007",
+  "age": 52,
+  "sex": "female",
+  "entries": [
+    {
+      "entry_id": "hypertension",
+      "resource_type": "Condition",
+      "display": "High blood pressure",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "stent",
+      "resource_type": "Procedure",
+      "display": "Coronary stent placement",
+      "status": "completed",
+      "date": "2020-01-10",
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

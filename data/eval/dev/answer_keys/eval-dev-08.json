@@ -1,0 +1,40 @@
+{
+  "visit_id": "eval-dev-08",
+  "split": "dev",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 28,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-dev-08-comprehension-mishear",
+      "type": "comprehension_breakdown",
+      "edit_op": "insert_mishearing",
+      "turn_indices": [
+        19
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient answer replaced by a repeat reply to the syncope question; no repair follows."
+    },
+    {
+      "gap_id": "eval-dev-08-comprehension-teachback",
+      "type": "comprehension_breakdown",
+      "edit_op": "delete_teachback",
+      "turn_indices": [
+        28
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Teach-back question removed from the plan turn; the patient replies with a bare acknowledgement."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    },
+    {
+      "item_id": "bring-meds",
+      "text": "Bring your medicine bottles to the next visit."
+    }
+  ]
+}

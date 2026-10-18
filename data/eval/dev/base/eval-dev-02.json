@@ -1,0 +1,280 @@
+{
+  "visit_id": "eval-dev-02",
+  "chart_id": "chart-eval-dev-02",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Is this volume all right for you?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "Yes, as long as you do not turn away.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "caregiver",
+      "text": "I brought her in today. She has been uneasy about her chest.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "clinician",
+      "text": "What can I help you with today?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "patient",
+      "text": "I have not felt right lately, my chest is bothering me.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "clinician",
+      "text": "What does the pain feel like?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "patient",
+      "text": "Pardon? I did not hear you.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "clinician",
+      "text": "Sorry about that. Let me ask it another way. Can you describe the pain for me?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "patient",
+      "text": "It feels like a heavy weight sitting on my chest.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "clinician",
+      "text": "Does the pain spread anywhere, like your arm or jaw?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "patient",
+      "text": "No, it stays right where it is.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "clinician",
+      "text": "When did this start?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "patient",
+      "text": "About three days ago, I think.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "clinician",
+      "text": "Does it come on when you are active?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "patient",
+      "text": "No, it comes even when I am sitting.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "patient",
+      "text": "I am scared this could be a heart attack. Is that what this is?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "clinician",
+      "text": "I understand the worry. That is why we are looking at it carefully today, and we will talk about what we find.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "clinician",
+      "text": "What have you done to get relief?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "patient",
+      "text": "I have not taken anything for it.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "clinician",
+      "text": "Any dizziness or lightheadedness?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "patient",
+      "text": "No, I have not fainted.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "clinician",
+      "text": "Do you break out in a sweat with it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "patient",
+      "text": "Yes, I get clammy.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "clinician",
+      "text": "Do you have trouble breathing with it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "patient",
+      "text": "No, my breathing is fine.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "clinician",
+      "text": "Has anyone in your family had heart trouble at a young age?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "patient",
+      "text": "My father had a heart attack in his fifties.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "clinician",
+      "text": "Do you smoke, or have high blood pressure, diabetes or high cholesterol?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "patient",
+      "text": "I have diabetes. I have never smoked.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "clinician",
+      "text": "Have you ever had a heart procedure, like a stent or bypass surgery?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "patient",
+      "text": "No, never.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 31,
+      "speaker": "clinician",
+      "text": "Can you tell me your daily medicines?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 32,
+      "speaker": "patient",
+      "text": "I take Metformin.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 33,
+      "speaker": "clinician",
+      "text": "Before you go, let me go over the plan. First, see the heart specialist within two weeks. Second, call 911 if the pain gets worse or does not stop. Just so I know I explained it clearly, can you tell me in your own words what you will do?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 34,
+      "speaker": "patient",
+      "text": "I will see the heart specialist in two weeks and call 911 if the pain gets worse or will not stop.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 35,
+      "speaker": "caregiver",
+      "text": "I will make sure she follows the plan.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 36,
+      "speaker": "clinician",
+      "text": "Is there anything else you want to ask me?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 37,
+      "speaker": "patient",
+      "text": "No, I think I understand.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 38,
+      "speaker": "clinician",
+      "text": "Thank you for coming in. Take care.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

@@ -1,0 +1,48 @@
+{
+  "chart_id": "chart-eval-test-08",
+  "age": 80,
+  "sex": "male",
+  "entries": [
+    {
+      "entry_id": "cond-htn",
+      "resource_type": "Condition",
+      "display": "High blood pressure",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "cond-hld",
+      "resource_type": "Condition",
+      "display": "High cholesterol",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-lisinopril",
+      "resource_type": "MedicationRequest",
+      "display": "Lisinopril",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-atorvastatin",
+      "resource_type": "MedicationRequest",
+      "display": "Atorvastatin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

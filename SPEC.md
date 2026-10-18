@@ -77,3 +77,8 @@ No real PHI. No transcript storage by the app. The committed LLM cache holds mod
 - **Turns-to-detection** (types 3, 4) = `raised_at_turn` minus the planted turn.
 - **Matching, type 4:** `insert_mishearing` -> same type and a flag transcript pointer in `turn_indices`. `delete_teachback` -> same type and a flag transcript pointer at the plan-instruction turn recorded in `turn_indices` (the turn that lacks teach-back).
 - Per-type counts always reported with percentages; gap-4 test counts will be small.
+
+## 9. Datasets
+- `data/synthetic/` (Phase 2a, contract fixtures): 29 template visits, dev only. For engine/schema tests; **not** for tuning or reported metrics.
+- `data/eval/{dev,test}/` (Phase 2b): 9 dev + 15 test visits built by `scripts.build_eval_dataset`; see `data/eval/README.md`. Dev and test use disjoint phrase halves. `AnswerKey` has `profile_id` and `wrap_up_turn`.
+- Wrap-up and type 1/2 flags: the engine finalizes omissions after the last turn of the replay; any type 1 or 2 flag raised before `wrap_up_turn` counts as too early.

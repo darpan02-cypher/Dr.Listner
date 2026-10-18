@@ -1,0 +1,231 @@
+{
+  "visit_id": "eval-test-07",
+  "chart_id": "chart-eval-test-07",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Are you comfortable with how I am speaking?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "Please talk a bit slower, my hearing is poor.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "caregiver",
+      "text": "I drove her over, I will listen along.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "clinician",
+      "text": "What brings you to the clinic today?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "patient",
+      "text": "Something is wrong with my chest, I think.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "clinician",
+      "text": "What kind of sensation is it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "patient",
+      "text": "It is more of a dull ache.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "clinician",
+      "text": "When did you first notice it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "patient",
+      "text": "This morning, while I was making tea.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "clinician",
+      "text": "Have you taken anything for it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "patient",
+      "text": "I took an antacid and it did not do anything.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "patient",
+      "text": "My daughter lives far away. I am afraid to be alone if this happens again.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "clinician",
+      "text": "Does doing chores around the house set it off?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "patient",
+      "text": "Only when I hurry.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "clinician",
+      "text": "Is your breathing affected?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "patient",
+      "text": "No trouble breathing at all.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "clinician",
+      "text": "Have you been sweating with the pain?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "patient",
+      "text": "No, nothing like that.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "clinician",
+      "text": "Do you have any history of diabetes, blood pressure problems or cholesterol problems, or do you smoke?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "patient",
+      "text": "I have diabetes. I have never smoked.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "clinician",
+      "text": "Any heart problems in your close relatives?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "patient",
+      "text": "No, nobody that I remember.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "clinician",
+      "text": "Have you had any procedure on your heart before?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "patient",
+      "text": "No, I have never had any.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "clinician",
+      "text": "What are you taking at home for your health?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "patient",
+      "text": "I take Metformin.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "clinician",
+      "text": "To finish, here is the plan. First, take one baby aspirin every morning. Second, get a heart tracing and a blood test today. To be sure I was clear, what will you do next?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "patient",
+      "text": "I will take one baby aspirin each morning and get the heart tracing and the blood test today.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "caregiver",
+      "text": "I will remind her.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "clinician",
+      "text": "Any other questions before you go?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "patient",
+      "text": "Nothing else, thank you.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 31,
+      "speaker": "clinician",
+      "text": "Okay, that is everything for today. Take care.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

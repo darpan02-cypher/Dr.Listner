@@ -1,0 +1,48 @@
+{
+  "chart_id": "chart-eval-dev-06",
+  "age": 78,
+  "sex": "male",
+  "entries": [
+    {
+      "entry_id": "cond-htn",
+      "resource_type": "Condition",
+      "display": "High blood pressure",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "cond-dm",
+      "resource_type": "Condition",
+      "display": "Type 2 diabetes",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-lisinopril",
+      "resource_type": "MedicationRequest",
+      "display": "Lisinopril",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-metformin",
+      "resource_type": "MedicationRequest",
+      "display": "Metformin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

@@ -1,0 +1,34 @@
+{
+  "visit_id": "eval-dev-03",
+  "split": "dev",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 26,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-dev-03-missed-syncope",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        16,
+        17
+      ],
+      "checklist_item_id": "syncope",
+      "chart_entry_id": null,
+      "description": "Deleted the syncope question and answer from the base transcript."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    },
+    {
+      "item_id": "cardiology",
+      "text": "See the heart specialist within two weeks."
+    },
+    {
+      "item_id": "aspirin",
+      "text": "Take one baby aspirin every morning."
+    }
+  ]
+}

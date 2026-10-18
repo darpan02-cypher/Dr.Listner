@@ -41,3 +41,10 @@
   the importer against them; independently author matching visit scripts.
 - Review script coverage and variety, and freeze independent dev/test data.
 - No accuracy measurements, populated model cache, detection agents, or UI yet.
+
+
+## Phase 2b — Eval dataset (awaiting gate: user spot-read)
+- `data/eval/`: 9 dev + 15 test visits (7 clean total), all four gap types, caregiver visits, hard negatives (repaired repeat requests, addressed concerns), `wrap_up_turn`, base transcripts and keys from edits. 44 tests pass (key reconciliation, determinism, dev/test phrasing disjoint, leakage lint).
+- Test gap counts: type 1: 6, type 2: 5, type 3: 5, type 4: 6. Small; report counts with percentages.
+- **Limits:** charts hand-authored (not Synthea); pool phrasing (limited variety); no clinician review; gap-4 cues are our draft and we author both sides, so gap-4 numbers show cue detection, not real hearing-loss speech.
+- **Gate:** user spot-reads 5 transcripts including 2 gap-4 cases (suggested: eval-test-14, eval-test-10, eval-dev-08, eval-test-03, eval-test-12).

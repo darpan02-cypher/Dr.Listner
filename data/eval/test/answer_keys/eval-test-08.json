@@ -1,0 +1,41 @@
+{
+  "visit_id": "eval-test-08",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 26,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-08-missed-family_history",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        22,
+        23
+      ],
+      "checklist_item_id": "family_history",
+      "chart_entry_id": null,
+      "description": "Deleted the family_history question and answer from the base transcript."
+    },
+    {
+      "gap_id": "eval-test-08-contradiction-risk",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        21
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "cond-htn",
+      "description": "Truthful answer replaced by a denial (risk)."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    },
+    {
+      "item_id": "call-911",
+      "text": "Call 911 if the pain gets worse or does not stop."
+    }
+  ]
+}

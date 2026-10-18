@@ -1,0 +1,48 @@
+{
+  "chart_id": "chart-eval-test-11",
+  "age": 75,
+  "sex": "female",
+  "entries": [
+    {
+      "entry_id": "cond-hld",
+      "resource_type": "Condition",
+      "display": "High cholesterol",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "proc-stent",
+      "resource_type": "Procedure",
+      "display": "Coronary stent placement",
+      "status": "completed",
+      "date": "2019-05-14",
+      "fhir": null
+    },
+    {
+      "entry_id": "med-clopidogrel",
+      "resource_type": "MedicationRequest",
+      "display": "Clopidogrel",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-atorvastatin",
+      "resource_type": "MedicationRequest",
+      "display": "Atorvastatin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Former smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

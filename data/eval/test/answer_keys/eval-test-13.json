@@ -1,0 +1,40 @@
+{
+  "visit_id": "eval-test-13",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 30,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-13-contradiction-meds",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        29
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "med-metformin",
+      "description": "Truthful answer replaced by a denial (meds)."
+    },
+    {
+      "gap_id": "eval-test-13-comprehension-mishear",
+      "type": "comprehension_breakdown",
+      "edit_op": "insert_mishearing",
+      "turn_indices": [
+        5
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient answer replaced by a wrong reply to the onset question; no repair follows."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "bring-meds",
+      "text": "Bring your medicine bottles to the next visit."
+    },
+    {
+      "item_id": "ecg-bloods",
+      "text": "Get a heart tracing and a blood test today."
+    }
+  ]
+}

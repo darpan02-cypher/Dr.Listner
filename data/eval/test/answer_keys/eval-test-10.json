@@ -1,0 +1,52 @@
+{
+  "visit_id": "eval-test-10",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 26,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-10-missed-diaphoresis",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        18,
+        19
+      ],
+      "checklist_item_id": "diaphoresis",
+      "chart_entry_id": null,
+      "description": "Deleted the diaphoresis question and answer from the base transcript."
+    },
+    {
+      "gap_id": "eval-test-10-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        29
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient concern with the clinician's response deleted."
+    },
+    {
+      "gap_id": "eval-test-10-comprehension-mishear",
+      "type": "comprehension_breakdown",
+      "edit_op": "insert_mishearing",
+      "turn_indices": [
+        9
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient answer replaced by a wrong reply to the nature question; no repair follows."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "aspirin",
+      "text": "Take one baby aspirin every morning."
+    },
+    {
+      "item_id": "call-911",
+      "text": "Call 911 if the pain gets worse or does not stop."
+    }
+  ]
+}

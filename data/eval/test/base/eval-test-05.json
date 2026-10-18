@@ -1,0 +1,273 @@
+{
+  "visit_id": "eval-test-05",
+  "chart_id": "chart-eval-test-05",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Let me know if I am too quiet.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "You are fine, thank you for asking.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "caregiver",
+      "text": "I drove her over, I will listen along.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "clinician",
+      "text": "How can I help you today?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "patient",
+      "text": "Something is wrong with my chest, I think.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "clinician",
+      "text": "Does it move into your arms or up toward your neck?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "patient",
+      "text": "I feel it in my jaw sometimes.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "clinician",
+      "text": "When did you first notice it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "patient",
+      "text": "This morning, while I was making tea.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "clinician",
+      "text": "What kind of sensation is it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "patient",
+      "text": "It is more of a dull ache.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "clinician",
+      "text": "Does doing chores around the house set it off?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "patient",
+      "text": "I missed that, can you repeat it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "clinician",
+      "text": "Let me say that again, facing you. Do you notice it when you exercise or exert yourself?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "patient",
+      "text": "Only when I hurry.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "clinician",
+      "text": "Does anything ease the pain when it is there?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "patient",
+      "text": "Nothing really helps.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "clinician",
+      "text": "Are you drenched or clammy during the episodes?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "patient",
+      "text": "A little sweaty, yes.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "clinician",
+      "text": "Have you felt faint or dizzy?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "patient",
+      "text": "No, nothing like that.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "clinician",
+      "text": "Do you feel winded along with the pain?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "patient",
+      "text": "No trouble breathing at all.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "clinician",
+      "text": "Let me ask about risk factors: tobacco, blood pressure, diabetes, cholesterol.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "patient",
+      "text": "I have high blood pressure, and I have high cholesterol. I quit smoking years ago.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "clinician",
+      "text": "Any heart problems in your close relatives?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "patient",
+      "text": "My brother had bypass surgery.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "clinician",
+      "text": "Do you have a history of heart surgery or stents?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "patient",
+      "text": "No, I have never had any.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "clinician",
+      "text": "Which pills do you take regularly?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "patient",
+      "text": "I take Lisinopril and Atorvastatin.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 31,
+      "speaker": "clinician",
+      "text": "To finish, here is the plan. First, see the heart specialist within two weeks. Second, call 911 if the pain gets worse or does not stop. Can you repeat the plan in your own words for me?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 32,
+      "speaker": "patient",
+      "text": "I will see the heart specialist in two weeks and call 911 if the pain gets worse or will not stop.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 33,
+      "speaker": "caregiver",
+      "text": "I will write it down for her.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 34,
+      "speaker": "clinician",
+      "text": "Anything else on your mind?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 35,
+      "speaker": "patient",
+      "text": "I did not catch most of what the nurse told me earlier.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 36,
+      "speaker": "clinician",
+      "text": "Thank you for saying so. I will speak slowly and write down the main points.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 37,
+      "speaker": "clinician",
+      "text": "Okay, that is everything for today. Take care.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

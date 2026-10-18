@@ -1,0 +1,44 @@
+{
+  "visit_id": "eval-test-15",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 28,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-15-contradiction-risk",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        23
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "cond-htn",
+      "description": "Truthful answer replaced by a denial (risk)."
+    },
+    {
+      "gap_id": "eval-test-15-comprehension-teachback",
+      "type": "comprehension_breakdown",
+      "edit_op": "delete_teachback",
+      "turn_indices": [
+        28
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Teach-back question removed from the plan turn; the patient replies with a bare acknowledgement."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "ecg-bloods",
+      "text": "Get a heart tracing and a blood test today."
+    },
+    {
+      "item_id": "bring-meds",
+      "text": "Bring your medicine bottles to the next visit."
+    },
+    {
+      "item_id": "aspirin",
+      "text": "Take one baby aspirin every morning."
+    }
+  ]
+}

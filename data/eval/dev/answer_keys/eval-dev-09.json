@@ -1,0 +1,44 @@
+{
+  "visit_id": "eval-dev-09",
+  "split": "dev",
+  "profile_id": "hoh_lowlit_caregiver",
+  "wrap_up_turn": 29,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-dev-09-contradiction-meds",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        28
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "med-metformin",
+      "description": "Truthful answer replaced by a denial (meds)."
+    },
+    {
+      "gap_id": "eval-dev-09-comprehension-teachback",
+      "type": "comprehension_breakdown",
+      "edit_op": "delete_teachback",
+      "turn_indices": [
+        29
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Teach-back question removed from the plan turn; the patient replies with a bare acknowledgement."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "cardiology",
+      "text": "See the heart specialist within two weeks."
+    },
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    },
+    {
+      "item_id": "aspirin",
+      "text": "Take one baby aspirin every morning."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "chart_id": "chart-eval-test-02",
+  "age": 80,
+  "sex": "female",
+  "entries": [
+    {
+      "entry_id": "cond-hld",
+      "resource_type": "Condition",
+      "display": "High cholesterol",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-atorvastatin",
+      "resource_type": "MedicationRequest",
+      "display": "Atorvastatin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

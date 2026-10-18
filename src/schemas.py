@@ -171,6 +171,7 @@ class PlanItem(BaseModel):
 class AnswerKey(BaseModel):
     visit_id: str
     split: Literal["dev", "test"]
+    profile_id: str | None = None
     wrap_up_turn: int | None = Field(default=None, ge=0)  # turn idx where wrap-up begins (eval trigger)
     planted_gaps: list[PlantedGap]
     plan_items: list[PlanItem] = Field(default_factory=list)

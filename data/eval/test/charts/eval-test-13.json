@@ -1,0 +1,48 @@
+{
+  "chart_id": "chart-eval-test-13",
+  "age": 82,
+  "sex": "male",
+  "entries": [
+    {
+      "entry_id": "cond-dm",
+      "resource_type": "Condition",
+      "display": "Type 2 diabetes",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "cond-hld",
+      "resource_type": "Condition",
+      "display": "High cholesterol",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-metformin",
+      "resource_type": "MedicationRequest",
+      "display": "Metformin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-atorvastatin",
+      "resource_type": "MedicationRequest",
+      "display": "Atorvastatin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

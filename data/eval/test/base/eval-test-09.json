@@ -1,0 +1,245 @@
+{
+  "visit_id": "eval-test-09",
+  "chart_id": "chart-eval-test-09",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Are you comfortable with how I am speaking?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "Please talk a bit slower, my hearing is poor.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "clinician",
+      "text": "What brings you to the clinic today?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "patient",
+      "text": "I came because of my chest.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "clinician",
+      "text": "When did you first notice it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "patient",
+      "text": "This morning, while I was making tea.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "clinician",
+      "text": "What kind of sensation is it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "patient",
+      "text": "It feels like burning right behind the breastbone.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "clinician",
+      "text": "Do you feel it in your left arm or in your jaw?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "patient",
+      "text": "I feel it in my jaw sometimes.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "clinician",
+      "text": "Does doing chores around the house set it off?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "patient",
+      "text": "Yes, when I carry the laundry.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "clinician",
+      "text": "Have you taken anything for it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "patient",
+      "text": "I took an antacid and it did not do anything.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "clinician",
+      "text": "Are you drenched or clammy during the episodes?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "patient",
+      "text": "A little sweaty, yes.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "clinician",
+      "text": "Have you felt faint or dizzy?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "patient",
+      "text": "Yes, I almost passed out in the kitchen.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "clinician",
+      "text": "Is your breathing affected?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "patient",
+      "text": "A little bit, yes.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "clinician",
+      "text": "Has a parent or sibling had a heart attack?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "patient",
+      "text": "My brother had bypass surgery.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "clinician",
+      "text": "Do you have any history of diabetes, blood pressure problems or cholesterol problems, or do you smoke?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "patient",
+      "text": "I have high blood pressure. I have never smoked.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "clinician",
+      "text": "Do you have a history of heart surgery or stents?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "patient",
+      "text": "Yes, a stent, a long time ago.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "clinician",
+      "text": "Which pills do you take regularly?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "patient",
+      "text": "I take Clopidogrel and Lisinopril.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "clinician",
+      "text": "To finish, here is the plan. First, see the heart specialist within two weeks. Second, come back to this clinic in one week. Third, call 911 if the pain gets worse or does not stop. To be sure I was clear, what will you do next?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "patient",
+      "text": "I will see the heart specialist in two weeks, come back here in a week and call 911 if the pain gets worse or will not stop.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "clinician",
+      "text": "Anything else on your mind?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 31,
+      "speaker": "patient",
+      "text": "I did not catch most of what the nurse told me earlier.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 32,
+      "speaker": "clinician",
+      "text": "Thank you for saying so. I will speak slowly and write down the main points.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 33,
+      "speaker": "clinician",
+      "text": "Okay, that is everything for today. Take care.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

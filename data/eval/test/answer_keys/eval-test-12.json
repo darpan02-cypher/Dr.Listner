@@ -1,0 +1,40 @@
+{
+  "visit_id": "eval-test-12",
+  "split": "test",
+  "profile_id": "hoh_lowlit_caregiver",
+  "wrap_up_turn": 30,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-12-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        13
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient concern with the clinician's response deleted."
+    },
+    {
+      "gap_id": "eval-test-12-contradiction-meds",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        29
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "med-lisinopril",
+      "description": "Truthful answer replaced by a denial (meds)."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "ecg-bloods",
+      "text": "Get a heart tracing and a blood test today."
+    },
+    {
+      "item_id": "call-911",
+      "text": "Call 911 if the pain gets worse or does not stop."
+    }
+  ]
+}

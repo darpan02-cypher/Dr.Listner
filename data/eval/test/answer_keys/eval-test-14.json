@@ -1,0 +1,40 @@
+{
+  "visit_id": "eval-test-14",
+  "split": "test",
+  "profile_id": "hoh_lowlit_caregiver",
+  "wrap_up_turn": 29,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-14-comprehension-mishear",
+      "type": "comprehension_breakdown",
+      "edit_op": "insert_mishearing",
+      "turn_indices": [
+        12
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient answer replaced by a repeat reply to the exertional question; no repair follows."
+    },
+    {
+      "gap_id": "eval-test-14-comprehension-teachback",
+      "type": "comprehension_breakdown",
+      "edit_op": "delete_teachback",
+      "turn_indices": [
+        29
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Teach-back question removed from the plan turn; the patient replies with a bare acknowledgement."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "cardiology",
+      "text": "See the heart specialist within two weeks."
+    },
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    }
+  ]
+}

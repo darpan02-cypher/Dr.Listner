@@ -1,0 +1,45 @@
+{
+  "visit_id": "eval-test-09",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 26,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-09-missed-relieving",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        12,
+        13
+      ],
+      "checklist_item_id": "relieving",
+      "chart_entry_id": null,
+      "description": "Deleted the relieving question and answer from the base transcript."
+    },
+    {
+      "gap_id": "eval-test-09-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        29
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient concern with the clinician's response deleted."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "cardiology",
+      "text": "See the heart specialist within two weeks."
+    },
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    },
+    {
+      "item_id": "call-911",
+      "text": "Call 911 if the pain gets worse or does not stop."
+    }
+  ]
+}

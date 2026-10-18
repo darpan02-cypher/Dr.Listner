@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "checklist_version": "0.2",
+  "source": "phrase pools + deterministic edits; hand-authored charts; not Synthea; no clinician review",
+  "split_rule": "dev draws from first half of each phrase pool, test from the second half",
+  "summary": {
+    "dev": {
+      "visits": 9,
+      "clean": 2,
+      "gaps": {
+        "missed_question": 4,
+        "unanswered_concern": 2,
+        "chart_contradiction": 3,
+        "comprehension_breakdown": 4
+      }
+    },
+    "test": {
+      "visits": 15,
+      "clean": 5,
+      "gaps": {
+        "missed_question": 6,
+        "unanswered_concern": 5,
+        "chart_contradiction": 5,
+        "comprehension_breakdown": 6
+      }
+    }
+  },
+  "visits": [
+    {
+      "visit_id": "eval-dev-01",
+      "split": "dev",
+      "profile": "hoh_lowlit_alone",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-dev-02",
+      "split": "dev",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 39,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-dev-03",
+      "split": "dev",
+      "profile": "hoh_lowlit_alone",
+      "turns": 31,
+      "gaps": {
+        "missed_question": 1,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-dev-04",
+      "split": "dev",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 31,
+      "gaps": {
+        "missed_question": 2,
+        "unanswered_concern": 1,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-dev-05",
+      "split": "dev",
+      "profile": "hoh_lowlit_alone",
+      "turns": 34,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 1,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-dev-06",
+      "split": "dev",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 1,
+        "unanswered_concern": 0,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-dev-07",
+      "split": "dev",
+      "profile": "hoh_lowlit_alone",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 1
+      }
+    },
+    {
+      "visit_id": "eval-dev-08",
+      "split": "dev",
+      "profile": "hoh_lowlit_alone",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 2
+      }
+    },
+    {
+      "visit_id": "eval-dev-09",
+      "split": "dev",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 35,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 1
+      }
+    },
+    {
+      "visit_id": "eval-test-01",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 37,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-02",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-03",
+      "split": "test",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 38,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-04",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 35,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-05",
+      "split": "test",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 38,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-06",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 32,
+      "gaps": {
+        "missed_question": 1,
+        "unanswered_concern": 1,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 1
+      }
+    },
+    {
+      "visit_id": "eval-test-07",
+      "split": "test",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 32,
+      "gaps": {
+        "missed_question": 2,
+        "unanswered_concern": 1,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-08",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 31,
+      "gaps": {
+        "missed_question": 1,
+        "unanswered_concern": 0,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-09",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 31,
+      "gaps": {
+        "missed_question": 1,
+        "unanswered_concern": 1,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-10",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 31,
+      "gaps": {
+        "missed_question": 1,
+        "unanswered_concern": 1,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 1
+      }
+    },
+    {
+      "visit_id": "eval-test-11",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-12",
+      "split": "test",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 36,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 1,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 0
+      }
+    },
+    {
+      "visit_id": "eval-test-13",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 35,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 1
+      }
+    },
+    {
+      "visit_id": "eval-test-14",
+      "split": "test",
+      "profile": "hoh_lowlit_caregiver",
+      "turns": 35,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 2
+      }
+    },
+    {
+      "visit_id": "eval-test-15",
+      "split": "test",
+      "profile": "hoh_lowlit_alone",
+      "turns": 33,
+      "gaps": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 1,
+        "comprehension_breakdown": 1
+      }
+    }
+  ]
+}

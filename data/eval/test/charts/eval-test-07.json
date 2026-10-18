@@ -1,0 +1,32 @@
+{
+  "chart_id": "chart-eval-test-07",
+  "age": 89,
+  "sex": "male",
+  "entries": [
+    {
+      "entry_id": "cond-dm",
+      "resource_type": "Condition",
+      "display": "Type 2 diabetes",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-metformin",
+      "resource_type": "MedicationRequest",
+      "display": "Metformin",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

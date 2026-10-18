@@ -1,0 +1,48 @@
+{
+  "chart_id": "chart-eval-dev-07",
+  "age": 76,
+  "sex": "male",
+  "entries": [
+    {
+      "entry_id": "cond-afib",
+      "resource_type": "Condition",
+      "display": "Atrial fibrillation",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "proc-stent",
+      "resource_type": "Procedure",
+      "display": "Coronary stent placement",
+      "status": "completed",
+      "date": "2019-05-14",
+      "fhir": null
+    },
+    {
+      "entry_id": "med-clopidogrel",
+      "resource_type": "MedicationRequest",
+      "display": "Clopidogrel",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-apixaban",
+      "resource_type": "MedicationRequest",
+      "display": "Apixaban",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

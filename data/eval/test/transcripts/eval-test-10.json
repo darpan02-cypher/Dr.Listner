@@ -1,0 +1,224 @@
+{
+  "visit_id": "eval-test-10",
+  "chart_id": "chart-eval-test-10",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Let me know if I am too quiet.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "You are fine, thank you for asking.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "clinician",
+      "text": "What brings you to the clinic today?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "patient",
+      "text": "Something is wrong with my chest, I think.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "clinician",
+      "text": "When did you first notice it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "patient",
+      "text": "This morning, while I was making tea.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "clinician",
+      "text": "Does it move into your arms or up toward your neck?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "patient",
+      "text": "I feel it in my jaw sometimes.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "clinician",
+      "text": "What kind of sensation is it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "patient",
+      "text": "My niece sent me a card, it has a picture of a bird on it.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "clinician",
+      "text": "Does doing chores around the house set it off?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "patient",
+      "text": "Yes, when I carry the laundry.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "clinician",
+      "text": "Does anything ease the pain when it is there?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "patient",
+      "text": "I took an antacid and it did not do anything.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "clinician",
+      "text": "Have you blacked out at all?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "patient",
+      "text": "No, nothing like that.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "clinician",
+      "text": "Is your breathing affected?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "patient",
+      "text": "No trouble breathing at all.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "clinician",
+      "text": "Let me ask about risk factors: tobacco, blood pressure, diabetes, cholesterol.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "patient",
+      "text": "I have an irregular heartbeat. I have never smoked.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "clinician",
+      "text": "Has a parent or sibling had a heart attack?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "patient",
+      "text": "My brother had bypass surgery.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "clinician",
+      "text": "Do you have a history of heart surgery or stents?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "patient",
+      "text": "Nothing like that.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "clinician",
+      "text": "What are you taking at home for your health?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "patient",
+      "text": "I take Apixaban.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "clinician",
+      "text": "Let us wrap up with the plan. First, take one baby aspirin every morning. Second, call 911 if the pain gets worse or does not stop. To be sure I was clear, what will you do next?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "patient",
+      "text": "I will take one baby aspirin each morning and call 911 if the pain gets worse or will not stop.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "clinician",
+      "text": "Anything else on your mind?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "patient",
+      "text": "My daughter lives far away. I am afraid to be alone if this happens again.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "clinician",
+      "text": "All right, we are done. Take care of yourself.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

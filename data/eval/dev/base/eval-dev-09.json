@@ -1,0 +1,252 @@
+{
+  "visit_id": "eval-dev-09",
+  "chart_id": "chart-eval-dev-09",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Is this volume all right for you?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "Yes, as long as you do not turn away.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "caregiver",
+      "text": "I came along to help her today.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "clinician",
+      "text": "Tell me what brought you in today.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "patient",
+      "text": "I have not felt right lately, my chest is bothering me.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "clinician",
+      "text": "Can you describe the pain for me?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "patient",
+      "text": "It is a tight squeezing feeling in the middle.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "clinician",
+      "text": "Does it travel to your neck or shoulder?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "patient",
+      "text": "No, it stays right where it is.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "clinician",
+      "text": "How long have you been having it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "patient",
+      "text": "About three days ago, I think.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "clinician",
+      "text": "Does walking or climbing stairs bring it on?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "patient",
+      "text": "Yes, walking up the hill makes it come on.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "clinician",
+      "text": "What have you done to get relief?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "patient",
+      "text": "I have not taken anything for it.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "clinician",
+      "text": "Are you short of breath when this happens?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "patient",
+      "text": "Yes, I feel winded.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "clinician",
+      "text": "Have you fainted or felt like you might pass out?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "patient",
+      "text": "No, I have not fainted.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "clinician",
+      "text": "Do you break out in a sweat with it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "patient",
+      "text": "Yes, I get clammy.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "clinician",
+      "text": "Do you smoke, or have high blood pressure, diabetes or high cholesterol?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "patient",
+      "text": "I have diabetes, and I have high cholesterol. I have never smoked.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "clinician",
+      "text": "Has anyone in your family had heart trouble at a young age?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "patient",
+      "text": "My father had a heart attack in his fifties.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "clinician",
+      "text": "Have you ever had a heart procedure, like a stent or bypass surgery?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "patient",
+      "text": "Yes, I had bypass surgery years ago.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "clinician",
+      "text": "What medicines do you take every day?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "patient",
+      "text": "I take Metformin and Atorvastatin.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "clinician",
+      "text": "Before you go, let me go over the plan. First, see the heart specialist within two weeks. Second, come back to this clinic in one week. Third, take one baby aspirin every morning. Just so I know I explained it clearly, can you tell me in your own words what you will do?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "patient",
+      "text": "I will see the heart specialist in two weeks, come back here in a week and take one baby aspirin each morning.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 31,
+      "speaker": "caregiver",
+      "text": "I will go over it again with her at home.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 32,
+      "speaker": "clinician",
+      "text": "Do you have any other questions?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 33,
+      "speaker": "patient",
+      "text": "No, I think I understand.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 34,
+      "speaker": "clinician",
+      "text": "Take care, and we will see you soon.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

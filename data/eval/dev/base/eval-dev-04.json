@@ -1,0 +1,259 @@
+{
+  "visit_id": "eval-dev-04",
+  "chart_id": "chart-eval-dev-04",
+  "turns": [
+    {
+      "idx": 0,
+      "speaker": "clinician",
+      "text": "Can you hear me okay?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 1,
+      "speaker": "patient",
+      "text": "Clearer if you face me and talk slowly.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 2,
+      "speaker": "caregiver",
+      "text": "I brought her in today. She has been uneasy about her chest.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 3,
+      "speaker": "clinician",
+      "text": "What can I help you with today?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 4,
+      "speaker": "patient",
+      "text": "I have not felt right lately, my chest is bothering me.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 5,
+      "speaker": "clinician",
+      "text": "What does the pain feel like?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 6,
+      "speaker": "patient",
+      "text": "It is a tight squeezing feeling in the middle.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 7,
+      "speaker": "clinician",
+      "text": "When did this start?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 8,
+      "speaker": "patient",
+      "text": "It began yesterday afternoon.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 9,
+      "speaker": "clinician",
+      "text": "Does the pain spread anywhere, like your arm or jaw?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 10,
+      "speaker": "patient",
+      "text": "Yes, it goes down my left arm a little.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 11,
+      "speaker": "clinician",
+      "text": "Does walking or climbing stairs bring it on?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 12,
+      "speaker": "patient",
+      "text": "Yes, walking up the hill makes it come on.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 13,
+      "speaker": "clinician",
+      "text": "What have you done to get relief?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 14,
+      "speaker": "patient",
+      "text": "Sitting quietly makes it better.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 15,
+      "speaker": "clinician",
+      "text": "Do you have trouble breathing with it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 16,
+      "speaker": "patient",
+      "text": "No, my breathing is fine.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 17,
+      "speaker": "clinician",
+      "text": "Do you break out in a sweat with it?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 18,
+      "speaker": "patient",
+      "text": "No, I do not sweat.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 19,
+      "speaker": "clinician",
+      "text": "Have you fainted or felt like you might pass out?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 20,
+      "speaker": "patient",
+      "text": "I felt dizzy once earlier this week.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 21,
+      "speaker": "clinician",
+      "text": "Does heart disease run in your family?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 22,
+      "speaker": "patient",
+      "text": "My father had a heart attack in his fifties.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 23,
+      "speaker": "clinician",
+      "text": "Do you smoke, or have high blood pressure, diabetes or high cholesterol?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 24,
+      "speaker": "patient",
+      "text": "I have high blood pressure, and I have diabetes. I have never smoked.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 25,
+      "speaker": "clinician",
+      "text": "Have you ever had a heart procedure, like a stent or bypass surgery?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 26,
+      "speaker": "patient",
+      "text": "I had a stent placed in one of my heart arteries.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 27,
+      "speaker": "clinician",
+      "text": "Can you tell me your daily medicines?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 28,
+      "speaker": "patient",
+      "text": "I take Clopidogrel, Lisinopril and Metformin.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 29,
+      "speaker": "clinician",
+      "text": "Before you go, let me go over the plan. First, get a heart tracing and a blood test today. Second, call 911 if the pain gets worse or does not stop. Third, see the heart specialist within two weeks. Can you tell me back what the plan is, so I know I was clear?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 30,
+      "speaker": "patient",
+      "text": "I will get the heart tracing and the blood test today, call 911 if the pain gets worse or will not stop and see the heart specialist in two weeks.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 31,
+      "speaker": "caregiver",
+      "text": "I will make sure she follows the plan.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 32,
+      "speaker": "clinician",
+      "text": "Do you have any other questions?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 33,
+      "speaker": "patient",
+      "text": "I am scared this could be a heart attack. Is that what this is?",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 34,
+      "speaker": "clinician",
+      "text": "I understand the worry. That is why we are looking at it carefully today, and we will talk about what we find.",
+      "t_start": null,
+      "t_end": null
+    },
+    {
+      "idx": 35,
+      "speaker": "clinician",
+      "text": "Take care, and we will see you soon.",
+      "t_start": null,
+      "t_end": null
+    }
+  ],
+  "synthetic": true
+}

@@ -1,0 +1,29 @@
+{
+  "visit_id": "eval-test-11",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 28,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-11-contradiction-cardiac",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        25
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "proc-stent",
+      "description": "Truthful answer replaced by a denial (cardiac)."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "ecg-bloods",
+      "text": "Get a heart tracing and a blood test today."
+    },
+    {
+      "item_id": "cardiology",
+      "text": "See the heart specialist within two weeks."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "visit_id": "eval-dev-05",
+  "split": "dev",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 29,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-dev-05-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        12
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient concern with the clinician's response deleted."
+    },
+    {
+      "gap_id": "eval-dev-05-contradiction-cardiac",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        26
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "proc-cabg",
+      "description": "Truthful answer replaced by a denial (cardiac)."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "bring-meds",
+      "text": "Bring your medicine bottles to the next visit."
+    },
+    {
+      "item_id": "return",
+      "text": "Come back to the clinic in one week."
+    },
+    {
+      "item_id": "ecg-bloods",
+      "text": "Get a heart tracing and a blood test today."
+    }
+  ]
+}

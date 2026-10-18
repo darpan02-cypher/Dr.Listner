@@ -1,0 +1,52 @@
+{
+  "visit_id": "eval-test-06",
+  "split": "test",
+  "profile_id": "hoh_lowlit_alone",
+  "wrap_up_turn": 27,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-06-missed-exertional",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        10,
+        11
+      ],
+      "checklist_item_id": "exertional",
+      "chart_entry_id": null,
+      "description": "Deleted the exertional question and answer from the base transcript."
+    },
+    {
+      "gap_id": "eval-test-06-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        20
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient concern with the clinician's response deleted."
+    },
+    {
+      "gap_id": "eval-test-06-comprehension-teachback",
+      "type": "comprehension_breakdown",
+      "edit_op": "delete_teachback",
+      "turn_indices": [
+        27
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Teach-back question removed from the plan turn; the patient replies with a bare acknowledgement."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "bring-meds",
+      "text": "Bring your medicine bottles to the next visit."
+    },
+    {
+      "item_id": "cardiology",
+      "text": "See the heart specialist within two weeks."
+    }
+  ]
+}

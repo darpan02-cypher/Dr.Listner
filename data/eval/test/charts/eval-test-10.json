@@ -1,0 +1,32 @@
+{
+  "chart_id": "chart-eval-test-10",
+  "age": 84,
+  "sex": "male",
+  "entries": [
+    {
+      "entry_id": "cond-afib",
+      "resource_type": "Condition",
+      "display": "Atrial fibrillation",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "med-apixaban",
+      "resource_type": "MedicationRequest",
+      "display": "Apixaban",
+      "status": "active",
+      "date": null,
+      "fhir": null
+    },
+    {
+      "entry_id": "obs-smoking",
+      "resource_type": "Observation",
+      "display": "Never smoker",
+      "status": "final",
+      "date": null,
+      "fhir": null
+    }
+  ],
+  "synthetic": true
+}

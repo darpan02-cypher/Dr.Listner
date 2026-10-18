@@ -1,0 +1,53 @@
+{
+  "visit_id": "eval-test-07",
+  "split": "test",
+  "profile_id": "hoh_lowlit_caregiver",
+  "wrap_up_turn": 26,
+  "planted_gaps": [
+    {
+      "gap_id": "eval-test-07-missed-radiation",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        5,
+        6
+      ],
+      "checklist_item_id": "radiation",
+      "chart_entry_id": null,
+      "description": "Deleted the radiation question and answer from the base transcript."
+    },
+    {
+      "gap_id": "eval-test-07-missed-syncope",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        17,
+        18
+      ],
+      "checklist_item_id": "syncope",
+      "chart_entry_id": null,
+      "description": "Deleted the syncope question and answer from the base transcript."
+    },
+    {
+      "gap_id": "eval-test-07-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        11
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Patient concern with the clinician's response deleted."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "aspirin",
+      "text": "Take one baby aspirin every morning."
+    },
+    {
+      "item_id": "ecg-bloods",
+      "text": "Get a heart tracing and a blood test today."
+    }
+  ]
+}

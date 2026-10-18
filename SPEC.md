@@ -1,4 +1,4 @@
-# Dr.Listner SPEC (v0.1)
+# Dr.Listner SPEC (v0.2, master prompt v2)
 
 Contracts only. Scope and rationale live in `docs/PROJECT_REPORT.md`. Code in `src/schemas.py` is normative for field names; this file is normative for semantics.
 
@@ -19,7 +19,7 @@ Contracts only. Scope and rationale live in `docs/PROJECT_REPORT.md`. Code in `s
 - **EvalResult**: run metadata (`run_id, system, split, mode, model, git_commit, timestamp`), counts, `per_type` and `overall` TP/FP/FN/precision/recall/F1, `false_flags_per_visit`, clean-visit false flags, mean reading grade, plan coverage.
 
 ## 3. Checklist file (`data/checklist/chest_pain.json`)
-`{checklist_id, version, source, items[]}`; item = `{id, label, description, example_questions[], guideline_ref, verification_status: VERIFIED|UNVERIFIED, verification_note}`. `VERIFIED` requires a `guideline_ref`. Status is VERIFIED only after the item was checked against the guideline text. Current state: all 8 items UNVERIFIED (see PROGRESS.md).
+`{checklist_id, version, source, items[]}`; file lives at `packs/chest_pain/checklist.json`; item = `{id, label, description, example_questions[], guideline_ref, guideline_quote, verification_status: VERIFIED|UNVERIFIED, verification_note}`. `VERIFIED` requires a `guideline_ref`. Status is VERIFIED only after the item was checked against the guideline text. Current state: all 10 items VERIFIED against the guideline text (Section 2.1 and Table 3) by Claude; not clinician-reviewed (see PROGRESS.md). Items carry `guideline_quote`.
 
 ## 4. Eval definitions
 Evaluated per visit on flags that survive the VerifierAgent (dismissed flags are not removed; dismissal is UI-only).
@@ -57,3 +57,23 @@ One wrapper (`src/llm/client.py`). `generate(prompt, schema, system)` returns a 
 
 ## 7. Privacy
 No real PHI. No transcript storage by the app. The committed LLM cache holds model outputs on synthetic data only. No HIPAA claim.
+
+## 8. v2 deltas (override the report)
+- **Timing:** the engine processes a visit turn by turn through `process_turn(state, turn) -> state`; batch mode is a fold over all turns. Input arrives via a `TurnSource` (`ReplaySource` implemented; typed/mic sources are out of scope for the 2026-10-21 deadline).
+- **Patient focus:** `PatientProfile` (hearing level, literacy, caregiver present, active detectors, summary limits, teach-back count). Two demo profiles in `packs/chest_pain/profiles/`.
+- **Gap type 4, `comprehension_breakdown`:** patient shows they did not hear or understand and the clinician does not repair it (repeat, rephrase, confirm, teach-back). Cues are our own **draft**, not clinically validated: repeat requests ("what?"), answer mismatched to the question just asked, bare "okay/yes" after a multi-part instruction (low confidence, likely noisy), plan/medication/warning-sign instruction with no teach-back. Because we author the planted mishearings, gap-4 recall measures whether the detector finds our cues, not real hearing-loss speech.
+- **Speakers:** `clinician | patient | caregiver`. `Turn` has optional `t_start`/`t_end`.
+- **Packs:** `packs/chest_pain/` holds checklist and profiles (retrieval corpus added in Phase 5). Only chest pain is built.
+
+### Surfacing rules
+- During the visit: coverage ticks and at most passive badges for types 3 and 4. No pop-ups.
+- At wrap-up: unasked red flags (1), unanswered concerns (2), unrepaired comprehension (4), then a clarify card of at most 3 items.
+- Types 1 and 2 are never raised before wrap-up. All flags dismissible; dismissals logged.
+
+### Eval additions
+- Each event is **one flag**, emitted once with `raised_at_turn`. A live badge and a wrap-up list item for the same event are the same flag (no double counting).
+- **Wrap-up turn:** the answer key records `wrap_up_turn`. Headline eval uses it; closing-phrase detection is scored separately.
+- **Flags raised too early** = any type 1 or 2 flag with `raised_at_turn < wrap_up_turn`.
+- **Turns-to-detection** (types 3, 4) = `raised_at_turn` minus the planted turn.
+- **Matching, type 4:** `insert_mishearing` -> same type and a flag transcript pointer in `turn_indices`. `delete_teachback` -> same type and a flag transcript pointer at the plan-instruction turn recorded in `turn_indices` (the turn that lacks teach-back).
+- Per-type counts always reported with percentages; gap-4 test counts will be small.

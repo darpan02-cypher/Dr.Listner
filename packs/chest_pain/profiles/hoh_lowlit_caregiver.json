@@ -1,0 +1,16 @@
+{
+  "profile_id": "hoh_lowlit_caregiver",
+  "label": "Older adult, hearing loss + low health literacy, caregiver present",
+  "hearing_level": "moderate",
+  "literacy": "low",
+  "caregiver_present": true,
+  "active_detectors": [
+    "missed_question",
+    "unanswered_concern",
+    "chart_contradiction",
+    "comprehension_breakdown"
+  ],
+  "summary_max_words": 180,
+  "summary_target_grade": 6.0,
+  "teach_back_questions": 2
+}

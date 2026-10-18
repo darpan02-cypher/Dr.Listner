@@ -4,9 +4,9 @@
 **Done**
 - Repo skeleton, `SPEC.md`, Pydantic schemas, draft checklist JSON, LLM client (cache, retry/backoff, Gemini→Ollama fallback, DEMO/LIVE), config.
 - Project report converted from `Project-SRS.docx` to `docs/PROJECT_REPORT.md`.
-- 17 unit tests pass (schemas, checklist file, LLM client with mocked HTTP).
+- v2 delta applied: gap type 4, caregiver speaker, timed turns, PatientProfile + 2 profiles, VisitState, `process_turn` stub, ReplaySource, packs layout. 24 tests pass.
 
-**Checklist verification: 0 of 8 items VERIFIED, 8 UNVERIFIED.** I confirmed from the ACC "Guidelines Made Simple" summary that Section 2.1 (History) and Table 3 (Chest Pain Characteristics and Corresponding Causes) exist. The primary guideline text returned HTTP 403, so Table 3's contents are unread. Shortness of breath is supported at summary level only. Someone with access to the full text needs to check each item.
+**Checklist verification: 10 of 10 items VERIFIED** against the full guideline text (Section 2.1 History and Table 3, pages e377-e378), matched by Claude, **not clinician-reviewed**. Changes from the report's draft of 8: added `nature` and `relieving` (named in Sec 2.1's six history elements); merged "duration" into `onset` (Table 3 row "Onset and duration"); `risk_factors` cites Sec 2.1 rec 1; `family_history` cites Sec 2.1 supportive text (the guideline says "family and social history" generally; "premature CAD" appears only in 2.1.1 trial data). Not included: Table 3 "Severity" row. If you want the original 8 only, delete `nature` and `relieving`.
 
 **Live-verified**: Groq (`openai/gpt-oss-120b` and `-20b` return schema-valid JSON). **Not exercised**: live Gemini (no key) and live Ollama (not installed). Both paths are tested only against mocked HTTP. Run `python -m scripts.smoke_llm` with a key / Ollama to confirm.
 

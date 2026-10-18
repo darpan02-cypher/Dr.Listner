@@ -23,7 +23,8 @@ def _load_dotenv(path: Path) -> None:
 _load_dotenv(ROOT / ".env")
 DATA_DIR = ROOT / "data"
 CACHE_DIR = DATA_DIR / "llm_cache"
-CHECKLIST_PATH = DATA_DIR / "checklist" / "chest_pain.json"
+PACK_DIR = ROOT / "packs" / "chest_pain"
+CHECKLIST_PATH = PACK_DIR / "checklist.json"
 
 
 class Mode(str, Enum):

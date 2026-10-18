@@ -1,0 +1,135 @@
+{
+  "checklist_id": "chest_pain_history",
+  "version": "0.2",
+  "source": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Section 2.1 History (rec 1: characteristics and duration, associated features, CV risk factors) and Table 3. Not covered: Table 3 'Severity' row (aortic-syndrome cue) and physical exam (Sec 2.2).",
+  "items": [
+    {
+      "id": "nature",
+      "label": "Nature of the pain",
+      "description": "Clinician asks what the pain feels like (pressure, tightness, sharp, burning).",
+      "example_questions": [
+        "What does the pain feel like?",
+        "Is it pressure, sharp, burning?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Sec 2.1 (e377) and Table 3 'Nature' (e378)",
+      "guideline_quote": "Anginal symptoms are perceived as retrosternal chest discomfort (eg, pain, discomfort, heaviness, tightness, pressure, constriction, squeezing)",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text. ADDED after guideline check; not in the original report list."
+    },
+    {
+      "id": "onset",
+      "label": "Onset and duration",
+      "description": "Clinician establishes when the pain started, how it began and how long it lasts.",
+      "example_questions": [
+        "When did the pain start?",
+        "Did it come on suddenly or gradually?",
+        "How long does it last?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Onset and duration' (e378)",
+      "guideline_quote": "Anginal symptoms gradually build in intensity over a few minutes.",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "radiation",
+      "label": "Location and radiation",
+      "description": "Clinician asks where the pain is and whether it spreads to the arm, jaw, neck or back.",
+      "example_questions": [
+        "Where exactly is the pain?",
+        "Does it travel to your arm or jaw?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Location and radiation' (e378); Sec 2.1 supportive text (e377)",
+      "guideline_quote": "characteristic radiation (eg, left arm, neck, jaw)",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "exertional",
+      "label": "Precipitating factors (exertion)",
+      "description": "Clinician asks whether the pain is brought on by exertion or emotional stress, or happens at rest.",
+      "example_questions": [
+        "Does it happen when you walk or climb stairs?",
+        "Does stress bring it on?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Precipitating factors' (e378)",
+      "guideline_quote": "Physical exercise or emotional stress are common triggers of anginal symptoms.",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "relieving",
+      "label": "Relieving factors",
+      "description": "Clinician asks what makes the pain better (rest, medication).",
+      "example_questions": [
+        "What makes it better?",
+        "Does resting help?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Relieving factors' (e378); Sec 1.4.2 supportive text (e376)",
+      "guideline_quote": "Relief with nitroglycerin is not necessarily diagnostic of myocardial ischemia and should not be used as a diagnostic criterion.",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text. ADDED after guideline check; not in the original report list."
+    },
+    {
+      "id": "dyspnea",
+      "label": "Shortness of breath",
+      "description": "Clinician asks about shortness of breath with the pain.",
+      "example_questions": [
+        "Are you short of breath when this happens?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Associated symptoms' (e378)",
+      "guideline_quote": "Common symptoms associated with myocardial ischemia include, but are not limited to, dyspnea, palpitations, diaphoresis, lightheadedness, presyncope or syncope",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "diaphoresis",
+      "label": "Sweating",
+      "description": "Clinician asks about sweating (diaphoresis) with the pain.",
+      "example_questions": [
+        "Do you break out in a sweat when it happens?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Associated symptoms' (e378)",
+      "guideline_quote": "dyspnea, palpitations, diaphoresis, lightheadedness, presyncope or syncope",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "syncope",
+      "label": "Fainting or lightheadedness",
+      "description": "Clinician asks about fainting, near-fainting or lightheadedness.",
+      "example_questions": [
+        "Have you passed out or felt like you might?",
+        "Do you feel lightheaded?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Table 3 'Associated symptoms' (e378); Sec 2.1 supportive text (e377)",
+      "guideline_quote": "Associated symptoms such as shortness of breath, nausea or vomiting, lightheadedness, confusion, presyncope or syncope... are more frequent among patients with diabetes, women, and the elderly.",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "risk_factors",
+      "label": "Cardiovascular risk factors",
+      "description": "Clinician asks about cardiac risk factors: smoking, blood pressure, diabetes, cholesterol.",
+      "example_questions": [
+        "Do you smoke?",
+        "Any history of high blood pressure, diabetes or high cholesterol?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Sec 2.1 Recommendation 1 (e377)",
+      "guideline_quote": "a focused history that includes ... cardiovascular risk factor assessment should be obtained",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text."
+    },
+    {
+      "id": "family_history",
+      "label": "Family history",
+      "description": "Clinician asks about heart disease in close relatives.",
+      "example_questions": [
+        "Has anyone in your family had heart problems at a young age?"
+      ],
+      "guideline_ref": "2021 AHA/ACC/ASE/CHEST/SAEM/SCCT/SCMR Chest Pain Guideline (Gulati et al., Circulation 2021;144:e368-e454), Sec 2.1 supportive text (e377)",
+      "guideline_quote": "A detailed assessment of cardiovascular risk factors, review of systems, past medical history, and family and social history should complement the assessment of presenting symptoms.",
+      "verification_status": "VERIFIED",
+      "verification_note": "Matched against the guideline text (provided PDF) by Claude, not clinician-reviewed. 'VERIFIED' = the element appears in the cited guideline text. Guideline text names 'family history' generally; 'premature CAD' appears only in 2.1.1 trial data (PROMISE), not as a Sec 2.1 requirement."
+    }
+  ]
+}

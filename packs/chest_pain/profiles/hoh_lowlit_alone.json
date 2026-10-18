@@ -1,0 +1,16 @@
+{
+  "profile_id": "hoh_lowlit_alone",
+  "label": "Older adult, hearing loss + low health literacy, attends alone",
+  "hearing_level": "moderate",
+  "literacy": "low",
+  "caregiver_present": false,
+  "active_detectors": [
+    "missed_question",
+    "unanswered_concern",
+    "chart_contradiction",
+    "comprehension_breakdown"
+  ],
+  "summary_max_words": 180,
+  "summary_target_grade": 6.0,
+  "teach_back_questions": 2
+}

@@ -10,8 +10,16 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 # ---------- Transcript ----------
 class Turn(BaseModel):
     idx: int = Field(ge=0)
-    speaker: Literal["clinician", "patient"]
+    speaker: Literal["clinician", "patient", "caregiver"]
     text: str = Field(min_length=1)
+    t_start: float | None = Field(default=None, ge=0)  # seconds from visit start
+    t_end: float | None = Field(default=None, ge=0)
+
+    @model_validator(mode="after")
+    def _times(self) -> "Turn":
+        if self.t_start is not None and self.t_end is not None and self.t_end < self.t_start:
+            raise ValueError("t_end before t_start")
+        return self
 
 
 class Transcript(BaseModel):
@@ -58,6 +66,7 @@ class GapType(str, Enum):
     MISSED_QUESTION = "missed_question"  # type 1
     UNANSWERED_CONCERN = "unanswered_concern"  # type 2
     CHART_CONTRADICTION = "chart_contradiction"  # type 3
+    COMPREHENSION_BREAKDOWN = "comprehension_breakdown"  # type 4 (draft cues, not clinically validated)
 
 
 class EvidencePointer(BaseModel):
@@ -82,6 +91,7 @@ class Flag(BaseModel):
     rationale: str = Field(min_length=1)
     verified: bool = False  # set True only by VerifierAgent
     dismissed: bool = False  # UI state
+    raised_at_turn: int | None = Field(default=None, ge=0)  # turn idx when first emitted (turns-to-detection)
 
     @model_validator(mode="after")
     def _evidence_shape(self) -> "Flag":
@@ -92,6 +102,8 @@ class Flag(BaseModel):
             raise ValueError("unanswered_concern needs a transcript evidence pointer")
         if self.type is GapType.CHART_CONTRADICTION and not {"transcript", "chart"} <= srcs:
             raise ValueError("chart_contradiction needs transcript and chart evidence")
+        if self.type is GapType.COMPREHENSION_BREAKDOWN and "transcript" not in srcs:
+            raise ValueError("comprehension_breakdown needs a transcript evidence pointer")
         return self
 
 
@@ -102,6 +114,7 @@ class ChecklistItem(BaseModel):
     description: str
     example_questions: list[str] = Field(min_length=1)
     guideline_ref: str | None = None
+    guideline_quote: str | None = None  # short verbatim excerpt supporting the item
     verification_status: Literal["VERIFIED", "UNVERIFIED"]
     verification_note: str
 
@@ -131,7 +144,9 @@ class Checklist(BaseModel):
 class PlantedGap(BaseModel):
     gap_id: str
     type: GapType
-    edit_op: Literal["delete_turns", "insert_concern", "insert_contradiction"]
+    edit_op: Literal[
+        "delete_turns", "insert_concern", "insert_contradiction", "insert_mishearing", "delete_teachback"
+    ]
     turn_indices: list[int] = Field(default_factory=list)  # turns deleted (pre-edit idx) or inserted (post-edit idx)
     checklist_item_id: str | None = None  # type 1
     chart_entry_id: str | None = None  # type 3
@@ -156,12 +171,44 @@ class PlanItem(BaseModel):
 class AnswerKey(BaseModel):
     visit_id: str
     split: Literal["dev", "test"]
+    wrap_up_turn: int | None = Field(default=None, ge=0)  # turn idx where wrap-up begins (eval trigger)
     planted_gaps: list[PlantedGap]
     plan_items: list[PlanItem] = Field(default_factory=list)
 
     @property
     def is_clean(self) -> bool:
         return not self.planted_gaps
+
+
+# ---------- Patient profile & visit state ----------
+class PatientProfile(BaseModel):
+    profile_id: str
+    label: str
+    hearing_level: Literal["normal", "mild", "moderate", "severe"]
+    literacy: Literal["adequate", "low"]
+    caregiver_present: bool
+    active_detectors: list[GapType]
+    summary_max_words: int = Field(gt=0)
+    summary_target_grade: float = Field(gt=0)
+    teach_back_questions: int = Field(ge=0)
+
+
+class OpenConcern(BaseModel):
+    turn_idx: int
+    text: str
+    answered: bool = False
+
+
+class VisitState(BaseModel):
+    """State folded by engine.process_turn. Batch mode = fold over every turn."""
+
+    visit_id: str
+    profile: PatientProfile
+    turns_seen: list[Turn] = Field(default_factory=list)
+    checklist_coverage: dict[str, int | None] = Field(default_factory=dict)  # item id -> turn idx that covered it
+    open_concerns: list[OpenConcern] = Field(default_factory=list)
+    flags: list[Flag] = Field(default_factory=list)
+    wrapped_up: bool = False
 
 
 # ---------- Eval ----------

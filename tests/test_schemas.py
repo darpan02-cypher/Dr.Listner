@@ -53,7 +53,7 @@ def test_eval_result_validates():
 
 def test_checklist_file_every_item_cited_or_unverified():
     ck = Checklist.model_validate(json.loads(config.CHECKLIST_PATH.read_text()))
-    assert len(ck.items) == 8
+    assert len(ck.items) == 10
     for it in ck.items:
         assert it.verification_status == "UNVERIFIED" or it.guideline_ref
 
@@ -61,3 +61,25 @@ def test_checklist_file_every_item_cited_or_unverified():
 def test_verified_requires_ref():
     with pytest.raises(ValidationError):
         ChecklistItem(id="x", label="l", description="d", example_questions=["q"], verification_status="VERIFIED", verification_note="n")
+
+
+def test_checklist_verified_items_have_quote_and_ref():
+    ck = Checklist.model_validate(json.loads(config.CHECKLIST_PATH.read_text()))
+    for it in ck.items:
+        if it.verification_status == "VERIFIED":
+            assert it.guideline_ref and it.guideline_quote
+
+
+def test_caregiver_turn_and_timing():
+    Turn(idx=0, speaker="caregiver", text="She said no", t_start=1.0, t_end=2.5)
+    with pytest.raises(ValidationError):
+        Turn(idx=0, speaker="patient", text="x", t_start=3.0, t_end=1.0)
+
+
+def test_comprehension_flag_and_key():
+    ev = EvidencePointer(source="transcript", ref="4", quote="My jaw? I eat fine")
+    f = Flag(flag_id="f", visit_id="v", type=GapType.COMPREHENSION_BREAKDOWN, evidence=[ev], rationale="mismatched answer, no repair", raised_at_turn=5)
+    assert f.raised_at_turn == 5
+    with pytest.raises(ValidationError):
+        Flag(flag_id="f", visit_id="v", type=GapType.COMPREHENSION_BREAKDOWN, evidence=[EvidencePointer(source="checklist", ref="radiation")], rationale="r")
+    PlantedGap(gap_id="g", type=GapType.COMPREHENSION_BREAKDOWN, edit_op="insert_mishearing", turn_indices=[4], description="d")

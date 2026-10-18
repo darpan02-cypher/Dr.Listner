@@ -27,7 +27,7 @@ def mk(tmp_path, monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "test-key")
     sleeps = []
     def make(mode=config.Mode.LIVE):
-        return LLMClient(mode=mode, cache_dir=tmp_path, gemini_model="g", ollama_model="o", sleep=sleeps.append)
+        return LLMClient(mode=mode, cache_dir=tmp_path, gemini_model="g", ollama_model="o", providers=("gemini", "ollama"), sleep=sleeps.append)
     make.sleeps = sleeps
     return make
 
@@ -106,3 +106,17 @@ def test_key_not_in_errors(mk, monkeypatch):
     with pytest.raises(LLMUnavailable) as e:
         mk().generate("p", Out)
     assert "test-key" not in str(e.value)
+
+
+def test_groq_first_then_fallthrough(tmp_path, monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "gk")
+    monkeypatch.setenv("GEMINI_API_KEY", "k")
+    seen = []
+    def post(url, **kw):
+        seen.append(url)
+        if "groq" in url:
+            return FakeResp(200, {"choices": [{"message": {"content": '{"answer":"g"}'}}]})
+        raise AssertionError("should not reach other providers")
+    monkeypatch.setattr(C.requests, "post", post)
+    c = LLMClient(mode=config.Mode.LIVE, cache_dir=tmp_path, groq_model="gm", providers=("groq", "gemini", "ollama"), sleep=lambda s: None)
+    assert c.generate("p", Out).answer == "g" and c.last_source == "groq"

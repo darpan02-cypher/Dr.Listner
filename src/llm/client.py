@@ -1,6 +1,6 @@
 """The ONLY place LLM calls are made.
 
-LIVE: cache -> Gemini (JSON mode, retries) -> Ollama fallback -> LLMUnavailable.
+LIVE: cache -> providers in order (default Groq -> Gemini -> Ollama; JSON mode, retries) -> LLMUnavailable.
 DEMO: cache only; a miss raises DemoCacheMiss. Zero network calls.
 
 The cache stores model, key hash and response text, not the prompt, so no
@@ -23,6 +23,7 @@ from .. import config
 log = logging.getLogger(__name__)
 T = TypeVar("T", bound=BaseModel)
 
+GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 RETRY_STATUS = {429, 500, 502, 503, 504}
 
@@ -42,6 +43,8 @@ class LLMClient:
         cache_dir: Path | None = None,
         gemini_model: str | None = None,
         ollama_model: str | None = None,
+        groq_model: str | None = None,
+        providers: tuple[str, ...] | None = None,
         max_retries: int = 3,
         backoff_s: float = 2.0,
         sleep: Callable[[float], None] = time.sleep,
@@ -51,6 +54,8 @@ class LLMClient:
         self.cache_dir = Path(cache_dir or config.CACHE_DIR)
         self.gemini_model = gemini_model or config.GEMINI_MODEL
         self.ollama_model = ollama_model or config.OLLAMA_MODEL
+        self.groq_model = groq_model or config.GROQ_MODEL
+        self.providers = providers or config.PROVIDERS
         self.max_retries = max_retries
         self.backoff_s = backoff_s
         self._sleep = sleep
@@ -62,7 +67,12 @@ class LLMClient:
         schema_json = json.dumps(schema.model_json_schema(), sort_keys=True)
         full = self._with_schema(prompt, schema_json)
         # Cache lookup: Gemini key first, then Ollama key.
-        for model in (self.gemini_model, self.ollama_model):
+        calls = {
+            "groq": (self._call_groq, self.groq_model),
+            "gemini": (self._call_gemini, self.gemini_model),
+            "ollama": (self._call_ollama, self.ollama_model),
+        }
+        for _, model in (calls[p] for p in self.providers):
             hit = self._cache_get(self._key(model, system, full))
             if hit is not None:
                 try:
@@ -75,10 +85,8 @@ class LLMClient:
             raise DemoCacheMiss("DEMO mode: no cached response for this prompt")
 
         errors: list[str] = []
-        for name, call, model in (
-            ("gemini", self._call_gemini, self.gemini_model),
-            ("ollama", self._call_ollama, self.ollama_model),
-        ):
+        for name in self.providers:
+            call, model = calls[name]
             try:
                 out = self._run_provider(call, full, system, schema, schema_json)
             except LLMError as e:
@@ -106,6 +114,32 @@ class LLMClient:
             if attempt < self.max_retries - 1:
                 self._sleep(self.backoff_s * (2**attempt))
         raise LLMError(f"gave up after {self.max_retries} attempts: {err}")
+
+    def _call_groq(self, prompt: str, system: str | None, schema_json: str) -> str:
+        key = config.get_secret("GROQ_API_KEY")
+        if not key:
+            raise LLMError("GROQ_API_KEY not set")  # not retryable
+        msgs = ([{"role": "system", "content": system}] if system else []) + [
+            {"role": "user", "content": prompt}
+        ]
+        try:
+            r = requests.post(
+                GROQ_URL,
+                headers={"Authorization": f"Bearer {key}"},
+                json={"model": self.groq_model, "messages": msgs, "temperature": 0,
+                      "response_format": {"type": "json_object"}},
+                timeout=self.timeout_s,
+            )
+        except requests.RequestException as e:
+            raise _Retryable(f"network: {type(e).__name__}")
+        if r.status_code in RETRY_STATUS:
+            raise _Retryable(f"HTTP {r.status_code}")
+        if r.status_code != 200:
+            raise LLMError(f"HTTP {r.status_code}")
+        try:
+            return r.json()["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, ValueError):
+            raise ValueError("unexpected Groq response shape")
 
     def _call_gemini(self, prompt: str, system: str | None, schema_json: str) -> str:
         key = config.get_secret("GEMINI_API_KEY")

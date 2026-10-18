@@ -9,8 +9,8 @@ Rebuild from the repository root with:
 No API key, network call, or real patient data is used. The builder overwrites its
 own numbered JSON files; use `--output /tmp/drlistner-fixtures` for a separate copy.
 
-The 25 visits contain 3 clean controls, 8 missed-question cases (one per draft
-checklist item), 3 unanswered-concern cases, 3 chart-contradiction cases, and 8
+The 29 visits contain 3 clean controls, 10 missed-question cases (one per
+checklist item), 3 unanswered-concern cases, 3 chart-contradiction cases, and 10
 mixed cases. All belong to the development split. Variants share templates;
 they must not be presented as an independent test set or evidence of accuracy.
 
@@ -25,8 +25,9 @@ contradiction indices refer to the final transcript. A contradiction removes the
 original truthful answer and inserts a denial at the same position. Plan items
 are retained in every visit. Answer keys come from those edits, not LLM judgments.
 
-These scripts test software behavior, not clinical quality. The checklist remains
-unverified, and the scripts have not received clinician review. No detection
+These scripts test software behavior, not clinical quality. The checklist items were
+matched to the guideline text by Claude (not clinician-reviewed), and the scripts
+have not received clinician review. No detection
 agents, cached model results, or measured evaluation results are included.
 
 ## Synthea integration
@@ -47,6 +48,6 @@ has not been installed or run; import against actual generated bundles remains
 to be exercised. Imported charts are not automatically paired with the fixture
 transcripts, whose history and planted contradictions depend on their own charts.
 
-Before held-out evaluation: verify the checklist, generate/import Synthea charts,
+Before held-out evaluation: have a clinician review the checklist, generate/import Synthea charts,
 write varied matching scripts, review the scripts, and freeze an independent test
 split without template siblings crossing the split.

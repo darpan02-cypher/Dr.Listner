@@ -1,6 +1,7 @@
 {
   "visit_id": "dev-008",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-008-missing",
@@ -10,9 +11,9 @@
         10,
         11
       ],
-      "checklist_item_id": "dyspnea",
+      "checklist_item_id": "radiation",
       "chart_entry_id": null,
-      "description": "Deleted the question and answer for dyspnea from the base transcript."
+      "description": "Deleted the question and answer for radiation from the base transcript."
     }
   ],
   "plan_items": [

@@ -1,17 +1,18 @@
 {
   "visit_id": "dev-015",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
-      "gap_id": "dev-015-contradiction",
-      "type": "chart_contradiction",
-      "edit_op": "insert_contradiction",
+      "gap_id": "dev-015-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
       "turn_indices": [
-        19
+        26
       ],
       "checklist_item_id": null,
-      "chart_entry_id": "stent",
-      "description": "Replaced the truthful procedure response with a denial of the charted stent."
+      "chart_entry_id": null,
+      "description": "Appended a request for help reading the summary after the clinician's final turn."
     }
   ],
   "plan_items": [

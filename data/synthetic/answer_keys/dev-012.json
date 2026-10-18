@@ -1,17 +1,19 @@
 {
   "visit_id": "dev-012",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
-      "gap_id": "dev-012-concern",
-      "type": "unanswered_concern",
-      "edit_op": "insert_concern",
+      "gap_id": "dev-012-missing",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
       "turn_indices": [
-        22
+        18,
+        19
       ],
-      "checklist_item_id": null,
+      "checklist_item_id": "family_history",
       "chart_entry_id": null,
-      "description": "Appended a request for help reading the summary after the clinician's final turn."
+      "description": "Deleted the question and answer for family_history from the base transcript."
     }
   ],
   "plan_items": [

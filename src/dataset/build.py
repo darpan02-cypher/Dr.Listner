@@ -16,8 +16,10 @@ from src.schemas import (
 
 # Each question and answer occupies its own removable pair of turns.
 HISTORY = {
+    "nature": ("What does the pain feel like?", "It feels like a heavy pressure in the middle of my chest."),
     "onset": ("When did the pain start, and did it begin suddenly or gradually?", "It started gradually yesterday afternoon."),
-    "exertional": ("Does walking or climbing stairs bring it on, and does rest help?", "Walking brings it on, and resting helps."),
+    "exertional": ("Does walking or climbing stairs bring it on?", "Yes, walking brings it on."),
+    "relieving": ("What makes the pain better, like resting or taking anything for it?", "Resting makes it better. I have not taken any medicine for it."),
     "radiation": ("Does the pain spread to your arm, jaw, neck, or back?", "No, it stays in one spot."),
     "diaphoresis": ("Do you break out in a sweat with the pain?", "No, I have not noticed sweating."),
     "dyspnea": ("Do you feel short of breath with the pain?", "No, my breathing feels the same."),

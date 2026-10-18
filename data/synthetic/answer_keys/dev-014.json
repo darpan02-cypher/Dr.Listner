@@ -1,13 +1,14 @@
 {
   "visit_id": "dev-014",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-014-concern",
       "type": "unanswered_concern",
       "edit_op": "insert_concern",
       "turn_indices": [
-        22
+        26
       ],
       "checklist_item_id": null,
       "chart_entry_id": null,

@@ -1,6 +1,7 @@
 {
   "visit_id": "dev-007",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-007-missing",
@@ -10,9 +11,9 @@
         8,
         9
       ],
-      "checklist_item_id": "diaphoresis",
+      "checklist_item_id": "relieving",
       "chart_entry_id": null,
-      "description": "Deleted the question and answer for diaphoresis from the base transcript."
+      "description": "Deleted the question and answer for relieving from the base transcript."
     }
   ],
   "plan_items": [

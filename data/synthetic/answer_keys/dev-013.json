@@ -1,17 +1,19 @@
 {
   "visit_id": "dev-013",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
-      "gap_id": "dev-013-concern",
-      "type": "unanswered_concern",
-      "edit_op": "insert_concern",
+      "gap_id": "dev-013-missing",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
       "turn_indices": [
-        22
+        20,
+        21
       ],
-      "checklist_item_id": null,
+      "checklist_item_id": "risk_factors",
       "chart_entry_id": null,
-      "description": "Appended a request for help reading the summary after the clinician's final turn."
+      "description": "Deleted the question and answer for risk_factors from the base transcript."
     }
   ],
   "plan_items": [

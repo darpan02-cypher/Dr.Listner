@@ -5,6 +5,7 @@ import pytest
 
 from src.dataset.build import HISTORY, base_visit, build_dataset, plant_gaps
 from src.dataset.fhir import chart_from_synthea
+from src.pack import load_checklist
 from src.schemas import AnswerKey, Chart, Transcript
 
 
@@ -13,8 +14,9 @@ def test_dataset_reproducible_and_linked(tmp_path):
     second = tmp_path / "second"
     manifest = build_dataset(first)
     build_dataset(second)
-    assert len(manifest["visits"]) == 25
-    assert not manifest["checklist_verified"]
+    n = len(HISTORY)
+    assert len(manifest["visits"]) == 3 + n + 6 + n
+    assert manifest["checklist_verified"] == all(i.verification_status == "VERIFIED" for i in load_checklist().items)
     for path in first.rglob("*.json"):
         assert path.read_bytes() == (second / path.relative_to(first)).read_bytes()
     clean = 0
@@ -46,7 +48,7 @@ def test_mixed_edits_keep_correct_indices(missing):
     assert "never" in result.turn(contradiction.turn_indices[0]).text
     assert concern.turn_indices == [len(result.turns) - 1]
     assert base.turn(ranges[missing][0]).speaker == "clinician"
-    assert len(base.turns) == 22  # source was not mutated
+    assert len(base.turns) == 2 + 2 * len(HISTORY) + 4  # source was not mutated
 
 
 def bundle():

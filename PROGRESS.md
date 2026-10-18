@@ -22,17 +22,21 @@
 ## Phase 2 — Synthetic development dataset (in progress)
 **Implemented**
 - Reproducible offline builder: `python -m scripts.build_dataset`.
-- 25 paired synthetic visits/charts, saved original transcripts, deterministic
+- 29 paired synthetic visits/charts (covering all 10 checklist items), saved original transcripts, deterministic
   gap edits, and separate answer keys with plan items and edit provenance.
-- 3 clean controls, 8 missed-question cases, 3 concern cases, 3 contradiction
-  cases, and 8 mixed cases. All are development fixtures, not a held-out test.
+- 3 clean controls, 10 missed-question cases, 3 concern cases, 3 contradiction
+  cases, and 10 mixed cases. All are development fixtures, not a held-out test.
 - FHIR-lite Synthea bundle adapter and `scripts.import_synthea` CLI with explicit
   synthetic attestation, patient-reference filtering, and reference-date age.
 - Tests for reproducibility, dataset links, mixed-edit indices for all checklist
   items, and FHIR mapping/rejection behavior.
 
 **Remaining**
-- Checklist verification is still 0/8; no clinical validation claimed.
+- Checklist is matched to the guideline (10/10) but not clinician-reviewed.
+- Known gaps vs master prompt v2: no gap type 4, caregiver turns or `wrap_up_turn`; all
+  visits are dev (no test split); only 3 clean controls (need 5+); templated wording and
+  positional tells (concern is always the last turn) make it unsuitable for tuning or
+  reporting metrics. Use as a contract/engine fixture only.
 - Included charts are hand-authored. Generate actual Synthea bundles and exercise
   the importer against them; independently author matching visit scripts.
 - Review script coverage and variety, and freeze independent dev/test data.

@@ -1,6 +1,7 @@
 {
   "visit_id": "dev-011",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-011-missing",
@@ -10,9 +11,9 @@
         16,
         17
       ],
-      "checklist_item_id": "risk_factors",
+      "checklist_item_id": "syncope",
       "chart_entry_id": null,
-      "description": "Deleted the question and answer for risk_factors from the base transcript."
+      "description": "Deleted the question and answer for syncope from the base transcript."
     }
   ],
   "plan_items": [

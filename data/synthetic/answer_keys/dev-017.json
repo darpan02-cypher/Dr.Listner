@@ -1,13 +1,14 @@
 {
   "visit_id": "dev-017",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-017-contradiction",
       "type": "chart_contradiction",
       "edit_op": "insert_contradiction",
       "turn_indices": [
-        19
+        23
       ],
       "checklist_item_id": null,
       "chart_entry_id": "stent",

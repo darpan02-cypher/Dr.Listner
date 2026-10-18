@@ -1,25 +1,26 @@
 {
   "visit_id": "dev-020",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-020-missing",
       "type": "missed_question",
       "edit_op": "delete_turns",
       "turn_indices": [
-        6,
-        7
+        2,
+        3
       ],
-      "checklist_item_id": "radiation",
+      "checklist_item_id": "nature",
       "chart_entry_id": null,
-      "description": "Deleted the question and answer for radiation from the base transcript."
+      "description": "Deleted the question and answer for nature from the base transcript."
     },
     {
       "gap_id": "dev-020-contradiction",
       "type": "chart_contradiction",
       "edit_op": "insert_contradiction",
       "turn_indices": [
-        17
+        21
       ],
       "checklist_item_id": null,
       "chart_entry_id": "stent",
@@ -30,7 +31,7 @@
       "type": "unanswered_concern",
       "edit_op": "insert_concern",
       "turn_indices": [
-        20
+        24
       ],
       "checklist_item_id": null,
       "chart_entry_id": null,

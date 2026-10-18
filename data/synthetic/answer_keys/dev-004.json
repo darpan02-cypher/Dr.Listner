@@ -1,6 +1,7 @@
 {
   "visit_id": "dev-004",
   "split": "dev",
+  "wrap_up_turn": null,
   "planted_gaps": [
     {
       "gap_id": "dev-004-missing",
@@ -10,9 +11,9 @@
         2,
         3
       ],
-      "checklist_item_id": "onset",
+      "checklist_item_id": "nature",
       "chart_entry_id": null,
-      "description": "Deleted the question and answer for onset from the base transcript."
+      "description": "Deleted the question and answer for nature from the base transcript."
     }
   ],
   "plan_items": [

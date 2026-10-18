@@ -3,8 +3,8 @@
   "synthetic": true,
   "source": "hand-authored synthetic fixtures; not Synthea",
   "purpose": "development contract fixtures; not an independent clinical evaluation",
-  "checklist_version": "0.1-draft",
-  "checklist_verified": false,
+  "checklist_version": "0.2",
+  "checklist_verified": true,
   "visits": [
     {
       "visit_id": "dev-001",
@@ -112,13 +112,13 @@
       "visit_id": "dev-018",
       "chart_id": "chart-dev-018",
       "split": "dev",
-      "gap_count": 3
+      "gap_count": 1
     },
     {
       "visit_id": "dev-019",
       "chart_id": "chart-dev-019",
       "split": "dev",
-      "gap_count": 3
+      "gap_count": 1
     },
     {
       "visit_id": "dev-020",
@@ -153,6 +153,30 @@
     {
       "visit_id": "dev-025",
       "chart_id": "chart-dev-025",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-026",
+      "chart_id": "chart-dev-026",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-027",
+      "chart_id": "chart-dev-027",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-028",
+      "chart_id": "chart-dev-028",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-029",
+      "chart_id": "chart-dev-029",
       "split": "dev",
       "gap_count": 3
     }

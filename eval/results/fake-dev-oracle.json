@@ -4,8 +4,8 @@
   "split": "dev",
   "mode": "DEMO",
   "model": "FAKE/oracle",
-  "git_commit": "e2609677e4dcf4908a17d648707505a2445b00ef",
-  "timestamp": "2026-10-18T18:24:23.921278+00:00",
+  "git_commit": "fe3689977f365758baf4db06703f6a7ae9294d3b",
+  "timestamp": "2026-10-18T22:08:53.275368+00:00",
   "n_visits": 9,
   "per_type": {
     "missed_question": {

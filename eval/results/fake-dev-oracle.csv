@@ -1,0 +1,6 @@
+run_id,system,split,mode,model,type,n_visits,n_gaps,n_predictions,tp,fp,fn,precision,recall,f1,precision_ci95_lower,precision_ci95_upper,recall_ci95_lower,recall_ci95_upper
+fake-dev-oracle,drlistner,dev,DEMO,FAKE/oracle,missed_question,9,4,4,4,0,0,1.0,1.0,1.0,0.5101091635454027,1.0,0.5101091635454027,1.0
+fake-dev-oracle,drlistner,dev,DEMO,FAKE/oracle,unanswered_concern,9,2,2,2,0,0,1.0,1.0,1.0,0.34238022750665303,1.0,0.34238022750665303,1.0
+fake-dev-oracle,drlistner,dev,DEMO,FAKE/oracle,chart_contradiction,9,3,3,3,0,0,1.0,1.0,1.0,0.4385029682449546,1.0,0.4385029682449546,1.0
+fake-dev-oracle,drlistner,dev,DEMO,FAKE/oracle,comprehension_breakdown,9,4,4,4,0,0,1.0,1.0,1.0,0.5101091635454027,1.0,0.5101091635454027,1.0
+fake-dev-oracle,drlistner,dev,DEMO,FAKE/oracle,overall,9,13,13,13,0,0,1.0,1.0,1.0,0.7719046276458016,0.9999999999999999,0.7719046276458016,0.9999999999999999

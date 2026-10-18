@@ -1,0 +1,50 @@
+[
+  {
+    "flag_id": "fake-eval-dev-04-0",
+    "visit_id": "eval-dev-04",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "relieving",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  },
+  {
+    "flag_id": "fake-eval-dev-04-1",
+    "visit_id": "eval-dev-04",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "onset",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  },
+  {
+    "flag_id": "fake-eval-dev-04-2",
+    "visit_id": "eval-dev-04",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "29",
+        "quote": "I am scared this could be a heart attack. Is that what this is?"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  }
+]

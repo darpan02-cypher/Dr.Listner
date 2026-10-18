@@ -1,0 +1,18 @@
+[
+  {
+    "flag_id": "fake-eval-dev-07-0",
+    "visit_id": "eval-dev-07",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "5",
+        "quote": "My jaw? I eat just fine, I had oatmeal this morning."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 5
+  }
+]

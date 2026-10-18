@@ -1,0 +1,6 @@
+{
+  "scenario": "drop",
+  "count": 2,
+  "type": "missed_question",
+  "note": "Fabricated flags for harness validation, not detector output."
+}

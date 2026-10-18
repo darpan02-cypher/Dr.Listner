@@ -1,0 +1,753 @@
+{
+  "run_id": "fake-test-oracle",
+  "system": "drlistner",
+  "split": "test",
+  "mode": "DEMO",
+  "model": "FAKE/oracle",
+  "git_commit": "e2609677e4dcf4908a17d648707505a2445b00ef",
+  "timestamp": "2026-10-18T18:24:26.234039+00:00",
+  "n_visits": 15,
+  "per_type": {
+    "missed_question": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "unanswered_concern": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "chart_contradiction": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "comprehension_breakdown": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "overall": {
+    "tp": 22,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "false_flags_per_visit": 0.0,
+  "n_clean_visits": 5,
+  "false_flags_on_clean_visits": 0,
+  "mean_reading_grade": null,
+  "plan_coverage": null,
+  "extras": {
+    "schema_version": 1,
+    "per_type": {
+      "missed_question": {
+        "n_visits": 15,
+        "n_gaps": 6,
+        "n_predictions": 6,
+        "precision_ci95": {
+          "lower": 0.6096657120978346,
+          "upper": 1.0
+        },
+        "recall_ci95": {
+          "lower": 0.6096657120978346,
+          "upper": 1.0
+        }
+      },
+      "unanswered_concern": {
+        "n_visits": 15,
+        "n_gaps": 5,
+        "n_predictions": 5,
+        "precision_ci95": {
+          "lower": 0.5655175352168251,
+          "upper": 1.0
+        },
+        "recall_ci95": {
+          "lower": 0.5655175352168251,
+          "upper": 1.0
+        }
+      },
+      "chart_contradiction": {
+        "n_visits": 15,
+        "n_gaps": 5,
+        "n_predictions": 5,
+        "precision_ci95": {
+          "lower": 0.5655175352168251,
+          "upper": 1.0
+        },
+        "recall_ci95": {
+          "lower": 0.5655175352168251,
+          "upper": 1.0
+        }
+      },
+      "comprehension_breakdown": {
+        "n_visits": 15,
+        "n_gaps": 6,
+        "n_predictions": 6,
+        "precision_ci95": {
+          "lower": 0.6096657120978346,
+          "upper": 1.0
+        },
+        "recall_ci95": {
+          "lower": 0.6096657120978346,
+          "upper": 1.0
+        }
+      }
+    },
+    "overall": {
+      "n_visits": 15,
+      "n_gaps": 22,
+      "n_predictions": 22,
+      "precision_ci95": {
+        "lower": 0.8513451253913791,
+        "upper": 1.0
+      },
+      "recall_ci95": {
+        "lower": 0.8513451253913791,
+        "upper": 1.0
+      }
+    },
+    "excluded_unverified": {
+      "per_type": {
+        "missed_question": 0,
+        "unanswered_concern": 0,
+        "chart_contradiction": 0,
+        "comprehension_breakdown": 0
+      },
+      "total": 0
+    },
+    "too_early": {
+      "per_type": {
+        "missed_question": {
+          "n_flags": 6,
+          "n_too_early": 0,
+          "n_assumed_end": 0,
+          "n_missing_wrap_up": 0
+        },
+        "unanswered_concern": {
+          "n_flags": 5,
+          "n_too_early": 0,
+          "n_assumed_end": 0,
+          "n_missing_wrap_up": 0
+        }
+      },
+      "total": {
+        "n_flags": 11,
+        "n_too_early": 0,
+        "n_assumed_end": 0,
+        "n_missing_wrap_up": 0
+      }
+    },
+    "turns_to_detection": {
+      "per_type": {
+        "chart_contradiction": {
+          "n_tp": 5,
+          "n_timed": 5,
+          "n_missing_raised_at_turn": 0,
+          "mean": 0,
+          "median": 0,
+          "n_negative": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "comprehension_breakdown": {
+          "n_tp": 6,
+          "n_timed": 6,
+          "n_missing_raised_at_turn": 0,
+          "mean": 0,
+          "median": 0.0,
+          "n_negative": 0,
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "overall": {
+        "n_tp": 11,
+        "n_timed": 11,
+        "n_missing_raised_at_turn": 0,
+        "mean": 0,
+        "median": 0,
+        "n_negative": 0,
+        "values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "assignments": [
+      {
+        "visit_id": "eval-test-01",
+        "flags": [],
+        "gaps": []
+      },
+      {
+        "visit_id": "eval-test-02",
+        "flags": [],
+        "gaps": []
+      },
+      {
+        "visit_id": "eval-test-03",
+        "flags": [],
+        "gaps": []
+      },
+      {
+        "visit_id": "eval-test-04",
+        "flags": [],
+        "gaps": []
+      },
+      {
+        "visit_id": "eval-test-05",
+        "flags": [],
+        "gaps": []
+      },
+      {
+        "visit_id": "eval-test-06",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-06-0",
+            "type": "missed_question",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-06-missed-exertional",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'exertional' match gap[0] 'eval-test-06-missed-exertional'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-06-1",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-06-concern",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 20 match gap[1] 'eval-test-06-concern'."
+          },
+          {
+            "flag_index": 2,
+            "flag_id": "fake-eval-test-06-2",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "gap_index": 2,
+            "gap_id": "eval-test-06-comprehension-teachback",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 27 match gap[2] 'eval-test-06-comprehension-teachback'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-06-missed-exertional",
+            "type": "missed_question",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-06-0",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'exertional' match gap[0] 'eval-test-06-missed-exertional'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-06-concern",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-06-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 20 match gap[1] 'eval-test-06-concern'."
+          },
+          {
+            "gap_index": 2,
+            "gap_id": "eval-test-06-comprehension-teachback",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "flag_index": 2,
+            "flag_id": "fake-eval-test-06-2",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 27 match gap[2] 'eval-test-06-comprehension-teachback'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-07",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-07-0",
+            "type": "missed_question",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-07-missed-radiation",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'radiation' match gap[0] 'eval-test-07-missed-radiation'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-07-1",
+            "type": "missed_question",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-07-missed-syncope",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'syncope' match gap[1] 'eval-test-07-missed-syncope'."
+          },
+          {
+            "flag_index": 2,
+            "flag_id": "fake-eval-test-07-2",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "gap_index": 2,
+            "gap_id": "eval-test-07-concern",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 11 match gap[2] 'eval-test-07-concern'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-07-missed-radiation",
+            "type": "missed_question",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-07-0",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'radiation' match gap[0] 'eval-test-07-missed-radiation'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-07-missed-syncope",
+            "type": "missed_question",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-07-1",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'syncope' match gap[1] 'eval-test-07-missed-syncope'."
+          },
+          {
+            "gap_index": 2,
+            "gap_id": "eval-test-07-concern",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "flag_index": 2,
+            "flag_id": "fake-eval-test-07-2",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 11 match gap[2] 'eval-test-07-concern'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-08",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-08-0",
+            "type": "missed_question",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-08-missed-family_history",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'family_history' match gap[0] 'eval-test-08-missed-family_history'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-08-1",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-08-contradiction-risk",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 21 match gap[1] 'eval-test-08-contradiction-risk'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-08-missed-family_history",
+            "type": "missed_question",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-08-0",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'family_history' match gap[0] 'eval-test-08-missed-family_history'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-08-contradiction-risk",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-08-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 21 match gap[1] 'eval-test-08-contradiction-risk'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-09",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-09-0",
+            "type": "missed_question",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-09-missed-relieving",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'relieving' match gap[0] 'eval-test-09-missed-relieving'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-09-1",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-09-concern",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-09-concern'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-09-missed-relieving",
+            "type": "missed_question",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-09-0",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'relieving' match gap[0] 'eval-test-09-missed-relieving'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-09-concern",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-09-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-09-concern'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-10",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-10-0",
+            "type": "missed_question",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-10-missed-diaphoresis",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'diaphoresis' match gap[0] 'eval-test-10-missed-diaphoresis'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-10-1",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-10-concern",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-10-concern'."
+          },
+          {
+            "flag_index": 2,
+            "flag_id": "fake-eval-test-10-2",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "gap_index": 2,
+            "gap_id": "eval-test-10-comprehension-mishear",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 9 match gap[2] 'eval-test-10-comprehension-mishear'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-10-missed-diaphoresis",
+            "type": "missed_question",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-10-0",
+            "reason_code": "matched",
+            "reason": "Same type and checklist ref 'diaphoresis' match gap[0] 'eval-test-10-missed-diaphoresis'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-10-concern",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-10-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-10-concern'."
+          },
+          {
+            "gap_index": 2,
+            "gap_id": "eval-test-10-comprehension-mishear",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "flag_index": 2,
+            "flag_id": "fake-eval-test-10-2",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 9 match gap[2] 'eval-test-10-comprehension-mishear'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-11",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-11-0",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-11-contradiction-cardiac",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 25 match gap[0] 'eval-test-11-contradiction-cardiac'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-11-contradiction-cardiac",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-11-0",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 25 match gap[0] 'eval-test-11-contradiction-cardiac'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-12",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-12-0",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-12-concern",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 13 match gap[0] 'eval-test-12-concern'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-12-1",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-12-contradiction-meds",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-12-contradiction-meds'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-12-concern",
+            "type": "unanswered_concern",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-12-0",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 13 match gap[0] 'eval-test-12-concern'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-12-contradiction-meds",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-12-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-12-contradiction-meds'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-13",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-13-0",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-13-contradiction-meds",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[0] 'eval-test-13-contradiction-meds'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-13-1",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-13-comprehension-mishear",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 5 match gap[1] 'eval-test-13-comprehension-mishear'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-13-contradiction-meds",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-13-0",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[0] 'eval-test-13-contradiction-meds'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-13-comprehension-mishear",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-13-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 5 match gap[1] 'eval-test-13-comprehension-mishear'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-14",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-14-0",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-14-comprehension-mishear",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 12 match gap[0] 'eval-test-14-comprehension-mishear'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-14-1",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-14-comprehension-teachback",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-14-comprehension-teachback'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-14-comprehension-mishear",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-14-0",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 12 match gap[0] 'eval-test-14-comprehension-mishear'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-14-comprehension-teachback",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-14-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 29 match gap[1] 'eval-test-14-comprehension-teachback'."
+          }
+        ]
+      },
+      {
+        "visit_id": "eval-test-15",
+        "flags": [
+          {
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-15-0",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "gap_index": 0,
+            "gap_id": "eval-test-15-contradiction-risk",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 23 match gap[0] 'eval-test-15-contradiction-risk'."
+          },
+          {
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-15-1",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "gap_index": 1,
+            "gap_id": "eval-test-15-comprehension-teachback",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 28 match gap[1] 'eval-test-15-comprehension-teachback'."
+          }
+        ],
+        "gaps": [
+          {
+            "gap_index": 0,
+            "gap_id": "eval-test-15-contradiction-risk",
+            "type": "chart_contradiction",
+            "outcome": "TP",
+            "flag_index": 0,
+            "flag_id": "fake-eval-test-15-0",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 23 match gap[0] 'eval-test-15-contradiction-risk'."
+          },
+          {
+            "gap_index": 1,
+            "gap_id": "eval-test-15-comprehension-teachback",
+            "type": "comprehension_breakdown",
+            "outcome": "TP",
+            "flag_index": 1,
+            "flag_id": "fake-eval-test-15-1",
+            "reason_code": "matched",
+            "reason": "Same type and transcript turn 28 match gap[1] 'eval-test-15-comprehension-teachback'."
+          }
+        ]
+      }
+    ],
+    "verification_policy": "verified_only_for_all_systems (SPEC section 10)",
+    "synthetic_run": true
+  }
+}

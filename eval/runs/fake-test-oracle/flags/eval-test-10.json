@@ -1,0 +1,50 @@
+[
+  {
+    "flag_id": "fake-eval-test-10-0",
+    "visit_id": "eval-test-10",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "diaphoresis",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  },
+  {
+    "flag_id": "fake-eval-test-10-1",
+    "visit_id": "eval-test-10",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "29",
+        "quote": "My daughter lives far away. I am afraid to be alone if this happens again."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  },
+  {
+    "flag_id": "fake-eval-test-10-2",
+    "visit_id": "eval-test-10",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "9",
+        "quote": "My niece sent me a card, it has a picture of a bird on it."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 9
+  }
+]

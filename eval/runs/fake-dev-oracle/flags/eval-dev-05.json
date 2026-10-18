@@ -1,0 +1,39 @@
+[
+  {
+    "flag_id": "fake-eval-dev-05-0",
+    "visit_id": "eval-dev-05",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "12",
+        "quote": "I get confused with my pills. I am afraid I will take them wrong."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 33
+  },
+  {
+    "flag_id": "fake-eval-dev-05-1",
+    "visit_id": "eval-dev-05",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "26",
+        "quote": "No, I have never had any heart procedure."
+      },
+      {
+        "source": "chart",
+        "ref": "proc-cabg",
+        "quote": "Coronary artery bypass graft"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 26
+  }
+]

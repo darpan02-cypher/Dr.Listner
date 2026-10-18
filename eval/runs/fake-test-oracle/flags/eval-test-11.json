@@ -1,0 +1,23 @@
+[
+  {
+    "flag_id": "fake-eval-test-11-0",
+    "visit_id": "eval-test-11",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "25",
+        "quote": "Never, my heart has always been fine."
+      },
+      {
+        "source": "chart",
+        "ref": "proc-stent",
+        "quote": "Coronary stent placement"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 25
+  }
+]

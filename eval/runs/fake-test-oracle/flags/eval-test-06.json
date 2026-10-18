@@ -1,0 +1,50 @@
+[
+  {
+    "flag_id": "fake-eval-test-06-0",
+    "visit_id": "eval-test-06",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "exertional",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 31
+  },
+  {
+    "flag_id": "fake-eval-test-06-1",
+    "visit_id": "eval-test-06",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "20",
+        "quote": "I did not catch most of what the nurse told me earlier."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 31
+  },
+  {
+    "flag_id": "fake-eval-test-06-2",
+    "visit_id": "eval-test-06",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "27",
+        "quote": "To finish, here is the plan. First, bring your medicine bottles to your next visit. Second, see the heart specialist within two weeks."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 27
+  }
+]

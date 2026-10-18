@@ -1,0 +1,28 @@
+{
+  "visit_id": "dev-010",
+  "split": "dev",
+  "planted_gaps": [
+    {
+      "gap_id": "dev-010-missing",
+      "type": "missed_question",
+      "edit_op": "delete_turns",
+      "turn_indices": [
+        14,
+        15
+      ],
+      "checklist_item_id": "family_history",
+      "chart_entry_id": null,
+      "description": "Deleted the question and answer for family_history from the base transcript."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "review-list",
+      "text": "Review the medicine list together before the visit ends."
+    },
+    {
+      "item_id": "bring-list",
+      "text": "Bring the medicine list to the next appointment."
+    }
+  ]
+}

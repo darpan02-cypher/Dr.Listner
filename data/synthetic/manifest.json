@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "source": "hand-authored synthetic fixtures; not Synthea",
+  "purpose": "development contract fixtures; not an independent clinical evaluation",
+  "checklist_version": "0.1-draft",
+  "checklist_verified": false,
+  "visits": [
+    {
+      "visit_id": "dev-001",
+      "chart_id": "chart-dev-001",
+      "split": "dev",
+      "gap_count": 0
+    },
+    {
+      "visit_id": "dev-002",
+      "chart_id": "chart-dev-002",
+      "split": "dev",
+      "gap_count": 0
+    },
+    {
+      "visit_id": "dev-003",
+      "chart_id": "chart-dev-003",
+      "split": "dev",
+      "gap_count": 0
+    },
+    {
+      "visit_id": "dev-004",
+      "chart_id": "chart-dev-004",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-005",
+      "chart_id": "chart-dev-005",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-006",
+      "chart_id": "chart-dev-006",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-007",
+      "chart_id": "chart-dev-007",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-008",
+      "chart_id": "chart-dev-008",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-009",
+      "chart_id": "chart-dev-009",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-010",
+      "chart_id": "chart-dev-010",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-011",
+      "chart_id": "chart-dev-011",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-012",
+      "chart_id": "chart-dev-012",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-013",
+      "chart_id": "chart-dev-013",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-014",
+      "chart_id": "chart-dev-014",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-015",
+      "chart_id": "chart-dev-015",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-016",
+      "chart_id": "chart-dev-016",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-017",
+      "chart_id": "chart-dev-017",
+      "split": "dev",
+      "gap_count": 1
+    },
+    {
+      "visit_id": "dev-018",
+      "chart_id": "chart-dev-018",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-019",
+      "chart_id": "chart-dev-019",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-020",
+      "chart_id": "chart-dev-020",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-021",
+      "chart_id": "chart-dev-021",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-022",
+      "chart_id": "chart-dev-022",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-023",
+      "chart_id": "chart-dev-023",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-024",
+      "chart_id": "chart-dev-024",
+      "split": "dev",
+      "gap_count": 3
+    },
+    {
+      "visit_id": "dev-025",
+      "chart_id": "chart-dev-025",
+      "split": "dev",
+      "gap_count": 3
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "visit_id": "dev-017",
+  "split": "dev",
+  "planted_gaps": [
+    {
+      "gap_id": "dev-017-contradiction",
+      "type": "chart_contradiction",
+      "edit_op": "insert_contradiction",
+      "turn_indices": [
+        19
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": "stent",
+      "description": "Replaced the truthful procedure response with a denial of the charted stent."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "review-list",
+      "text": "Review the medicine list together before the visit ends."
+    },
+    {
+      "item_id": "bring-list",
+      "text": "Bring the medicine list to the next appointment."
+    }
+  ]
+}

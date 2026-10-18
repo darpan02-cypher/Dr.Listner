@@ -1,0 +1,27 @@
+{
+  "visit_id": "dev-012",
+  "split": "dev",
+  "planted_gaps": [
+    {
+      "gap_id": "dev-012-concern",
+      "type": "unanswered_concern",
+      "edit_op": "insert_concern",
+      "turn_indices": [
+        22
+      ],
+      "checklist_item_id": null,
+      "chart_entry_id": null,
+      "description": "Appended a request for help reading the summary after the clinician's final turn."
+    }
+  ],
+  "plan_items": [
+    {
+      "item_id": "review-list",
+      "text": "Review the medicine list together before the visit ends."
+    },
+    {
+      "item_id": "bring-list",
+      "text": "Bring the medicine list to the next appointment."
+    }
+  ]
+}

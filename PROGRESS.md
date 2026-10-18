@@ -8,7 +8,7 @@
 
 **Checklist verification: 0 of 8 items VERIFIED, 8 UNVERIFIED.** I confirmed from the ACC "Guidelines Made Simple" summary that Section 2.1 (History) and Table 3 (Chest Pain Characteristics and Corresponding Causes) exist. The primary guideline text returned HTTP 403, so Table 3's contents are unread. Shortness of breath is supported at summary level only. Someone with access to the full text needs to check each item.
 
-**Not exercised**: live Gemini (no API key in this environment) and live Ollama (not installed). Both paths are tested only against mocked HTTP. Run `python -m scripts.smoke_llm` with a key / Ollama to confirm.
+**Live-verified**: Groq (`openai/gpt-oss-120b` and `-20b` return schema-valid JSON). **Not exercised**: live Gemini (no key) and live Ollama (not installed). Both paths are tested only against mocked HTTP. Run `python -m scripts.smoke_llm` with a key / Ollama to confirm.
 
 **Next**: Phase 2 (Synthea charts, scripted visits, planted gaps, answer key).
 

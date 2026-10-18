@@ -53,7 +53,7 @@ All agents are pure functions of their inputs plus an `LLMClient`; the orchestra
 Each LLM-backed agent has its own prompt, a Pydantic output schema, and tests.
 
 ## 6. LLM client
-One wrapper (`src/llm/client.py`). `generate(prompt, schema, system)` returns a validated Pydantic object. LIVE: cache, then Gemini (JSON mode, retries with exponential backoff), then Ollama, else `LLMUnavailable`. DEMO: cache only, miss raises `DemoCacheMiss`, no network. Cache key is sha256 over model, system prompt and prompt (including the schema); the cache file stores the response, not the prompt.
+One wrapper (`src/llm/client.py`). `generate(prompt, schema, system)` returns a validated Pydantic object. LIVE: cache, then providers in order (default Groq `openai/gpt-oss-120b`, then Gemini, then Ollama; JSON mode, retries with exponential backoff), else `LLMUnavailable`. Order is set by `LLM_PROVIDERS`. Groq was added at the user's request; live Groq JSON calls verified with a smoke test. DEMO: cache only, miss raises `DemoCacheMiss`, no network. Cache key is sha256 over model, system prompt and prompt (including the schema); the cache file stores the response, not the prompt.
 
 ## 7. Privacy
 No real PHI. No transcript storage by the app. The committed LLM cache holds model outputs on synthetic data only. No HIPAA claim.

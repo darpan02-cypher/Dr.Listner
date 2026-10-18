@@ -56,6 +56,6 @@ def get_secret(name: str) -> str | None:
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:7b")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
-GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 # Provider order for LIVE mode.
 PROVIDERS = tuple(p.strip() for p in os.environ.get("LLM_PROVIDERS", "groq,gemini,ollama").split(",") if p.strip())

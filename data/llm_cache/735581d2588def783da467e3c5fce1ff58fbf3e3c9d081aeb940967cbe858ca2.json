@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s response \\\"Okay.\\\" does not show non\u2011understanding or lack of teach\u2011back, so there is no evidence of a comprehension breakdown.\"}"}

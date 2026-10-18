@@ -48,3 +48,21 @@
 - Test gap counts: type 1: 6, type 2: 5, type 3: 5, type 4: 6. Small; report counts with percentages.
 - **Limits:** charts hand-authored (not Synthea); pool phrasing (limited variety); no clinician review; gap-4 cues are our draft and we author both sides, so gap-4 numbers show cue detection, not real hearing-loss speech.
 - **Gate:** user spot-reads 5 transcripts including 2 gap-4 cases (suggested: eval-test-14, eval-test-10, eval-dev-08, eval-test-03, eval-test-12).
+
+
+## Phase 3 — De-id, agents, engine (implemented; detector quality NOT yet measured)
+**Implemented** (details in SPEC.md section 10): `src/deid.py` (Presidio + spaCy `en_core_web_sm`, clinical keep-list), `src/agents/{checklist,concern,chart_agent,comprehension,verifier,summary}.py`, engine wiring (`EngineContext`, per-turn types 3/4, `finalize` for types 1/2 + teach-back, verification, failure recording in `VisitState.errors`), `Retry-After` handling for 429 in the LLM client. 62 tests pass; agents and engine are tested against a scripted fake LLM, deid against real Presidio.
+
+**Live smoke (Groq `gpt-oss-120b`, dev only, 2 visits, not a measurement):**
+- eval-dev-08 (2 planted type-4 gaps): both found (turn 19 repeat-reply, turn 28 no teach-back), plus 1 extra concern flag.
+- eval-dev-01 (clean): still 3 flags after one round of prompt tightening (first run: 6). Remaining false flags are plain symptom answers read as concerns / mishearings, which the verifier LLM also accepted. Needs Phase 4 tuning on dev with a scored harness.
+- Some calls hit Groq's 8,000 tokens/min limit and gave up after 3 tries (visible in logs; recorded in `state.errors`). A full visit is about 20-30 calls, so LIVE passes are slow; cached reruns are instant.
+
+**Not done / open**
+- No precision/recall numbers yet: there is no scoring harness (Phase 4). Do not quote the smoke results as metrics.
+- Test split untouched. Prompts were adjusted after looking at dev-01 and dev-08 only.
+- Summary agent is tested with a fake LLM only; never run live. Plan coverage of summaries is unmeasured.
+- Per-turn coverage ticks (UI) are not implemented; `checklist_coverage` is filled only at `finalize`.
+- `requirements.txt` still lacks the spaCy model (`en_core_web_sm`). Hosted deploy needs it as a wheel URL line; I did not edit `requirements.txt` (outside this phase's file list). Footprint on Streamlit Cloud unchecked.
+- The small NER model tags some capitalized words as PERSON (e.g. sentence-initial "Clearer"); drug names are handled by the keep-list. De-id is best-effort.
+- `data/llm_cache/` has new untracked entries from the smoke runs (dev-only synthetic text); decide whether to commit.

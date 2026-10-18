@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient asks the clinician to face them and talk slowly, and no subsequent clinician turn responds to this request, meeting the unanswered_concern criteria.\"}"}

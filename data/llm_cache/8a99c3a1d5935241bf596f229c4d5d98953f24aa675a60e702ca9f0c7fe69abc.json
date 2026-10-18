@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"Patient says \\\"Sorry, what did you say?\\\" and the clinician does not repeat or clarify, showing a non\u2011understanding that is not repaired.\"}"}

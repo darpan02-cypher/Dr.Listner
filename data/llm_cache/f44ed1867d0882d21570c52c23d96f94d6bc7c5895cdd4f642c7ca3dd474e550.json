@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s reply \\\"I have not taken anything for it.\\\" directly answers the clinician\u2019s question \\\"Does anything make it better?\\\" and shows understanding, not a comprehension breakdown.\"}"}

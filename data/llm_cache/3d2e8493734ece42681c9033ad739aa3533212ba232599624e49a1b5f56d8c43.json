@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":29,\"quote\":\"Okay.\",\"cue\":\"bare \\\"okay\\\" after multi-part instruction, no clinician repair\"}]}"}

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":9,\"quote\":\"Yes, it goes down my left arm a little.\",\"cue\":\"off-topic reply (answer about arm instead of neck/shoulder)\"},{\"turn_idx\":11,\"quote\":\"I have not taken anything for it.\",\"cue\":\"off-topic reply (answer about medication rather than what makes it better)\"}]}"}

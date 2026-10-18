@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted turn \\\"I have not taken anything for it.\\\" is a valid response to the clinician's question and does not demonstrate non\u2011understanding that was left unrepaired.\"}"}

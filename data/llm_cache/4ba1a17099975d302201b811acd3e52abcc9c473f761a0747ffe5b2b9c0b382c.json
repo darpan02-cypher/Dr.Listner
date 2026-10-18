@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The clinician responds to the patient's chest complaint by asking detailed questions about the pain, its onset, radiation, and associated symptoms, thus addressing the concern.\"}"}

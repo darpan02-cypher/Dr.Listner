@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s reply about arm pain does not answer the clinician\u2019s question about neck or shoulder and the clinician never repairs the misunderstanding.\"}"}

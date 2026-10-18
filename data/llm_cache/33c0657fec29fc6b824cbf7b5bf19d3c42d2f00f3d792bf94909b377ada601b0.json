@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted patient turn is a request for the clinician to speak slowly, not a medical concern, so it does not meet the unanswered_concern criteria.\"}"}

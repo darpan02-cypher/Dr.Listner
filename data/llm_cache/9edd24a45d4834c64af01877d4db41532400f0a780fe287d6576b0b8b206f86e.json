@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The clinician gave instructions (transcript 28) without a teach\u2011back request and the patient did not demonstrate understanding, meeting the comprehension_breakdown criteria.\"}"}

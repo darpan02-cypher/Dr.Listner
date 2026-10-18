@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient reports clammy sweating at line 19, and the clinician never follows up on this symptom in any later turn.\"}"}

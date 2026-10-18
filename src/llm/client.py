@@ -33,7 +33,21 @@ class DemoCacheMiss(LLMError): ...
 class LLMUnavailable(LLMError): ...
 
 
-class _Retryable(Exception): ...
+class _Retryable(Exception):
+    def __init__(self, msg: str = "", delay: float | None = None):
+        super().__init__(msg)
+        self.delay = delay  # server-requested wait (Retry-After), seconds
+
+
+MAX_RETRY_AFTER_S = 90.0
+
+
+def _retry_after(r) -> float | None:
+    try:
+        v = float((getattr(r, "headers", None) or {}).get("retry-after"))
+    except (TypeError, ValueError):
+        return None
+    return min(max(v, 0.0), MAX_RETRY_AFTER_S)
 
 
 class LLMClient:
@@ -103,16 +117,18 @@ class LLMClient:
         """Retry transient failures with backoff and invalid JSON with feedback."""
         feedback = ""
         for attempt in range(self.max_retries):
+            wait = None
             try:
                 text = call(prompt + feedback, system, schema_json)
                 return schema.model_validate_json(_strip_fence(text))
             except _Retryable as e:
                 err = str(e)
+                wait = e.delay
             except (ValidationError, ValueError) as e:  # bad JSON / schema mismatch
                 err = f"invalid output: {str(e)[:200]}"
                 feedback = f"\n\nYour previous reply was invalid ({str(e)[:200]}). Reply with valid JSON only."
             if attempt < self.max_retries - 1:
-                self._sleep(self.backoff_s * (2**attempt))
+                self._sleep(wait if wait is not None else self.backoff_s * (2**attempt))
         raise LLMError(f"gave up after {self.max_retries} attempts: {err}")
 
     def _call_groq(self, prompt: str, system: str | None, schema_json: str) -> str:
@@ -133,7 +149,7 @@ class LLMClient:
         except requests.RequestException as e:
             raise _Retryable(f"network: {type(e).__name__}")
         if r.status_code in RETRY_STATUS:
-            raise _Retryable(f"HTTP {r.status_code}")
+            raise _Retryable(f"HTTP {r.status_code}", delay=_retry_after(r) if r.status_code == 429 else None)
         if r.status_code != 200:
             raise LLMError(f"HTTP {r.status_code}")
         try:

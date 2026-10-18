@@ -120,3 +120,14 @@ def test_groq_first_then_fallthrough(tmp_path, monkeypatch):
     monkeypatch.setattr(C.requests, "post", post)
     c = LLMClient(mode=config.Mode.LIVE, cache_dir=tmp_path, groq_model="gm", providers=("groq", "gemini", "ollama"), sleep=lambda s: None)
     assert c.generate("p", Out).answer == "g" and c.last_source == "groq"
+
+
+def test_groq_429_honors_retry_after(tmp_path, monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "k")
+    sleeps = []
+    seq = [FakeResp(429), FakeResp(200, {"choices": [{"message": {"content": '{"answer": "ok"}'}}]})]
+    seq[0].headers = {"retry-after": "17"}
+    monkeypatch.setattr(C.requests, "post", lambda url, **kw: seq.pop(0))
+    c = LLMClient(mode=config.Mode.LIVE, cache_dir=tmp_path, providers=("groq",), sleep=sleeps.append)
+    assert c.generate("p", Out).answer == "ok"
+    assert sleeps == [17.0]

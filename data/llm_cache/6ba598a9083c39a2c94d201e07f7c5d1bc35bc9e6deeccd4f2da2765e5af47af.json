@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s answer \\\"I have not taken anything for it.\\\" directly addresses the clinician\u2019s question \\\"Does anything make it better?\\\" and does not demonstrate non\u2011understanding, so a comprehension_breakdown flag is not warranted.\"}"}

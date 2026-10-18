@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s answer directly addresses the clinician\u2019s question about alleviating factors, not a non\u2011understanding or off\u2011topic reply, so it does not meet the comprehension_breakdown criteria.\"}"}

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s request for clarification \\\"Sorry, what did you say?\\\" is not addressed by any later clinician turn, meeting the criteria for an unanswered_concern.\"}"}

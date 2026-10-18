@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"concerns\":[{\"turn_idx\":1,\"quote\":\"<PERSON> if you face me and talk slowly.\",\"addressed\":false,\"addressed_by\":null},{\"turn_idx\":3,\"quote\":\"My chest has been troubling me.\",\"addressed\":true,\"addressed_by\":4},{\"turn_idx\":19,\"quote\":\"Sorry, what did you say?\",\"addressed\":false,\"addressed_by\":null}]}"}

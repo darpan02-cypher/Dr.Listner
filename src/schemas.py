@@ -210,6 +210,7 @@ class VisitState(BaseModel):
     open_concerns: list[OpenConcern] = Field(default_factory=list)
     flags: list[Flag] = Field(default_factory=list)
     wrapped_up: bool = False
+    errors: list[str] = Field(default_factory=list)  # detector/verifier calls that failed (LLM unavailable, cache miss)
 
 
 # ---------- Eval ----------

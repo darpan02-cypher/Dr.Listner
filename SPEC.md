@@ -1,4 +1,4 @@
-# Dr.Listner SPEC (v0.2, master prompt v2)
+# Dr.Listner SPEC (v0.3, master prompt v2 + Phase 3 implementation)
 
 Contracts only. Scope and rationale live in `docs/PROJECT_REPORT.md`. Code in `src/schemas.py` is normative for field names; this file is normative for semantics.
 
@@ -82,3 +82,15 @@ No real PHI. No transcript storage by the app. The committed LLM cache holds mod
 - `data/synthetic/` (Phase 2a, contract fixtures): 29 template visits, dev only. For engine/schema tests; **not** for tuning or reported metrics.
 - `data/eval/{dev,test}/` (Phase 2b): 9 dev + 15 test visits built by `scripts.build_eval_dataset`; see `data/eval/README.md`. Dev and test use disjoint phrase halves. `AnswerKey` has `profile_id` and `wrap_up_turn`.
 - Wrap-up and type 1/2 flags: the engine finalizes omissions after the last turn of the replay; any type 1 or 2 flag raised before `wrap_up_turn` counts as too early.
+
+## 10. Phase 3 implementation notes (engine and agents)
+- **Engine:** `EngineContext(llm, chart, checklist)` is passed to `process_turn(state, turn, ctx)` and `finalize(state, ctx)`; `run_batch(state, turns, ctx)` = fold then finalize. Without a ctx, `process_turn` only records the turn. Detectors run only if listed in `profile.active_detectors`.
+- **Per turn (types 3, 4):** on each patient/caregiver turn ChartAgent judges that turn (window of the last 5 turns); on each clinician turn ComprehensionAgent re-reads the window for unrepaired breakdowns (a repair can only be judged after the clinician replies, so `raised_at_turn` for repeat requests is the next clinician turn). Flags are verified immediately and de-duplicated by (type, evidence refs).
+- **At `finalize` (types 1, 2 + teach-back):** ChecklistAgent and ConcernAgent read the whole scrubbed transcript once; `raised_at_turn` = last turn, so they can never precede `wrap_up_turn`. Teach-back is a whole-transcript check; the flag points at the clinician plan turn. `state.wrapped_up` is a regex over clinician turns and is informational only; eval uses the key's `wrap_up_turn`.
+- **ChecklistAgent:** one call returns coverage per item with a turn and verbatim quote. A coverage claim whose turn or quote does not check out counts as NOT covered (so a hallucinated citation produces a flag, which the verifier then re-examines). Items the model omits count as uncovered.
+- **ConcernAgent:** drops concerns whose quote is not in a patient/caregiver turn; a concern is addressed only if the cited responding turn is a LATER clinician turn.
+- **VerifierAgent (a):** also rejects any flag whose rationale matches a clinical-advice lint (diagnosis/treatment wording); chart quote must be a substring of the entry `display`. (b) is one yes/no LLM call with a reason.
+- **Failure handling:** an `LLMError` in a detector or verifier is appended to `VisitState.errors` and never raised. A failed ChecklistAgent leaves `checklist_coverage` empty (unknown, not "all missed"). A failed verifier keeps a programmatically valid flag with `verified=False`; eval must count only `verified=True` flags (so an outage lowers recall instead of inflating precision).
+- **De-id:** `ctx.prep` scrubs each turn (Presidio + spaCy `en_core_web_sm`; PERSON, PHONE, EMAIL, SSN, LOCATION, URL, IP, CREDIT_CARD; DATE_TIME is kept because onset/follow-up timing is clinical). The small model labels drug names as PERSON, so PERSON spans in a built-in cardiac drug list or in the chart's own words are kept. The engine state, flags and quotes therefore hold scrubbed text. The chart is not scrubbed (synthetic, no free text identifiers).
+- **SummaryAgent:** up to 3 drafts; score = grade overshoot over `summary_target_grade` plus 0.1 per word over `summary_max_words`; stops at score 0, else ships the lowest score. Returns text, final grade, per-iteration grades. Plan coverage of the summary is measured in Phase 4, not here.
+- **Rate limits:** Groq free tier is 8,000 tokens/minute; the client waits for `Retry-After` on 429 (cap 90 s). A full visit is roughly 20-30 calls, so a first LIVE pass over a split takes minutes per visit; DEMO replays from the cache.

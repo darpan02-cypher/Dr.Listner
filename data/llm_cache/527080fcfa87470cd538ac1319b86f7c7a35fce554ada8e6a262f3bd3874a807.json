@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient reports feeling winded (transcript 15) and no subsequent clinician turn acknowledges or addresses this concern.\"}"}

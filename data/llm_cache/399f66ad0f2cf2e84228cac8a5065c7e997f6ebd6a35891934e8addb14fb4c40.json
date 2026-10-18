@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The clinician follows the patient\u2019s description of chest heaviness with multiple follow\u2011up questions (e.g., \\\"When did this start?\\\", \\\"Does it travel\u2026?\\\"), so the concern is addressed.\"}"}

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted turn is a direct answer to the clinician\u2019s question about dizziness and does not show non\u2011understanding or an unrepaired misunderstanding.\"}"}

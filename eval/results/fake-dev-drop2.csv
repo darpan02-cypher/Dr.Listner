@@ -1,0 +1,6 @@
+run_id,system,split,mode,model,type,n_visits,n_gaps,n_predictions,tp,fp,fn,precision,recall,f1,precision_ci95_lower,precision_ci95_upper,recall_ci95_lower,recall_ci95_upper
+fake-dev-drop2,drlistner,dev,DEMO,FAKE/drop,missed_question,9,4,2,2,0,2,1.0,0.5,0.6666666666666666,0.34238022750665303,1.0,0.15003898915214947,0.8499610108478506
+fake-dev-drop2,drlistner,dev,DEMO,FAKE/drop,unanswered_concern,9,2,2,2,0,0,1.0,1.0,1.0,0.34238022750665303,1.0,0.34238022750665303,1.0
+fake-dev-drop2,drlistner,dev,DEMO,FAKE/drop,chart_contradiction,9,3,3,3,0,0,1.0,1.0,1.0,0.4385029682449546,1.0,0.4385029682449546,1.0
+fake-dev-drop2,drlistner,dev,DEMO,FAKE/drop,comprehension_breakdown,9,4,4,4,0,0,1.0,1.0,1.0,0.5101091635454027,1.0,0.5101091635454027,1.0
+fake-dev-drop2,drlistner,dev,DEMO,FAKE/drop,overall,9,13,11,11,0,2,1.0,0.8461538461538461,0.9166666666666666,0.7411670330319684,1.0,0.5776536898051745,0.9567418216419186

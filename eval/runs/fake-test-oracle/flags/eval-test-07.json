@@ -1,0 +1,50 @@
+[
+  {
+    "flag_id": "fake-eval-test-07-0",
+    "visit_id": "eval-test-07",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "radiation",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 31
+  },
+  {
+    "flag_id": "fake-eval-test-07-1",
+    "visit_id": "eval-test-07",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "syncope",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 31
+  },
+  {
+    "flag_id": "fake-eval-test-07-2",
+    "visit_id": "eval-test-07",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "11",
+        "quote": "My daughter lives far away. I am afraid to be alone if this happens again."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 31
+  }
+]

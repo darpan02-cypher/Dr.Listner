@@ -1,0 +1,39 @@
+[
+  {
+    "flag_id": "fake-eval-test-15-0",
+    "visit_id": "eval-test-15",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "23",
+        "quote": "No, nothing like that for me."
+      },
+      {
+        "source": "chart",
+        "ref": "cond-htn",
+        "quote": "High blood pressure"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 23
+  },
+  {
+    "flag_id": "fake-eval-test-15-1",
+    "visit_id": "eval-test-15",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "28",
+        "quote": "To finish, here is the plan. First, get a heart tracing and a blood test today. Second, bring your medicine bottles to your next visit. Third, take one baby aspirin every morning."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 28
+  }
+]

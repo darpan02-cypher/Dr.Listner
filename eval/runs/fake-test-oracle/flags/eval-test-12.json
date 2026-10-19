@@ -1,0 +1,39 @@
+[
+  {
+    "flag_id": "fake-eval-test-12-0",
+    "visit_id": "eval-test-12",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "13",
+        "quote": "I did not catch most of what the nurse told me earlier."
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 35
+  },
+  {
+    "flag_id": "fake-eval-test-12-1",
+    "visit_id": "eval-test-12",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "29",
+        "quote": "No medicines, I stay away from them."
+      },
+      {
+        "source": "chart",
+        "ref": "med-lisinopril",
+        "quote": "Lisinopril"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 29
+  }
+]

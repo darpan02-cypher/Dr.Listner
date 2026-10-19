@@ -1,0 +1,39 @@
+[
+  {
+    "flag_id": "fake-eval-dev-06-0",
+    "visit_id": "eval-dev-06",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "dyspnea",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 32
+  },
+  {
+    "flag_id": "fake-eval-dev-06-1",
+    "visit_id": "eval-dev-06",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "22",
+        "quote": "No, I do not have any of those problems."
+      },
+      {
+        "source": "chart",
+        "ref": "cond-htn",
+        "quote": "High blood pressure"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 22
+  }
+]

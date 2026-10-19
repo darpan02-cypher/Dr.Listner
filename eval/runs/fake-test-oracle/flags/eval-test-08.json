@@ -1,0 +1,39 @@
+[
+  {
+    "flag_id": "fake-eval-test-08-0",
+    "visit_id": "eval-test-08",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "family_history",
+        "quote": null
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  },
+  {
+    "flag_id": "fake-eval-test-08-1",
+    "visit_id": "eval-test-08",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "21",
+        "quote": "No, nothing like that for me."
+      },
+      {
+        "source": "chart",
+        "ref": "cond-htn",
+        "quote": "High blood pressure"
+      }
+    ],
+    "rationale": "FAKE oracle flag copied from a planted-gap key.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 21
+  }
+]

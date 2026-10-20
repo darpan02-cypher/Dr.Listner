@@ -27,7 +27,7 @@ def _llm():
         ChartOut=[ChartOut(conflicts=[Conflict(chart_entry_id="e1", turn_quote="No, none.", rationale="Denied; chart lists Type 2 diabetes.")]),
                   ChartOut(conflicts=[]),  # turn 3
                   ChartOut(conflicts=[])],  # turn 5
-        RepairOut=RepairOut(breakdowns=[Breakdown(turn_idx=3, quote="What?", cue="repeat")]),
+        RepairOut=RepairOut(breakdowns=[Breakdown(turn_idx=3, quote="What?", cue="repeat_request")]),
         TeachbackOut=TeachbackOut(gives_instructions=False, teach_back_done=False),
         ChecklistOut=ChecklistOut(items=[]),
         ConcernOut=ConcernOut(concerns=[Concern(turn_idx=5, quote="I worry about my job.", addressed=False)]),
@@ -100,3 +100,16 @@ def test_verifier_outage_keeps_programmatically_valid_flags_unverified():
     s = run_batch(new_state("v", prof), TURNS, _ctx(_Down(_llm(), {"Verdict"})))
     assert s.flags and not any(f.verified for f in s.flags)
     assert any(e.startswith("verifier") for e in s.errors)
+
+
+def test_same_chart_conflict_restated_in_a_later_turn_is_one_flag():
+    prof = pack.load_profiles()["hoh_lowlit_alone"]
+    turns = TURNS[:2] + [Turn(idx=2, speaker="clinician", text="Sure?"), Turn(idx=3, speaker="patient", text="No, none at all.")]
+    llm = _llm()
+    llm.by["ChartOut"] = [
+        ChartOut(conflicts=[Conflict(chart_entry_id="e1", turn_quote="No, none.", rationale="Denied; chart lists Type 2 diabetes.")]),
+        ChartOut(conflicts=[Conflict(chart_entry_id="e1", turn_quote="No, none at all.", rationale="Denied again; chart lists Type 2 diabetes.")]),
+    ]
+    llm.by["RepairOut"] = RepairOut(breakdowns=[])
+    s = run_batch(new_state("v", prof), turns, _ctx(llm))
+    assert [f.type for f in s.flags].count(GapType.CHART_CONTRADICTION) == 1

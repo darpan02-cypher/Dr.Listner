@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient says \\\"<PERSON> if you face me and talk slowly.\\\", showing non\u2011understanding, and the clinician does not repair this request.\"}"}

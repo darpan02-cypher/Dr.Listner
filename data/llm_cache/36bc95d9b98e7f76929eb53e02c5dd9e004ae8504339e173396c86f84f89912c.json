@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":15,\"quote\":\"I am scared this could be a heart attack. Is that what this is?\",\"cue\":\"off_topic\",\"preceding_question\":\"Does it come on when you are active?\",\"reply_answers_question\":false}]}"}

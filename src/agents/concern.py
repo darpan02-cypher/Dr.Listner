@@ -14,7 +14,9 @@ PROMPT = """Transcript:
 List every concern the patient or caregiver raises ON THEIR OWN INITIATIVE: a worry, fear, a question they ask the
 clinician, or a request (for example about work, driving, a family member, cost, what a symptom means).
 A direct answer to a clinician's question is NOT a concern, even when it reports a symptom ("Yes, I feel winded",
-"It goes down my arm"), lists medicines, or says how well they hear. Ignore small talk. When unsure, leave it out.
+"It goes down my arm"), lists medicines, or says how well they hear. Also NOT a concern: a preference about how the
+clinician speaks ("face me", "slower", "louder") or a request to repeat ("sorry, what did you say?"); those are
+hearing needs, not worries. Ignore small talk. When unsure, leave it out.
 For each, give the turn index of the patient/caregiver turn voicing it and a verbatim quote from that turn.
 Then say whether a LATER clinician turn actually responds to that specific concern (addressed=true, with the
 responding turn index) or not (addressed=false, addressed_by=null). A generic "any other questions?" with no

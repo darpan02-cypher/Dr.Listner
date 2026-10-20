@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s remark is a direct answer to the clinician\u2019s question (\\\"Tell me what brought you in today.\\\") and thus is not an independent worry, fear, question, or request, so it does not meet the criteria for an unanswered_concern.\"}"}

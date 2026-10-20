@@ -36,7 +36,7 @@ def export(run: str, split: str, summaries: bool = False, only: list[str] | None
         if unknown:
             raise InputError(f"unknown visits: {sorted(unknown)}")
         visits = [v for v in visits if v.key.visit_id in only]
-    llm = llm or LLMClient()
+    llm = llm or LLMClient(max_retries=8)  # Groq free tier is 8k tokens/min; ride out 429 windows
     profiles, checklist = pack.load_profiles(), pack.load_checklist()
     out = runs_root / run
     _write(out / "run_meta.json", {

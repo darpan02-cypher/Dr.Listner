@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":20,\"quote\":\"No, I have not fainted.\",\"cue\":\"off_topic\",\"preceding_question\":\"Any dizziness or lightheadedness?\",\"reply_answers_question\":false}]}"}

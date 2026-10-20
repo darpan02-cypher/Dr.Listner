@@ -1,0 +1,42 @@
+{
+ "visit_id": "demo-roleplay-01",
+ "wrap_up_turn": 22,
+ "profile_id": "hoh_lowlit_alone",
+ "expected": [
+  {
+   "type": "missed_question",
+   "checklist_item_id": "radiation",
+   "turn_indices": [],
+   "note": "Clinician never asks whether the pain spreads to the arm or jaw."
+  },
+  {
+   "type": "unanswered_concern",
+   "turn_indices": [
+    7
+   ],
+   "note": "Patient fears it is her heart; clinician never responds to the worry."
+  },
+  {
+   "type": "comprehension_breakdown",
+   "turn_indices": [
+    15
+   ],
+   "note": "Patient asks what was said; clinician moves on without repeating."
+  },
+  {
+   "type": "chart_contradiction",
+   "turn_indices": [
+    21
+   ],
+   "chart_entry_id": "proc-stent",
+   "note": "Patient denies heart problems; chart lists a coronary stent."
+  },
+  {
+   "type": "comprehension_breakdown",
+   "turn_indices": [
+    22
+   ],
+   "note": "Plan given with no teach-back; patient replies with a bare 'Okay'."
+  }
+ ]
+}

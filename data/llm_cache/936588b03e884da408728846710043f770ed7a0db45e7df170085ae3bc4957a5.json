@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient answered the clinician's question about volume with a brief yes, which fits the question, so it does not demonstrate non\u2011understanding requiring repair.\"}"}

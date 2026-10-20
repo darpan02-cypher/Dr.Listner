@@ -1,0 +1,50 @@
+[
+  {
+    "flag_id": "eval-dev-01-h-1",
+    "visit_id": "eval-dev-01",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "1",
+        "quote": "<PERSON> if you face me and talk slowly."
+      }
+    ],
+    "rationale": "The patient may not have heard or understood this and it was not repaired.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 2
+  },
+  {
+    "flag_id": "eval-dev-01-h-9",
+    "visit_id": "eval-dev-01",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "9",
+        "quote": "Yes, it goes down my left arm a little."
+      }
+    ],
+    "rationale": "The patient may not have heard or understood this and it was not repaired.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 10
+  },
+  {
+    "flag_id": "eval-dev-01-h-17",
+    "visit_id": "eval-dev-01",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "17",
+        "quote": "No, I have not fainted."
+      }
+    ],
+    "rationale": "The patient may not have heard or understood this and it was not repaired.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 18
+  }
+]

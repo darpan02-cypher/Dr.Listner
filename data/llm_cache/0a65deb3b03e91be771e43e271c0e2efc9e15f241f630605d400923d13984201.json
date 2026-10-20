@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient says \\\"I do not take any medicines.\\\" (transcript 28) yet the chart lists active medications (Metformin and Atorvastatin), creating a direct contradiction.\"}"}

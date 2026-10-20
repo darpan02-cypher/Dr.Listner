@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted turn is from the caregiver and does not show non\u2011understanding of the clinician\u2019s question, so the comprehension_breakdown criteria are not met.\"}"}

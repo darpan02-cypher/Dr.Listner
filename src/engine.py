@@ -67,9 +67,15 @@ def new_state(visit_id: str, profile: PatientProfile) -> VisitState:
     return VisitState(visit_id=visit_id, profile=profile)
 
 
+def _event_key(f: Flag) -> tuple:
+    """One event = one flag (SPEC section 8). A chart conflict is the same event whichever turn restates it."""
+    if f.type is GapType.CHART_CONTRADICTION:
+        return (f.type, tuple(sorted(e.ref for e in f.evidence if e.source == "chart")))
+    return (f.type, tuple((e.source, e.ref) for e in f.evidence))
+
+
 def _known(flags: list[Flag], f: Flag) -> bool:
-    key = (f.type, tuple((e.source, e.ref) for e in f.evidence))
-    return any((x.type, tuple((e.source, e.ref) for e in x.evidence)) == key for x in flags)
+    return any(_event_key(x) == _event_key(f) for x in flags)
 
 
 def process_turn(state: VisitState, turn: Turn, ctx: EngineContext | None = None) -> VisitState:

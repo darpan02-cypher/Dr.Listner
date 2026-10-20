@@ -258,8 +258,8 @@ Two people, one playing the clinician and one the patient, talk through a prepar
 | De-identification, 4 detectors, verifier, engine, SummaryAgent | Implemented, 62 tests at last count; detector quality not measured |
 | Evaluation harness and fake-run artifacts | Done; fake runs are not accuracy |
 | Real dev run, tuning, test run, baseline | Not done |
-| Streamlit app | Not started |
-| Live role-play demo (`demo/` folder, speech input, rehearsed cache) | Planned |
+| Streamlit app (`app.py`) | Built: scripted and engine backends, 4 tabs; tested headless, not yet tried with a real microphone |
+| Live role-play demo (`demo/` folder) | Script, chart, hardcoded flags and speech input done; engine rehearsal cache not yet filled |
 | Hosted deploy and RAM check | Not started |
 
 Deadline: Oct 21, 2026.
@@ -292,7 +292,7 @@ Target spend is $0: the app runs on Streamlit Community Cloud from a GitHub repo
 
 Hugging Face Spaces is not the plan: its docs say Gradio and Docker Spaces need a paid plan to create, with only static Spaces free (Hugging Face docs).
 
-- Keep one repo: app.py (not yet written), requirements.txt, and a data/ folder holding the synthetic transcripts, charts, answer keys and the LLM cache.
+- Keep one repo: app.py, requirements.txt, and a data/ folder holding the synthetic transcripts, charts, answer keys and the LLM cache.
 
 - Demo mode replays cached LLM outputs with no network (a cache miss raises an error); Live mode calls the provider chain. The demo path is the default because of the Groq rate limit.
 

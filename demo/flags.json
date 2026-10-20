@@ -1,0 +1,27 @@
+{
+ "note": "Hardcoded flags for the scripted demo. trigger_turn is the script turn that must be spoken before the flag appears live; null means it appears at End visit.",
+ "flags": [
+  {"trigger_turn": 16, "type": "comprehension_breakdown", "rationale": "The patient asked for the question to be repeated, and it was not repeated or rephrased.",
+   "evidence": [{"source": "transcript", "ref": "15", "quote": "Sorry, what did you say?"}]},
+  {"trigger_turn": 21, "type": "chart_contradiction", "rationale": "The patient said she has had no heart problems, but the chart lists a coronary stent.",
+   "evidence": [{"source": "transcript", "ref": "21", "quote": "No, I have never had any heart problems."},
+                {"source": "chart", "ref": "proc-stent", "quote": "Coronary artery stent placement"}]},
+  {"trigger_turn": null, "type": "missed_question", "rationale": "Not asked: whether the pain spreads to the arm, jaw or back.",
+   "evidence": [{"source": "checklist", "ref": "radiation"}]},
+  {"trigger_turn": null, "type": "unanswered_concern", "rationale": "The patient said she was scared this could be her heart, and the worry was never answered.",
+   "evidence": [{"source": "transcript", "ref": "7", "quote": "I am really scared this is my heart, like my husband."}]},
+  {"trigger_turn": null, "type": "comprehension_breakdown", "rationale": "The plan was given without asking the patient to say it back in her own words.",
+   "evidence": [{"source": "transcript", "ref": "22", "quote": "come back to this clinic in one week"}]}
+ ],
+ "coverage": {"onset": 4, "nature": 6, "exertional": 8, "relieving": 10, "dyspnea": 12, "diaphoresis": 12, "syncope": 14, "risk_factors": 16, "family_history": 18},
+ "plan_items": [
+  {"item_id": "return", "text": "Come back to the clinic in one week."},
+  {"item_id": "bring-meds", "text": "Bring your medicine bottles to the next visit."}
+ ],
+ "clarify": [
+  "Ask: does the pain spread to your arm, jaw or back?",
+  "Answer her worry about her heart.",
+  "Ask her to say the plan back in her own words."
+ ],
+ "summary": "You came in because of pressure in your chest. It started yesterday and gets worse when you climb stairs.\n\nYour plan:\n1. Come back to the clinic in one week.\n2. Bring all of your medicine bottles with you.\n\nQuestions to ask next time:\n- Does my chest pain spread to my arm or jaw?\n- Is my chest pain from my heart? I have a stent, and I am worried.\n\nCall for help right away if the pain gets worse, or if you faint or cannot catch your breath."
+}

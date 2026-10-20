@@ -93,11 +93,20 @@ def test_chart_contradiction_pointers_and_filters(tr, chart):
 
 
 # ---- ComprehensionAgent ----
+def test_off_topic_cue_dropped_when_reply_answers_the_question():
+    turns = [Turn(idx=0, speaker="clinician", text="Does it travel to your arm?"),
+             Turn(idx=1, speaker="patient", text="Yes, down my left arm."),
+             Turn(idx=2, speaker="clinician", text="Okay. Any nausea?")]
+    b = Breakdown(turn_idx=1, quote="Yes, down my left arm.", cue="off_topic", reply_answers_question=True)
+    assert ComprehensionAgent(FakeLLM(RepairOut=RepairOut(breakdowns=[b]))).check_repair("v", turns) == []
+    b2 = b.model_copy(update={"reply_answers_question": False})
+    assert len(ComprehensionAgent(FakeLLM(RepairOut=RepairOut(breakdowns=[b2]))).check_repair("v", turns)) == 1
+
 def test_repair_needs_later_clinician_turn_and_valid_quote():
     turns = [Turn(idx=0, speaker="clinician", text="Any fainting?"),
              Turn(idx=1, speaker="patient", text="What?"),
              Turn(idx=2, speaker="clinician", text="Moving on. Any nausea?")]
-    llm = FakeLLM(RepairOut=RepairOut(breakdowns=[Breakdown(turn_idx=1, quote="What?", cue="repeat request")]))
+    llm = FakeLLM(RepairOut=RepairOut(breakdowns=[Breakdown(turn_idx=1, quote="What?", cue="repeat_request")]))
     flags = ComprehensionAgent(llm).check_repair("v", turns)
     assert flags[0].type is GapType.COMPREHENSION_BREAKDOWN and flags[0].evidence[0].ref == "1"
     # no clinician turn after the patient turn -> undecidable -> no flag

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The clinician gave instructions (turn 29) without a teach-back request and the patient only replied \\\"Okay,\\\" indicating a lack of confirmed understanding.\"}"}

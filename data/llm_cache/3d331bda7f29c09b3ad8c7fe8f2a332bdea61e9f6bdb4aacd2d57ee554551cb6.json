@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":9,\"quote\":\"Yes, it goes down my left arm a little.\",\"cue\":\"off_topic\",\"preceding_question\":\"Does it travel to your neck or shoulder?\",\"reply_answers_question\":false}]}"}

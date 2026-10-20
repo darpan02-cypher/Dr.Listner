@@ -6,6 +6,8 @@ Two checks:
 """
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import BaseModel
 
 from ..schemas import EvidencePointer, Flag, GapType, Turn
@@ -25,7 +27,8 @@ hear or understand the clinician, and where the clinician does NOT repair it aft
 - a bare "okay"/"yes" right after a multi-part instruction (low confidence).
 When unsure, leave it out.
 Do NOT report a breakdown if a later clinician turn repeats, rephrases or confirms and the patient then answers
-sensibly. For each give the patient turn index and a verbatim quote from it."""
+sensibly. For each: first write the clinician's preceding question, then decide whether the patient's reply gives the
+information asked for (reply_answers_question). Give the patient turn index and a verbatim quote from it."""
 
 TEACHBACK_PROMPT = """Transcript:
 {transcript}
@@ -42,7 +45,9 @@ plan; if several, the one with the most instructions) and a verbatim quote from 
 class Breakdown(BaseModel):
     turn_idx: int
     quote: str
-    cue: str
+    cue: Literal["repeat_request", "off_topic", "bare_ack"]
+    preceding_question: str = ""
+    reply_answers_question: bool = False  # does the reply give the information the question asked for?
 
 
 class RepairOut(BaseModel):
@@ -68,6 +73,8 @@ class ComprehensionAgent:
             # needs a later clinician turn, otherwise "not repaired yet" is undecidable
             if t is None or t.speaker == "clinician" or not quote_in(b.quote, t.text):
                 continue
+            if b.cue == "off_topic" and b.reply_answers_question:
+                continue  # the model's own check says the reply answers the question: not a mismatch
             if not any(x.speaker == "clinician" and x.idx > t.idx for x in window):
                 continue
             flags.append(

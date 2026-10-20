@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s answer directly addresses the clinician\u2019s question about health conditions (irregular heartbeat and smoking status) and does not demonstrate a misunderstanding or lack of repair, so it is not a comprehension breakdown.\"}"}

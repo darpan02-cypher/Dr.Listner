@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":16,\"quote\":\"I felt dizzy once earlier this week.\",\"cue\":\"off_topic\",\"preceding_question\":\"Have you fainted or felt like you might pass out?\",\"reply_answers_question\":false}]}"}

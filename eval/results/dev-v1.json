@@ -4,8 +4,8 @@
   "split": "dev",
   "mode": "LIVE",
   "model": "openai/gpt-oss-120b",
-  "git_commit": "337880dff5f97e53089f5389d82722bad8c67f61",
-  "timestamp": "2026-10-20T15:59:02.035136+00:00",
+  "git_commit": "5400bde0aa4113156d49237b0c06398156b5ff22",
+  "timestamp": "2026-10-20T23:04:09.697426+00:00",
   "n_visits": 9,
   "per_type": {
     "missed_question": {

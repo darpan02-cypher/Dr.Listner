@@ -229,14 +229,15 @@ with tab_patient:
         words = len(be.summary.split())
         g = f"{be.summary_grade:.1f}" if be.summary_grade is not None else "n/a"
         st.caption(f"Reading grade {g} (target {p.summary_target_grade:g} or lower) · {words} words (limit {p.summary_max_words})")
-        components.html(
-            f"""<button id=r style="font-size:20px;padding:10px 18px">🔊 Read aloud</button>
+        read_aloud = f"""<button id=r style="font-size:20px;padding:10px 18px">🔊 Read aloud</button>
             <button id=s style="font-size:20px;padding:10px 18px">⏹ Stop</button>
-            <script>const t={json.dumps(be.summary)};
+            <script>const t={json.dumps(be.summary).replace("</", "<\\/")};
             document.getElementById('r').onclick=()=>{{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.rate=0.85;speechSynthesis.speak(u)}};
-            document.getElementById('s').onclick=()=>speechSynthesis.cancel();</script>""",
-            height=70,
-        )
+            document.getElementById('s').onclick=()=>speechSynthesis.cancel();</script>"""
+        if hasattr(st, "iframe"):  # components.v1.html is deprecated in current Streamlit
+            st.iframe(read_aloud, height=70)
+        else:
+            components.html(read_aloud, height=70)
         st.subheader("Say it back")
         for i in range(p.teach_back_questions):
             st.markdown(["- In your own words, when do you come back to the clinic?", "- What will you do if the pain gets worse?"][i % 2])

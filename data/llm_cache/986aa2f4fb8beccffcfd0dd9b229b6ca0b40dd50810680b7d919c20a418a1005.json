@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":29,\"quote\":\"I will make sure she follows the plan.\",\"cue\":\"off_topic\",\"preceding_question\":\"Just so I know I explained it clearly, can you tell me in your own words what you will do?\",\"reply_answers_question\":false}]}"}

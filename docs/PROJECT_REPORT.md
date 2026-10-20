@@ -257,10 +257,11 @@ Two people, one playing the clinician and one the patient, talk through a prepar
 | Synthetic eval set, 9 dev + 15 test, 4 gap types | Done; user spot-read gate pending |
 | De-identification, 4 detectors, verifier, engine, SummaryAgent | Implemented, 62 tests at last count; detector quality not measured |
 | Evaluation harness and fake-run artifacts | Done; fake runs are not accuracy |
-| Real dev run, tuning, test run, baseline | Not done |
+| Real dev run (`dev-v1`: recall 13 of 13, precision 48%, 1.56 false flags per visit); tuning run `dev-v2` in progress; test run and baseline run pending | Partly done |
+| Summary scoring script and baseline script | Written and unit-tested; not yet run live |
 | Streamlit app (`app.py`) | Built: scripted and engine backends, 4 tabs; tested headless, not yet tried with a real microphone |
 | Live role-play demo (`demo/` folder) | Script, chart, hardcoded flags and speech input done; engine rehearsal cache not yet filled |
-| Hosted deploy and RAM check | Not started |
+| Hosted deploy and RAM check | Local check done (scripted flow about 230 MB, de-id path about 180 MB); host check pending. See docs/DEPLOY_AND_STAGE.md |
 
 Deadline: Oct 21, 2026.
 

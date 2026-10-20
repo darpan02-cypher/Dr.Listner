@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":21,\"quote\":\"I have an irregular heartbeat. I have never smoked.\",\"cue\":\"off-topic reply: includes information not asked (irregular heartbeat) after clinician asked about smoking, blood pressure, sugar, cholesterol\"}]}"}

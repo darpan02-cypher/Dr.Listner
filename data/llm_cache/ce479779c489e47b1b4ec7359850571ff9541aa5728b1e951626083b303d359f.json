@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The transcript contains no question or patient statement about fainting or lightheadedness, so the checklist topic is not covered.\"}"}

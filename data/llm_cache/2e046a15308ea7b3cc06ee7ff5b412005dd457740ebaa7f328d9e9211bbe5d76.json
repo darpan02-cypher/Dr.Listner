@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The caregiver's turn introduces a new chest concern rather than showing non\u2011understanding of a prior question, so it does not meet the comprehension_breakdown criteria\"}"}

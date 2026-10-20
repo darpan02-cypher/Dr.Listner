@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient requested the clinician to face them and speak slowly, and no subsequent clinician turn acknowledges or fulfills that request.\"}"}

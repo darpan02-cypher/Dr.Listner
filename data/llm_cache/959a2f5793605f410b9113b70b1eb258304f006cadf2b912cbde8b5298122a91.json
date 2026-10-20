@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient requested \\\"if you face me and talk slowly\\\" and no later clinician turn acknowledges or addresses that request, meeting the criteria for an unanswered_concern.\"}"}

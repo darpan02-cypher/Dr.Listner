@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s question at transcript 29 is a worry/ask and the clinician never answers it, only closing the visit.\"}"}

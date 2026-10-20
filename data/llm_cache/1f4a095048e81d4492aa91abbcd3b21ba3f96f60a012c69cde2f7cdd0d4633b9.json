@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient explicitly says they have never had any heart procedure, which directly conflicts with the chart entry indicating a completed coronary artery bypass graft.\"}"}

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient explicitly denies having high blood pressure (transcript line 22) while the chart lists an active high blood pressure condition (cond-htn), creating a direct conflict.\"}"}

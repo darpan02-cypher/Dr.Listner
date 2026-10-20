@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s reply \\\"Yes, as long as you do not turn away.\\\" does not answer the clinician\u2019s question about volume and is not later addressed, indicating a comprehension breakdown.\"}"}

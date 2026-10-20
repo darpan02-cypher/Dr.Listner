@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient answered the clinician\u2019s question about neck/shoulder with a statement about left arm, indicating non\u2011understanding that was not repaired.\"}"}

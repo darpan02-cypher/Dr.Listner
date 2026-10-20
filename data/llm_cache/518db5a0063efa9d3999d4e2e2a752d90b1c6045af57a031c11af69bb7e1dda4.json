@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient says \\\"No, I do not have any of those problems.\\\" (transcript 22) yet the chart lists an active type 2 diabetes condition, creating a contradiction.\"}"}

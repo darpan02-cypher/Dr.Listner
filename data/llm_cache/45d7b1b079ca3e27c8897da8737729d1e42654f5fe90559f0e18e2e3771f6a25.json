@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"No clinician question or patient\u2011volunteered information addresses the onset or duration of the chest pain, so the checklist topic is truly missing.\"}"}

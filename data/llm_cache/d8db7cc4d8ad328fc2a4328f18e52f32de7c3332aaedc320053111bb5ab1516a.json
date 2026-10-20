@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"conflicts\":[{\"chart_entry_id\":\"sex\",\"turn_quote\":\"She has been uneasy about her chest.\",\"rationale\":\"The chart records the patient as sex male, while the caregiver refers to the patient as \\\"her\\\", which directly conflicts with the recorded sex.\"}]}"}

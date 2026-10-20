@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The transcript contains no question about or patient report of shortness of breath, so the dyspnea checklist item is truly not covered.\"}"}

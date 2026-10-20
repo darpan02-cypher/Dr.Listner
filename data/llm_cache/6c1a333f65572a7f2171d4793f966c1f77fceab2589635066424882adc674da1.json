@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"conflicts\":[{\"chart_entry_id\":\"sex\",\"turn_quote\":\"I will make sure she follows the plan.\",\"rationale\":\"The caregiver refers to the patient as \\\"she\\\" whereas the chart lists the patient sex as male.\"}]}"}

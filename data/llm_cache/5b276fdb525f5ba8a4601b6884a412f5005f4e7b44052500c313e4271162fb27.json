@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"conflicts\":[{\"chart_entry_id\":\"proc-cabg\",\"turn_quote\":\"No, I have never had any heart procedure.\",\"rationale\":\"The patient states they have never had any heart procedure, while the chart records a completed coronary artery bypass graft.\"}]}"}

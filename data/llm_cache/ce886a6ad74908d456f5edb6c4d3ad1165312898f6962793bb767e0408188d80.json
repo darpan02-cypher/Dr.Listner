@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s reply \\\"My jaw? I eat just fine, I had oatmeal this morning.\\\" does not answer the clinician\u2019s question about pain spreading to the jaw, showing non\u2011understanding that is not repaired.\"}"}

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The transcript shows a correct teach\u2011back (patient repeats the plan) and no repeat request or off\u2011topic reply, so there is no evidence of a comprehension breakdown.\"}"}

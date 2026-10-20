@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient voiced fear of medication confusion at transcript 12 and no later clinician turn directly acknowledges or addresses that concern.\"}"}

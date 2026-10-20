@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted turn is spoken by the caregiver, not the patient, and the clinician subsequently addresses the chest discomfort with multiple questions, so there is no unanswered patient concern.\"}"}

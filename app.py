@@ -15,7 +15,7 @@ import streamlit.components.v1 as components
 
 from demo.backend import EngineBackend, ScriptedBackend, load_chart, load_flag_plan, load_script
 from src import config
-from src.stt_deepgram import LiveSTT, mic_html
+from src.stt_deepgram import LiveSTT, classify_role, mic_html
 from src.pack import load_checklist, load_profiles
 from src.schemas import PlanItem
 
@@ -115,22 +115,35 @@ def flagged_turns() -> dict[int, list[str]]:
 
 
 # ---------- live visit ----------
+live_types = {"chart_contradiction", "comprehension_breakdown"}
 with tab_live:
-    left, mid, right = st.columns([5, 3, 3])
-    with left:
-        st.subheader("Conversation")
-        live_on = st.session_state.get("input_mode") == "Live mic (Deepgram)"
+    live_on = False
+    if not be.ended:
+        input_mode = st.radio("Input", ["Type / browser mic", "Live mic (Deepgram)"], horizontal=True, key="input_mode")
+        live_on = input_mode == "Live mic (Deepgram)"
+        if live_on:
+            stt.start()
+            m1, m2 = st.columns([1, 3])
+            with m1:
+                components.html(mic_html(), height=60)  # outside the fragment: it must not remount
+            if m2.button("⇄ Swap roles", help="Use if the doctor and patient labels came out backwards"):
+                stt.swapped = not stt.swapped
+                stt.reset_speakers()
 
-        @st.fragment(run_every=1 if live_on else None)
-        def conversation():
-            if live_on:
-                got = False
-                while not stt.finals.empty():
-                    role, text = stt.finals.get()
-                    add_turn(role, text)
-                    got = True
-                if got:
-                    st.rerun()  # full rerun so flags and checklist react to the new turns
+    @st.fragment(run_every=1 if live_on else None)
+    def live_panel():
+        if live_on and not be.ended:
+            for role, text in stt.collect([(t.speaker, t.text) for t in be.turns]):
+                add_turn(role, text)
+            st.caption(
+                f"Live capture: {stt.status}. Voices detected: {len(stt.speaker_role)} "
+                "(first = clinician, second = patient; until two are heard, roles are judged from the wording)."
+            )
+            if stt.error:
+                st.error(stt.error)
+        left, mid, right = st.columns([5, 3, 3])
+        with left:
+            st.subheader("Conversation")
             marks = flagged_turns()
             if not be.turns and not (live_on and stt.partial):
                 st.caption("Waiting for the first line. Speak or type below.")
@@ -142,83 +155,72 @@ with tab_live:
                     f'<small>#{t.idx}</small> {badge}<br>{html.escape(t.text)}</div>',
                     unsafe_allow_html=True,
                 )
-            if live_on and stt.partial:
-                role, text = stt.partial
+            if live_on and (stt.pending or stt.partial):
+                role, text = (stt.pending_role or (stt.partial or ("clinician",))[0]), f"{stt.pending} {(stt.partial or ('', ''))[1]}".strip()
                 st.markdown(
                     f'<div class="turn {role} partial big"><b>{role.title()}</b> …<br>{html.escape(text)}</div>',
                     unsafe_allow_html=True,
                 )
-
-        conversation()
-        if be.off_script and isinstance(be, ScriptedBackend):
-            st.caption(f"{len(be.off_script)} line(s) did not match the script, so no flags can react to them.")
-        if not be.ended:
-            input_mode = st.radio("Input", ["Type / browser mic", "Live mic (Deepgram)"], horizontal=True, key="input_mode")
-            if input_mode == "Live mic (Deepgram)":
-                stt.start()
-                components.html(mic_html(), height=60)
-                k1, k2 = st.columns([1, 3])
-                if k1.button("⇄ Swap roles", help="Use if the doctor and patient labels came out backwards"):
-                    stt.swapped = not stt.swapped
-                    stt.reset_speakers()
-                k2.caption(f"Status: {stt.status}. First voice heard = clinician, second = patient.")
-                if stt.error:
-                    st.error(stt.error)
-            speaker = st.radio("Speaking now", ["clinician", "patient"], horizontal=True, key="speaker")
-            c1, c2 = st.columns([4, 1])
-            with c1, st.form("typed", clear_on_submit=True):
-                text = st.text_input("Type a line (fallback to the microphone)", key="typed_text")
-                if st.form_submit_button("Send line"):
-                    add_turn(speaker, text)
-                    st.rerun()
-            with c2:
-                try:
-                    from streamlit_mic_recorder import speech_to_text
-
-                    spoken = speech_to_text(language="en", start_prompt="🎤 Speak", stop_prompt="⏹ Stop", just_once=True, key="mic")
-                    if spoken and spoken != st.session_state.last_mic:
-                        st.session_state.last_mic = spoken
-                        add_turn(speaker, spoken)
+            if be.off_script and isinstance(be, ScriptedBackend):
+                st.caption(f"{len(be.off_script)} line(s) did not match the script, so no flags can react to them.")
+            if not be.ended:
+                speaker = st.radio("Speaking now", ["clinician", "patient"], horizontal=True, key="speaker")
+                c1, c2 = st.columns([4, 1])
+                with c1, st.form("typed", clear_on_submit=True):
+                    text = st.text_input("Type a line (fallback to the microphone)", key="typed_text")
+                    if st.form_submit_button("Send line"):
+                        add_turn(speaker, text)
                         st.rerun()
-                except ImportError:
-                    st.caption("Mic needs `streamlit-mic-recorder`.")
-            r1, r2 = st.columns(2)
-            if r1.button("▶ Play next scripted line", help="Rehearsal helper: sends the next prepared line"):
-                pos = st.session_state.script_pos
-                if pos < len(script["turns"]):
-                    s = script["turns"][pos]
-                    add_turn(s["speaker"], s["text"])
-                    st.session_state.script_pos = pos + 1
+                with c2:
+                    try:
+                        from streamlit_mic_recorder import speech_to_text
+
+                        spoken = speech_to_text(language="en", start_prompt="🎤 Speak", stop_prompt="⏹ Stop", just_once=True, key="mic")
+                        if spoken and spoken != st.session_state.last_mic:
+                            st.session_state.last_mic = spoken
+                            add_turn(speaker, spoken)
+                            st.rerun()
+                    except ImportError:
+                        st.caption("Mic needs `streamlit-mic-recorder`.")
+                r1, r2 = st.columns(2)
+                if r1.button("▶ Play next scripted line", help="Rehearsal helper: sends the next prepared line"):
+                    pos = st.session_state.script_pos
+                    if pos < len(script["turns"]):
+                        s = script["turns"][pos]
+                        add_turn(s["speaker"], s["text"])
+                        st.session_state.script_pos = pos + 1
+                        st.rerun()
+                if r2.button("■ End visit", type="primary", disabled=not be.turns):
+                    with st.spinner("Wrapping up…"):
+                        be.end_visit()
                     st.rerun()
-            if r2.button("■ End visit", type="primary", disabled=not be.turns):
-                with st.spinner("Wrapping up…"):
-                    be.end_visit()
-                st.rerun()
-        else:
-            st.success("Visit ended. Open the Wrap-up and Patient view tabs.")
-    with mid:
-        st.subheader("Red-flag checklist")
-        for it in checklist.items:
-            at = be.coverage.get(it.id)
-            if at is not None:
-                st.markdown(f"✅ **{it.label}** · turn {at}")
-            elif be.ended and (be.coverage or isinstance(be, ScriptedBackend)):
-                st.markdown(f"⚠️ **{it.label}** · not asked")
             else:
-                st.markdown(f"⬜ {it.label}")
-        st.caption("Items are from the 2021 AHA/ACC chest pain guideline; matched by Claude, not clinician-reviewed.")
-    with right:
-        st.subheader("Chart")
-        cited = {e.ref for f in be.flags for e in f.evidence if e.source == "chart"}
-        st.caption(f"{chart.age}-year-old {chart.sex} · synthetic")
-        for e in chart.entries:
-            mark = "🔴 " if e.entry_id in cited else ""
-            st.markdown(f"{mark}**{e.display}** · {e.resource_type} · {e.status}")
-        live = [f for f in be.flags if f.type.value in live_types]
-        if live and not be.ended:
-            st.subheader("Heads-up")
-            for f in live:
-                st.info(f"{TYPE_ICON[f.type.value]} {TYPE_LABEL[f.type.value]} (turn {f.raised_at_turn})")
+                st.success("Visit ended. Open the Wrap-up and Patient view tabs.")
+        with mid:
+            st.subheader("Red-flag checklist")
+            for it in checklist.items:
+                at = be.coverage.get(it.id)
+                if at is not None:
+                    st.markdown(f"✅ **{it.label}** · turn {at}")
+                elif be.ended and (be.coverage or isinstance(be, ScriptedBackend)):
+                    st.markdown(f"⚠️ **{it.label}** · not asked")
+                else:
+                    st.markdown(f"⬜ {it.label}")
+            st.caption("Items are from the 2021 AHA/ACC chest pain guideline; matched by Claude, not clinician-reviewed.")
+        with right:
+            st.subheader("Chart")
+            cited = {e.ref for f in be.flags for e in f.evidence if e.source == "chart"}
+            st.caption(f"{chart.age}-year-old {chart.sex} · synthetic")
+            for e in chart.entries:
+                mark = "🔴 " if e.entry_id in cited else ""
+                st.markdown(f"{mark}**{e.display}** · {e.resource_type} · {e.status}")
+            live = [f for f in be.flags if f.type.value in live_types]
+            if live and not be.ended:
+                st.subheader("Heads-up")
+                for f in live:
+                    st.info(f"{TYPE_ICON[f.type.value]} {TYPE_LABEL[f.type.value]} (turn {f.raised_at_turn})")
+
+    live_panel()
 
 # ---------- wrap-up ----------
 with tab_wrap:

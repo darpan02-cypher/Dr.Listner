@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s reply to the clinician\u2019s question \\\"Can you hear me okay?\\\" requests the clinician to face them and speak slowly, showing non\u2011understanding that is not repaired.\"}"}

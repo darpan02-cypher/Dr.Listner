@@ -10,7 +10,9 @@ import asyncio
 import json
 import os
 import queue
+import re
 import threading
+import time
 from dataclasses import dataclass, field
 from urllib.parse import urlencode
 
@@ -19,6 +21,8 @@ from websockets.asyncio.server import serve
 
 PORT = int(os.environ.get("STT_PORT", "8765"))
 ROLES = ["clinician", "patient", "caregiver"]
+IDLE_FLUSH_S = 2.5
+ANSWER_START = re.compile(r"^(no|nope|yes|yeah|yep|okay|ok|oh|well|sure)\b[.,!]", re.I)
 
 
 def _url() -> str:
@@ -45,6 +49,9 @@ class LiveSTT:
     speaker_role: dict[int, str] = field(default_factory=dict)
     swapped: bool = False
     started: bool = False
+    pending: str = ""  # fragments waiting to form a full sentence
+    pending_role: str = ""
+    pending_ts: float = 0.0
     _lock: threading.Lock = field(default_factory=threading.Lock)
 
     def role_for(self, speaker: int) -> str:
@@ -60,6 +67,41 @@ class LiveSTT:
         with self._lock:
             self.speaker_role.clear()
         self.partial = None
+
+    def collect(self, history: list[tuple[str, str]]) -> list[tuple[str, str]]:
+        """Merge raw fragments into whole utterances; return the (role, text) turns that are ready.
+
+        A turn is released when the text ends a sentence (. ? !) or the speaker has paused for IDLE_FLUSH_S.
+        """
+        ready: list[tuple[str, str]] = []
+        hist = list(history)
+
+        def release():
+            text, first_role = self.pending.strip(), self.pending_role
+            self.pending, self.pending_role = "", ""
+            if not text:
+                return
+            role = first_role
+            if len(self.speaker_role) < 2:  # diarization has only heard one voice: judge from wording and context
+                role = classify_role(hist, text) or ("clinician" if text.endswith("?") else first_role)
+            hist.append((role, text))
+            ready.append((role, text))
+
+        while not self.finals.empty():
+            role, text = self.finals.get()
+            if self.pending and len(self.speaker_role) >= 2 and role != self.pending_role:
+                release()  # diarization says a different voice started talking
+            if self.pending and ANSWER_START.match(text):
+                release()  # "No. ..." / "Yes, ..." after an unfinished line is a reply from the other person
+            if not self.pending:
+                self.pending_role = role
+            self.pending = f"{self.pending} {text}".strip()
+            self.pending_ts = time.time()
+            if self.pending[-1] in ".?!":
+                release()
+        if self.pending and time.time() - self.pending_ts > IDLE_FLUSH_S:
+            release()
+        return ready
 
     # ---- Deepgram message handling ----
     def _runs(self, words: list[dict]) -> list[tuple[int, str]]:
@@ -135,6 +177,41 @@ class LiveSTT:
                 self.started = False
 
         threading.Thread(target=run, daemon=True, name="deepgram-stt").start()
+
+
+def classify_role(history: list[tuple[str, str]], text: str) -> str | None:
+    """Judge who spoke `text` (clinician or patient) from the wording and the conversation so far.
+
+    Used when diarization has heard only one voice. Returns None if the call fails.
+    """
+    import requests
+
+    key = os.environ.get("GROQ_API_KEY", "")
+    if not key:
+        return None
+    ctx = "\n".join(f"{r}: {t}" for r, t in history[-8:]) or "(start of visit)"
+    prompt = (
+        "A doctor-patient visit is transcribed from ONE microphone, so speakers are guessed. "
+        "Decide who said the NEW line.\n"
+        "- The clinician asks about symptoms, duration, severity, medicines, lifestyle; examines; explains; instructs.\n"
+        "- The patient describes their own symptoms, answers questions, and voices worries or limitations.\n"
+        "- A question is almost always the clinician; an answer to the previous question comes from the OTHER speaker.\n"
+        "- A line that continues the previous line's thought (same sentence, same topic) is the same speaker.\n"
+        "Reply with exactly one word: clinician or patient.\n\n"
+        f"Conversation so far (earlier labels may contain mistakes):\n{ctx}\n\nNEW line: {text}"
+    )
+    try:
+        r = requests.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers={"Authorization": f"Bearer {key}"},
+            json={"model": os.environ.get("ROLE_MODEL", "openai/gpt-oss-20b"), "temperature": 0,
+                  "reasoning_effort": "low", "messages": [{"role": "user", "content": prompt}]},
+            timeout=10,
+        )
+        ans = r.json()["choices"][0]["message"]["content"].strip().lower()
+    except Exception:
+        return None
+    return "clinician" if ans.startswith("clin") else "patient" if ans.startswith("pat") else None
 
 
 MIC_HTML = """

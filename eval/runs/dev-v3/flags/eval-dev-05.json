@@ -1,0 +1,39 @@
+[
+  {
+    "flag_id": "eval-dev-05-x-26-proc-cabg",
+    "visit_id": "eval-dev-05",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "26",
+        "quote": "No, I have never had any heart procedure."
+      },
+      {
+        "source": "chart",
+        "ref": "proc-cabg",
+        "quote": "Coronary artery bypass graft"
+      }
+    ],
+    "rationale": "The patient states they have never had any heart procedure, while the chart records a completed coronary artery bypass graft.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 26
+  },
+  {
+    "flag_id": "eval-dev-05-c-12",
+    "visit_id": "eval-dev-05",
+    "type": "unanswered_concern",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "12",
+        "quote": "I get confused with my pills. I am afraid I will take them wrong."
+      }
+    ],
+    "rationale": "The patient raised this and no later clinician turn appears to respond to it.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 33
+  }
+]

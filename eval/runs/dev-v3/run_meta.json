@@ -1,0 +1,7 @@
+{
+  "run_id": "dev-v3",
+  "system": "drlistner",
+  "mode": "LIVE",
+  "split": "dev",
+  "model": "openai/gpt-oss-120b"
+}

@@ -1,0 +1,60 @@
+[
+  {
+    "flag_id": "eval-dev-09-x-28-med-metformin",
+    "visit_id": "eval-dev-09",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "28",
+        "quote": "I do not take any medicines."
+      },
+      {
+        "source": "chart",
+        "ref": "med-metformin",
+        "quote": "Metformin"
+      }
+    ],
+    "rationale": "Patient says \"I do not take any medicines.\" but chart lists med-metformin as an active medication.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 28
+  },
+  {
+    "flag_id": "eval-dev-09-x-28-med-atorvastatin",
+    "visit_id": "eval-dev-09",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "28",
+        "quote": "I do not take any medicines."
+      },
+      {
+        "source": "chart",
+        "ref": "med-atorvastatin",
+        "quote": "Atorvastatin"
+      }
+    ],
+    "rationale": "Patient says \"I do not take any medicines.\" but chart lists med-atorvastatin as an active medication.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 28
+  },
+  {
+    "flag_id": "eval-dev-09-t-29",
+    "visit_id": "eval-dev-09",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "29",
+        "quote": "Before you go, let me go over the plan. First, see the heart specialist within two weeks. Second, come back to this clinic in one week. Third, take one baby aspirin every morning."
+      }
+    ],
+    "rationale": "Instructions were given without a teach-back to confirm the patient understood.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 34
+  }
+]

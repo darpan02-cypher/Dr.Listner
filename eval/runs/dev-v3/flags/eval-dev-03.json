@@ -1,0 +1,18 @@
+[
+  {
+    "flag_id": "eval-dev-03-q-syncope",
+    "visit_id": "eval-dev-03",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "syncope",
+        "quote": null
+      }
+    ],
+    "rationale": "The visit does not appear to cover: Fainting or lightheadedness.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 30
+  }
+]

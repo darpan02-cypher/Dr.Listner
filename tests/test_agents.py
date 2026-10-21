@@ -77,6 +77,18 @@ def test_concern_addressed_by_earlier_turn_does_not_count(tr):
     assert len(ConcernAgent(FakeLLM(ConcernOut=out)).run(tr)[0]) == 1
 
 
+def test_off_topic_cue_dropped_for_yes_no_replies_and_hearing_check_but_kept_for_real_mismatch():
+    def run(q, reply, cue="off_topic"):
+        turns = [Turn(idx=0, speaker="clinician", text=q), Turn(idx=1, speaker="patient", text=reply),
+                 Turn(idx=2, speaker="clinician", text="Okay.")]
+        b = Breakdown(turn_idx=1, quote=reply, cue=cue)
+        return ComprehensionAgent(FakeLLM(RepairOut=RepairOut(breakdowns=[b]))).check_repair("v", turns)
+    assert run("Any fainting?", "No, I have not fainted.") == []
+    assert run("Can you hear me okay?", "Clearer if you face me.") == []
+    assert len(run("Does it spread to your jaw?", "My niece sent me a card.")) == 1
+    assert len(run("Does it spread to your jaw?", "No, I have not fainted. What?", cue="repeat_request")) == 1  # only off_topic is filtered
+
+
 # ---- ChartAgent ----
 def test_chart_contradiction_pointers_and_filters(tr, chart):
     t = tr.turns[:4]
@@ -99,8 +111,9 @@ def test_off_topic_cue_dropped_when_reply_answers_the_question():
              Turn(idx=2, speaker="clinician", text="Okay. Any nausea?")]
     b = Breakdown(turn_idx=1, quote="Yes, down my left arm.", cue="off_topic", reply_answers_question=True)
     assert ComprehensionAgent(FakeLLM(RepairOut=RepairOut(breakdowns=[b]))).check_repair("v", turns) == []
-    b2 = b.model_copy(update={"reply_answers_question": False})
-    assert len(ComprehensionAgent(FakeLLM(RepairOut=RepairOut(breakdowns=[b2]))).check_repair("v", turns)) == 1
+    turns2 = [turns[0], Turn(idx=1, speaker="patient", text="The bus was late today."), turns[2]]
+    b2 = Breakdown(turn_idx=1, quote="The bus was late today.", cue="off_topic", reply_answers_question=False)
+    assert len(ComprehensionAgent(FakeLLM(RepairOut=RepairOut(breakdowns=[b2]))).check_repair("v", turns2)) == 1
 
 def test_repair_needs_later_clinician_turn_and_valid_quote():
     turns = [Turn(idx=0, speaker="clinician", text="Any fainting?"),

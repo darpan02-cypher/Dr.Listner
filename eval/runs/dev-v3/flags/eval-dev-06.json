@@ -1,0 +1,60 @@
+[
+  {
+    "flag_id": "eval-dev-06-x-22-cond-htn",
+    "visit_id": "eval-dev-06",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "22",
+        "quote": "No, I do not have any of those problems."
+      },
+      {
+        "source": "chart",
+        "ref": "cond-htn",
+        "quote": "High blood pressure"
+      }
+    ],
+    "rationale": "Chart entry cond-htn indicates active high blood pressure, while the patient denies having any of those problems.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 22
+  },
+  {
+    "flag_id": "eval-dev-06-x-22-cond-dm",
+    "visit_id": "eval-dev-06",
+    "type": "chart_contradiction",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "22",
+        "quote": "No, I do not have any of those problems."
+      },
+      {
+        "source": "chart",
+        "ref": "cond-dm",
+        "quote": "Type 2 diabetes"
+      }
+    ],
+    "rationale": "Chart entry cond-dm indicates active type 2 diabetes, while the patient denies having any of those problems.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 22
+  },
+  {
+    "flag_id": "eval-dev-06-q-dyspnea",
+    "visit_id": "eval-dev-06",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "dyspnea",
+        "quote": null
+      }
+    ],
+    "rationale": "The visit does not appear to cover: Shortness of breath.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 32
+  }
+]

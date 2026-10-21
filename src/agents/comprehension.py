@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from typing import Literal
 
+import re
+
 from pydantic import BaseModel
 
 from ..schemas import EvidencePointer, Flag, GapType, Turn
@@ -42,6 +44,21 @@ If instructions were given without teach-back, give instruction_turn (the clinic
 plan; if several, the one with the most instructions) and a verbatim quote from it."""
 
 
+_YES_NO = re.compile(r"^\W*(yes|yeah|yep|no|nope|not really|i do|i don't|i do not|i have|i have not|i haven't)\b", re.I)
+_HEARING_CHECK = re.compile(r"\b(can|could) you hear me\b|\bhear me (ok|okay|well|clearly)\b", re.I)
+
+
+def _responsive_in_form(reply: str, question: str) -> bool:
+    """Draft rule (not clinically validated): the model's 'off-topic' self-check is unreliable, so a reply that
+    starts with yes/no, or any reply to the opening 'can you hear me?' check, is treated as an answer."""
+    return bool(_YES_NO.match(reply)) or bool(_HEARING_CHECK.search(question))
+
+
+def _preceding_clinician_text(window: list[Turn], idx: int) -> str:
+    prev = [x for x in window if x.idx < idx and x.speaker == "clinician"]
+    return prev[-1].text if prev else ""
+
+
 class Breakdown(BaseModel):
     turn_idx: int
     quote: str
@@ -73,8 +90,10 @@ class ComprehensionAgent:
             # needs a later clinician turn, otherwise "not repaired yet" is undecidable
             if t is None or t.speaker == "clinician" or not quote_in(b.quote, t.text):
                 continue
-            if b.cue == "off_topic" and b.reply_answers_question:
-                continue  # the model's own check says the reply answers the question: not a mismatch
+            if b.cue == "off_topic" and (
+                b.reply_answers_question or _responsive_in_form(t.text, _preceding_clinician_text(window, t.idx))
+            ):
+                continue  # replies that answer the question in form are not a mismatch
             if not any(x.speaker == "clinician" and x.idx > t.idx for x in window):
                 continue
             flags.append(

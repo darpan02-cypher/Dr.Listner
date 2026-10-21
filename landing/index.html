@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dr.Listner — Catching what the visit missed</title>
 <meta name="description" content="AI scribes record what was said. Dr.Listner flags what was never asked or understood, and gives the patient a plain-language plan.">
+<link rel="icon" href="logo/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f7fb; --card:#fff; --ink:#0f1730; --body:#4a5472; --muted:#8089a6;
-  --line:#e4e8f1; --navy:#1d3b78; --blue:#2f6fbd; --blue-soft:#e8f0fb;
-  --amber:#e9a24a; --amber-soft:#fdf1df; --red:#c0392b; --red-soft:#fdeceb;
+  --line:#e4e8f1; --navy:#0F3D3E; --blue:#0B6E6E; --blue-soft:#e1f0ee;
+  --amber:#F59A80; --amber-soft:#fdece6; --red:#c0392b; --red-soft:#fdeceb;
   --shadow:0 20px 50px -20px rgba(20,40,90,.35);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,12 +26,11 @@ a{text-decoration:none;color:inherit}
 /* nav */
 nav{position:sticky;top:0;z-index:10;background:rgba(246,247,251,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.18em;font-size:1rem}
-.logo i{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff 0,#9cc4f0 30%,var(--blue) 75%);box-shadow:0 4px 12px rgba(47,111,189,.4)}
+.logo img{display:block;height:38px;width:auto}
 .links{display:flex;gap:36px;font-weight:500;font-size:.95rem;color:var(--ink)}
 .links a:hover{color:var(--blue)}
 .btn{display:inline-flex;align-items:center;gap:10px;font:600 .95rem Poppins,sans-serif;padding:13px 24px;border-radius:10px;transition:.2s}
-.btn.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px -8px rgba(47,111,189,.7)}
+.btn.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px -8px rgba(11,110,110,.7)}
 .btn.primary:hover{background:var(--navy);transform:translateY(-1px)}
 .btn.ghost{background:#fff;color:var(--blue);border:1px solid var(--line)}
 .btn.ghost:hover{border-color:var(--blue)}
@@ -38,10 +38,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 /* hero */
 .hero{padding:84px 0 70px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;width:640px;height:640px;left:-200px;top:-160px;background:radial-gradient(circle,rgba(47,111,189,.12),transparent 65%);z-index:-1}
-.hero::after{content:"";position:absolute;width:520px;height:520px;right:-120px;bottom:-200px;background:radial-gradient(circle,rgba(233,162,74,.18),transparent 65%);z-index:-1}
+.hero::before{content:"";position:absolute;width:640px;height:640px;left:-200px;top:-160px;background:radial-gradient(circle,rgba(11,110,110,.12),transparent 65%);z-index:-1}
+.hero::after{content:"";position:absolute;width:520px;height:520px;right:-120px;bottom:-200px;background:radial-gradient(circle,rgba(245,154,128,.18),transparent 65%);z-index:-1}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border:1px solid #cddcf2;background:var(--blue-soft);border-radius:999px;font:600 .75rem Poppins,sans-serif;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border:1px solid #c3e0dc;background:var(--blue-soft);border-radius:999px;font:600 .75rem Poppins,sans-serif;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
 .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
 h1{font-size:clamp(2.6rem,5.4vw,4.4rem);line-height:1.08;font-weight:800;letter-spacing:-.03em;margin:28px 0 24px}
 h1 em{font-style:normal;color:var(--blue)}
@@ -50,7 +50,7 @@ h1 em{font-style:normal;color:var(--blue)}
 .cta{display:flex;gap:14px;margin:36px 0 34px;flex-wrap:wrap}
 .quote{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.95rem}
 .wave{display:flex;gap:3px;align-items:center;height:28px}
-.wave span{width:3px;border-radius:2px;background:#6cb6e0;animation:w 1.2s ease-in-out infinite}
+.wave span{width:3px;border-radius:2px;background:#F59A80;animation:w 1.2s ease-in-out infinite}
 .wave span:nth-child(odd){animation-delay:.2s}.wave span:nth-child(3n){animation-delay:.5s}
 @keyframes w{50%{transform:scaleY(.35)}}
 .wave span:nth-child(1){height:10px}.wave span:nth-child(2){height:22px}.wave span:nth-child(3){height:14px}.wave span:nth-child(4){height:28px}.wave span:nth-child(5){height:18px}.wave span:nth-child(6){height:24px}.wave span:nth-child(7){height:12px}
@@ -95,7 +95,7 @@ h2{font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;font-weight:700;letter-
 .checks b{color:var(--ink)}
 .stack{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 .stack span{background:#fff;border:1px solid var(--line);padding:11px 20px;border-radius:999px;font:600 .88rem Poppins,sans-serif;color:var(--ink)}
-.final{background:linear-gradient(135deg,#17306a,#2f6fbd);border-radius:24px;padding:64px 48px;text-align:center;color:#d6e4fa}
+.final{background:linear-gradient(135deg,#0F3D3E,#0B6E6E);border-radius:24px;padding:64px 48px;text-align:center;color:#d3ebe7}
 .final h2{color:#fff;margin:0 auto 14px}
 .final .btn{background:#fff;color:var(--navy);margin-top:30px}
 footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center}
@@ -113,7 +113,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="#"><i></i>DR.LISTNER</a>
+    <a class="logo" href="#" aria-label="Dr. Listener"><img src="logo/dr-listener-logo.svg" alt="Dr. Listener"></a>
     <div class="links">
       <a href="#problem">Problem</a><a href="#how">How It Works</a><a href="#gaps">Gap Types</a><a href="#who">Who It Helps</a>
     </div>
@@ -214,7 +214,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center
 </section>
 
 <footer>
-  <div class="wrap">Prototype using synthetic data only. Not a medical device. No HIPAA claim. · Dr.Listner · IEEE Hack for Humanity, Track 2</div>
+  <div class="wrap"><img src="logo/dr-listener-mark.svg" alt="" style="height:34px;display:block;margin:0 auto 14px">Prototype using synthetic data only. Not a medical device. No HIPAA claim. · Dr.Listner · IEEE Hack for Humanity, Track 2</div>
 </footer>
 
 <script>

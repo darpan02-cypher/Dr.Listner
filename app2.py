@@ -24,7 +24,7 @@ from src.schemas import PlanItem
 from src.stt_deepgram import LiveSTT, orb_html
 
 ROOT = Path(__file__).resolve().parent
-st.set_page_config(page_title="Dr.Listner", page_icon="🩺", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Dr.Listner", page_icon=str(ROOT / "landing" / "logo" / "favicon.ico"), layout="wide", initial_sidebar_state="collapsed")
 
 TYPE_LABEL = {
     "missed_question": "Not asked",
@@ -135,8 +135,9 @@ def start_visit() -> None:
     stt.reset_speakers()
 
 
-ss.setdefault("kind", "Scripted")
-ss.setdefault("mode", "DEMO")
+DEV = st.query_params.get("dev") == "1"  # ?dev=1 brings back the rehearsal and debug controls
+ss.setdefault("kind", os.environ.get("DRL_BACKEND", "Scripted"))  # Scripted | Engine
+ss.setdefault("mode", os.environ.get("DRL_MODE", "DEMO"))  # Engine only: DEMO (cache) | LIVE
 ss.setdefault("profile_id", next(iter(profiles)))
 ss.setdefault("input", "Typed")
 ss.setdefault("view", "Clinician")
@@ -311,7 +312,16 @@ def input_controls() -> None:
     be = ss.be
     if be.ended:
         return
-    mode = ss.input
+    mode = ss.input if DEV else "Typed"
+    if not DEV:
+        with st.expander("Type instead"):
+            speaker = st.radio("Speaking now", ["clinician", "patient", "caregiver"], horizontal=True, key="speaker")
+            with st.form("typed", clear_on_submit=True):
+                text = st.text_input("Type a line", key="typed_text")
+                if st.form_submit_button("Send line"):
+                    add_turn(speaker, text)
+                    refresh()
+        return
     speaker = st.radio("Speaking now (typed / browser mic)", ["clinician", "patient", "caregiver"], horizontal=True, key="speaker")
     if mode == "Typed":
         with st.form("typed", clear_on_submit=True):
@@ -336,7 +346,7 @@ def right_panel() -> None:
     be = ss.be
     on = not be.ended
     st.markdown('<div class="side-h">Visit control</div>', unsafe_allow_html=True)
-    if st.button("▶ Play next scripted line", key="play", disabled=be.ended, help="Rehearsal helper: sends the next prepared line"):
+    if DEV and st.button("▶ Play next scripted line", key="play", disabled=be.ended, help="Rehearsal helper: sends the next prepared line"):
         pos = ss.script_pos
         if pos < len(script["turns"]):
             s = script["turns"][pos]
@@ -351,59 +361,52 @@ def right_panel() -> None:
     if b.button("↺ New visit", key="new"):
         start_visit()
         st.rerun()
-    if ss.get("cfg") != (ss.kind, ss.profile_id, ss.mode):
-        st.caption("Settings changed. Press New visit to apply.")
-
-    st.markdown('<div class="side-h">Gap checks</div>', unsafe_allow_html=True)
-    keys = list(ss.det)
-    for row in (keys[:2], keys[2:]):
-        for c, k in zip(st.columns(2), row):
-            if c.button(k, key=f"det_{k}", type="primary" if ss.det[k] else "secondary"):
-                ss.det[k] = not ss.det[k]
-                refresh()
-
-    st.markdown('<div class="side-h">Input source</div>', unsafe_allow_html=True)
-    for c, lv in zip(st.columns(2), INPUTS):
-        if c.button(lv, key=f"lv_{lv}", type="primary" if ss.input == lv else "secondary"):
-            ss.input = lv
-            st.rerun()
-    if st.button("⇄ Swap doctor / patient", key="swap", help="Live capture: use if the labels came out backwards"):
+    if st.button("⇄ Swap doctor / patient", key="swap", help="Use if the speaker labels came out backwards"):
         stt.swapped = not stt.swapped
         stt.reset_speakers()
 
-    st.markdown('<div class="side-h">Backend</div>', unsafe_allow_html=True)
-    st.radio("Backend", ["Scripted", "Engine"], horizontal=True, key="kind", label_visibility="collapsed",
-             help="Scripted reacts only to the prepared script and needs no network. Engine runs the real agents.")
-    st.radio("LLM mode", ["DEMO", "LIVE"], horizontal=True, key="mode", disabled=ss.kind != "Engine",
-             help="Engine only. DEMO = cache only, no network. LIVE = Groq/Gemini/Ollama; slow on free tiers.")
-    st.markdown('<div class="side-h">Patient profile</div>', unsafe_allow_html=True)
+    st.markdown('<div class="side-h">Patient</div>', unsafe_allow_html=True)
     st.selectbox("Profile", list(profiles), key="profile_id", format_func=lambda k: profiles[k].label, label_visibility="collapsed")
     st.markdown('<div class="side-h">View</div>', unsafe_allow_html=True)
-    st.radio("View", ["Clinician", "Patient", "Evaluation"], horizontal=True, key="view", label_visibility="collapsed")
+    st.radio("View", ["Clinician", "Patient"] + (["Evaluation"] if DEV else []), horizontal=True, key="view", label_visibility="collapsed")
+    if ss.get("_view_seen", ss.view) != ss.view:  # the main panels live in another fragment, so redraw the whole page
+        ss._view_seen = ss.view
+        st.rerun()
+    ss._view_seen = ss.view
+
+    if DEV:
+        st.markdown('<div class="side-h">Dev: gap checks</div>', unsafe_allow_html=True)
+        keys = list(ss.det)
+        for row in (keys[:2], keys[2:]):
+            for c, k in zip(st.columns(2), row):
+                if c.button(k, key=f"det_{k}", type="primary" if ss.det[k] else "secondary"):
+                    ss.det[k] = not ss.det[k]
+                    st.rerun()
+        st.markdown('<div class="side-h">Dev: input source</div>', unsafe_allow_html=True)
+        for c, lv in zip(st.columns(2), INPUTS):
+            if c.button(lv, key=f"lv_{lv}", type="primary" if ss.input == lv else "secondary"):
+                ss.input = lv
+                st.rerun()
+        st.markdown('<div class="side-h">Dev: backend</div>', unsafe_allow_html=True)
+        st.radio("Backend", ["Scripted", "Engine"], horizontal=True, key="kind", label_visibility="collapsed",
+                 help="Scripted reacts only to the prepared script and needs no network. Engine runs the real agents.")
+        st.radio("LLM mode", ["DEMO", "LIVE"], horizontal=True, key="mode", disabled=ss.kind != "Engine",
+                 help="Engine only. DEMO = cache only, no network. LIVE = Groq/Gemini/Ollama; slow on free tiers.")
+        if ss.get("cfg") != (ss.kind, ss.profile_id, ss.mode):
+            st.caption("Settings changed. Press New visit to apply.")
 
 
 def console() -> None:
-    be0 = ss.be
-    live = not be0.ended
-    top_l, top_r = st.columns([9.8, 2.2], gap="medium")
-    with top_l:
-        st.markdown(f'<div style="color:var(--muted2);font-size:.9rem">Tap the orb to start live captions: the first voice heard is the doctor, '
-                    f'the second the patient; until two voices are heard, roles are judged from the wording. '
-                    f'Typed or browser-mic input stays available below as a fallback.</div>', unsafe_allow_html=True)
-    with top_r:
-        if live:
-            stt.start()
-            components.html(orb_html(bool(ss.get("dark"))), height=170)  # outside the fragment so it never remounts
-        else:
-            st.markdown('<div class="orb-wrap"><div class="orb off"></div><div class="orb-label off">VISIT ENDED</div></div>', unsafe_allow_html=True)
+    live = not ss.be.ended
+    main_col, side_col = st.columns([9.6, 2.6], gap="medium")
 
     @st.fragment(run_every=1 if live else None)
-    def body() -> None:
+    def main() -> None:
         be = ss.be
         if live and not be.ended:
             for role, text in stt.collect([(t.speaker, t.text) for t in be.turns]):
                 add_turn(role, text)
-        L, M, R = st.columns([4.2, 5.4, 2.6], gap="medium")
+        L, M = st.columns([4.2, 5.4], gap="medium")
         with L:
             left_panel()
         with M:
@@ -412,28 +415,40 @@ def console() -> None:
             elif ss.view == "Evaluation":
                 evaluation_view()
             else:
-                phase = "Ended" if be.ended else ("In visit" if be.turns else "Not started")
-                capture = f"{stt.status} · {len(stt.speaker_role)} voice(s)" if stt.status != "idle" else "idle"
-                st.markdown(panel("Visit Status",
-                    f'<div class="kv"><b>Backend</b><span>{ss.cfg[0]}{" · " + ss.cfg[2] if ss.cfg[0] == "Engine" else ""}</span></div>'
-                    f'<div class="kv"><b>Live capture</b><span>{capture}</span></div>'
-                    f'<div class="kv"><b>Profile</b><span>{html.escape(profiles[ss.cfg[1]].label)}</span></div>'
-                    f'<div class="kv"><b>Turns</b><span>{len(be.turns)}</span></div>'
-                    f'<div class="kv"><b>Phase</b><span>{phase}</span></div>'
-                    + (f'<div class="kv"><b>Engine notes</b><span>{html.escape("; ".join(be.errors))}</span></div>' if be.errors else "")),
-                    unsafe_allow_html=True)
+                if DEV:
+                    phase = "Ended" if be.ended else ("In visit" if be.turns else "Not started")
+                    capture = f"{stt.status} · {len(stt.speaker_role)} voice(s)" if stt.status != "idle" else "idle"
+                    st.markdown(panel("Visit Status (dev)",
+                        f'<div class="kv"><b>Backend</b><span>{ss.cfg[0]}{" · " + ss.cfg[2] if ss.cfg[0] == "Engine" else ""}</span></div>'
+                        f'<div class="kv"><b>Live capture</b><span>{capture}</span></div>'
+                        f'<div class="kv"><b>Turns</b><span>{len(be.turns)}</span></div>'
+                        f'<div class="kv"><b>Phase</b><span>{phase}</span></div>'
+                        + (f'<div class="kv"><b>Engine notes</b><span>{html.escape("; ".join(be.errors))}</span></div>' if be.errors else "")),
+                        unsafe_allow_html=True)
                 if stt.error:
                     st.error(stt.error)
                 transcript_panel(live)
                 input_controls()
                 flags_panel()
-        with R:
-            right_panel()
         st.caption("Synthetic data only. Documentation check, not a diagnosis. Not a medical device.")
 
-    body()
+    @st.fragment(run_every=1 if live else None)
+    def side() -> None:
+        right_panel()
+
+    with side_col:
+        if live:
+            stt.start()
+            components.html(orb_html(bool(ss.get("dark"))), height=170)  # outside the fragments so it never remounts
+            st.caption("Tap the orb to start live captions. First voice heard is the doctor, the second the patient.")
+        else:
+            st.markdown('<div class="orb-wrap"><div class="orb off"></div><div class="orb-label off">VISIT ENDED</div></div>', unsafe_allow_html=True)
+        side()
+    with main_col:
+        main()
 
 
-_, _tog = st.columns([9, 1])
+_logo, _tog = st.columns([9, 1], vertical_alignment="center")
+_logo.image(str(ROOT / "landing" / "logo" / ("dr-listener-logo-dark.svg" if ss.get("dark") else "dr-listener-logo.svg")), width=190)
 _tog.toggle("🌙 Dark", key="dark")
 console()

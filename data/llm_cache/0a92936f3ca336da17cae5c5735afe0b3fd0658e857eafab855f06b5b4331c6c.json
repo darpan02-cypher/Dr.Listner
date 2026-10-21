@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s question \\\"Will I have to stay in the hospital?\\\" is directly answered by the clinician in turn 15, so there is no unrepaired non\u2011understanding or lack of teach\u2011back.\"}"}

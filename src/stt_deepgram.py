@@ -264,10 +264,10 @@ ORB_HTML = """
   #orb{width:110px;height:110px;border-radius:50%;margin:10px auto 6px;cursor:pointer;border:none;display:block;
        background:radial-gradient(circle at 35% 30%,#fff,#d9dde6 55%,#aab1c2);transition:transform .15s}
   #orb:hover{transform:scale(1.04)}
-  #orb.on{background:radial-gradient(circle at 35% 30%,#fff,#bcd3ff 45%,#5b8cff);box-shadow:0 0 30px rgba(91,140,255,.5);animation:pulse 2.2s ease-in-out infinite}
-  @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 22px rgba(91,140,255,.4)}50%{transform:scale(1.07);box-shadow:0 0 44px rgba(91,140,255,.75)}}
+  #orb.on{background:radial-gradient(circle at 35% 30%,#fff,#bfe6dc 45%,#0B6E6E);box-shadow:0 0 30px rgba(11,110,110,.5);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 22px rgba(11,110,110,.4)}50%{transform:scale(1.07);box-shadow:0 0 44px rgba(11,110,110,.75)}}
   #l{letter-spacing:.14em;font-weight:700;font-size:12px;color:__MUTED__}
-  #l.on{color:#3b6df0}
+  #l.on{color:#0B6E6E}
   #s{font-size:11px;color:__MUTED__;margin-top:3px;min-height:14px}
 </style>
 <button id="orb" aria-label="Start or stop live capture"></button>

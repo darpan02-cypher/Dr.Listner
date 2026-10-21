@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":25,\"quote\":\"My brother had bypass surgery.\",\"cue\":\"off_topic\",\"preceding_question\":\"Has a parent or sibling had a heart attack?\",\"reply_answers_question\":false}]}"}

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted turn (\\\"My brother had bypass surgery.\\\") is a relevant answer, not a sign of non\u2011understanding, and the earlier repeat request was repaired by the clinician, so no comprehension breakdown is demonstrated.\"}"}

@@ -1,0 +1,18 @@
+[
+  {
+    "flag_id": "eval-test-02-q-relieving",
+    "visit_id": "eval-test-02",
+    "type": "missed_question",
+    "evidence": [
+      {
+        "source": "checklist",
+        "ref": "relieving",
+        "quote": null
+      }
+    ],
+    "rationale": "The visit does not appear to cover: Relieving factors.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 32
+  }
+]

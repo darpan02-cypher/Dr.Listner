@@ -15,6 +15,7 @@ import streamlit.components.v1 as components
 
 from demo.backend import EngineBackend, ScriptedBackend, load_chart, load_flag_plan, load_script
 from src import config
+from src.stt_deepgram import LiveSTT, mic_html
 from src.pack import load_checklist, load_profiles
 from src.schemas import PlanItem
 
@@ -28,6 +29,11 @@ TYPE_LABEL = {
 TYPE_ICON = {"missed_question": "❓", "unanswered_concern": "💬", "chart_contradiction": "📋", "comprehension_breakdown": "👂"}
 
 st.set_page_config(page_title="Dr.Listner", page_icon="🩺", layout="wide")
+
+
+@st.cache_resource
+def _stt() -> LiveSTT:
+    return LiveSTT()
 
 
 @st.cache_resource
@@ -48,6 +54,7 @@ def new_backend(kind: str, profile_id: str, mode: str):
 
 # ---------- sidebar ----------
 checklist, profiles, chart, script = _static()
+stt = _stt()
 with st.sidebar:
     st.title("🩺 Dr.Listner")
     kind = st.radio("Backend", ["Scripted (hardcoded demo)", "Engine (real agents)"], help="Scripted reacts only to the prepared script and needs no network.")
@@ -62,6 +69,7 @@ with st.sidebar:
         st.session_state.cfg = (kind, profile_id, mode)
         st.session_state.script_pos = 0
         st.session_state.last_mic = None
+        stt.reset_speakers()
     if st.session_state.get("cfg") != (kind, profile_id, mode):
         st.info("Settings changed. Press Start new visit to apply.")
     be = st.session_state.be
@@ -78,9 +86,10 @@ st.markdown(
     f"""<style>
     .big {{ font-size: {font}px; line-height: 1.5; }}
     .turn {{ padding: 8px 12px; border-radius: 10px; margin: 6px 0; }}
-    .clinician {{ background: rgba(60,130,246,.12); }}
-    .patient {{ background: rgba(34,160,90,.14); }}
-    .caregiver {{ background: rgba(200,140,30,.14); }}
+    .clinician {{ background: rgba(60,130,246,.12); margin-right: 22%; }}
+    .patient {{ background: rgba(34,160,90,.14); margin-left: 22%; text-align: right; }}
+    .caregiver {{ background: rgba(200,140,30,.14); margin-left: 22%; text-align: right; }}
+    .partial {{ opacity: .55; font-style: italic; }}
     .hit {{ outline: 2px solid #d9534f; }}
     {'.stApp{background:#000;color:#fff} .big{color:#fff}' if contrast else ''}
     </style>""",
@@ -110,21 +119,51 @@ with tab_live:
     left, mid, right = st.columns([5, 3, 3])
     with left:
         st.subheader("Conversation")
-        marks = flagged_turns()
-        if not be.turns:
-            st.caption("Waiting for the first line. Speak or type below.")
-        live_types = {"chart_contradiction", "comprehension_breakdown"}
-        for t in be.turns:
-            badge = "".join(marks.get(t.idx, []))
-            cls = "hit" if t.idx in marks else ""
-            st.markdown(
-                f'<div class="turn {t.speaker} {cls} big"><b>{t.speaker.title()}</b> '
-                f'<small>#{t.idx}</small> {badge}<br>{html.escape(t.text)}</div>',
-                unsafe_allow_html=True,
-            )
+        live_on = st.session_state.get("input_mode") == "Live mic (Deepgram)"
+
+        @st.fragment(run_every=1 if live_on else None)
+        def conversation():
+            if live_on:
+                got = False
+                while not stt.finals.empty():
+                    role, text = stt.finals.get()
+                    add_turn(role, text)
+                    got = True
+                if got:
+                    st.rerun()  # full rerun so flags and checklist react to the new turns
+            marks = flagged_turns()
+            if not be.turns and not (live_on and stt.partial):
+                st.caption("Waiting for the first line. Speak or type below.")
+            for t in be.turns:
+                badge = "".join(marks.get(t.idx, []))
+                cls = "hit" if t.idx in marks else ""
+                st.markdown(
+                    f'<div class="turn {t.speaker} {cls} big"><b>{t.speaker.title()}</b> '
+                    f'<small>#{t.idx}</small> {badge}<br>{html.escape(t.text)}</div>',
+                    unsafe_allow_html=True,
+                )
+            if live_on and stt.partial:
+                role, text = stt.partial
+                st.markdown(
+                    f'<div class="turn {role} partial big"><b>{role.title()}</b> …<br>{html.escape(text)}</div>',
+                    unsafe_allow_html=True,
+                )
+
+        conversation()
         if be.off_script and isinstance(be, ScriptedBackend):
             st.caption(f"{len(be.off_script)} line(s) did not match the script, so no flags can react to them.")
         if not be.ended:
+            input_mode = st.radio("Input", ["Type / browser mic", "Live mic (Deepgram)"], horizontal=True, key="input_mode")
+            if input_mode == "Live mic (Deepgram)":
+                stt.start()
+                components.html(mic_html(), height=60)
+                k1, k2 = st.columns([1, 3])
+                if k1.button("⇄ Swap roles", help="Use if the doctor and patient labels came out backwards"):
+                    stt.swapped = not stt.swapped
+                    stt.reset_speakers()
+                k2.caption(f"Status: {stt.status}. First voice heard = clinician, second = patient.")
+                if stt.error:
+                    st.error(stt.error)
             speaker = st.radio("Speaking now", ["clinician", "patient"], horizontal=True, key="speaker")
             c1, c2 = st.columns([4, 1])
             with c1, st.form("typed", clear_on_submit=True):

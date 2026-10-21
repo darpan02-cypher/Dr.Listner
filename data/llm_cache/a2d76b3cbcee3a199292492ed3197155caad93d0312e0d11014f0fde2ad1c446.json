@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":21,\"quote\":\"I have an irregular heartbeat. I have never smoked.\",\"cue\":\"off_topic\",\"preceding_question\":\"Tell me about your health conditions, like smoking, blood pressure, sugar and cholesterol.\",\"reply_answers_question\":false}]}"}

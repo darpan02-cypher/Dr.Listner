@@ -1,6 +1,7 @@
 # Hosted app (Streamlit Community Cloud). No torch / sentence-transformers here.
 streamlit
 streamlit-mic-recorder
+websockets>=13
 pydantic>=2.6
 requests
 presidio-analyzer

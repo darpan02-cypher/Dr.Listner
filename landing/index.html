@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr.Listner — Catching what the visit missed</title>
+<meta name="description" content="AI scribes record what was said. Dr.Listner flags what was never asked or understood, and gives the patient a plain-language plan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7fb; --card:#fff; --ink:#0f1730; --body:#4a5472; --muted:#8089a6;
+  --line:#e4e8f1; --navy:#1d3b78; --blue:#2f6fbd; --blue-soft:#e8f0fb;
+  --amber:#e9a24a; --amber-soft:#fdf1df; --red:#c0392b; --red-soft:#fdeceb;
+  --shadow:0 20px 50px -20px rgba(20,40,90,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.logo{font-family:Poppins,sans-serif;color:var(--ink)}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(246,247,251,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.18em;font-size:1rem}
+.logo i{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff 0,#9cc4f0 30%,var(--blue) 75%);box-shadow:0 4px 12px rgba(47,111,189,.4)}
+.links{display:flex;gap:36px;font-weight:500;font-size:.95rem;color:var(--ink)}
+.links a:hover{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 .95rem Poppins,sans-serif;padding:13px 24px;border-radius:10px;transition:.2s}
+.btn.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px -8px rgba(47,111,189,.7)}
+.btn.primary:hover{background:var(--navy);transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:var(--blue);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--blue)}
+.btn.sm{padding:10px 20px}
+
+/* hero */
+.hero{padding:84px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:640px;height:640px;left:-200px;top:-160px;background:radial-gradient(circle,rgba(47,111,189,.12),transparent 65%);z-index:-1}
+.hero::after{content:"";position:absolute;width:520px;height:520px;right:-120px;bottom:-200px;background:radial-gradient(circle,rgba(233,162,74,.18),transparent 65%);z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border:1px solid #cddcf2;background:var(--blue-soft);border-radius:999px;font:600 .75rem Poppins,sans-serif;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
+h1{font-size:clamp(2.6rem,5.4vw,4.4rem);line-height:1.08;font-weight:800;letter-spacing:-.03em;margin:28px 0 24px}
+h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:1.2rem;max-width:560px}
+.lead b{color:var(--ink)}
+.cta{display:flex;gap:14px;margin:36px 0 34px;flex-wrap:wrap}
+.quote{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.95rem}
+.wave{display:flex;gap:3px;align-items:center;height:28px}
+.wave span{width:3px;border-radius:2px;background:#6cb6e0;animation:w 1.2s ease-in-out infinite}
+.wave span:nth-child(odd){animation-delay:.2s}.wave span:nth-child(3n){animation-delay:.5s}
+@keyframes w{50%{transform:scaleY(.35)}}
+.wave span:nth-child(1){height:10px}.wave span:nth-child(2){height:22px}.wave span:nth-child(3){height:14px}.wave span:nth-child(4){height:28px}.wave span:nth-child(5){height:18px}.wave span:nth-child(6){height:24px}.wave span:nth-child(7){height:12px}
+.shot{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.shot img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%}
+.shot .tag{position:absolute;left:20px;bottom:20px;background:rgba(15,23,48,.78);backdrop-filter:blur(6px);color:#fff;padding:10px 16px;border-radius:10px;font:600 .75rem Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.bubble{position:absolute;right:18px;top:22px;max-width:230px;background:#fff;border-radius:14px 14px 4px 14px;padding:12px 16px;font-size:.9rem;color:var(--ink);box-shadow:0 10px 30px -10px rgba(0,0,0,.4)}
+.bubble small{display:block;font:600 .65rem Poppins,sans-serif;letter-spacing:.1em;color:var(--amber);margin-bottom:2px}
+.flag{position:absolute;right:18px;bottom:76px;background:var(--red-soft);border:1px solid #f3c3be;color:var(--red);padding:9px 14px;border-radius:10px;font:600 .8rem Poppins,sans-serif;box-shadow:0 10px 24px -12px rgba(192,57,43,.6)}
+.caption{text-align:right;color:var(--muted);font-size:.78rem;margin-top:10px}
+
+/* sections */
+section{padding:92px 0}
+.eyebrow{font:600 .78rem Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+h2{font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;font-weight:700;letter-spacing:-.02em;max-width:720px}
+.sub{margin-top:16px;max-width:640px;font-size:1.08rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+.stat b{display:block;font:800 2.6rem Poppins,sans-serif;color:var(--navy);letter-spacing:-.03em;line-height:1}
+.stat p{margin-top:12px;font-size:.93rem}
+.stat small{display:block;margin-top:10px;color:var(--muted);font-size:.74rem}
+.white{background:#fff;border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;counter-reset:s}
+.step{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:32px 28px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font:800 .85rem Poppins,sans-serif;color:var(--blue);background:var(--blue-soft);border-radius:8px;padding:5px 10px;display:inline-block;margin-bottom:20px}
+.step h3{font-size:1.3rem;margin-bottom:10px}
+.gaps{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:48px}
+.gap{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;transition:.2s}
+.gap:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.gap .ic{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;background:var(--blue-soft)}
+.gap:nth-child(2) .ic{background:var(--amber-soft)}.gap:nth-child(3) .ic{background:var(--red-soft)}.gap:nth-child(4) .ic{background:#e7f6ee}
+.gap h3{font-size:1.1rem;margin-bottom:6px}
+.gap p{font-size:.95rem}
+.gap .ex{margin-top:12px;font-size:.85rem;color:var(--muted);border-left:3px solid var(--line);padding-left:12px;font-style:italic}
+
+/* who */
+.who .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.who .shot img{aspect-ratio:1/1;object-position:30% 40%}
+.checks{list-style:none;margin-top:28px;display:grid;gap:14px}
+.checks li{display:flex;gap:14px;align-items:flex-start}
+.checks li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:.8rem;display:grid;place-items:center;margin-top:2px}
+.checks b{color:var(--ink)}
+.stack{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.stack span{background:#fff;border:1px solid var(--line);padding:11px 20px;border-radius:999px;font:600 .88rem Poppins,sans-serif;color:var(--ink)}
+.final{background:linear-gradient(135deg,#17306a,#2f6fbd);border-radius:24px;padding:64px 48px;text-align:center;color:#d6e4fa}
+.final h2{color:#fff;margin:0 auto 14px}
+.final .btn{background:#fff;color:var(--navy);margin-top:30px}
+footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center}
+
+@media(max-width:900px){
+  .links{display:none}
+  .hero .wrap,.who .wrap{grid-template-columns:1fr;gap:40px}
+  .stats{grid-template-columns:1fr 1fr}.steps,.gaps{grid-template-columns:1fr}
+  .hero{padding-top:48px}section{padding:64px 0}.final{padding:44px 24px}
+}
+@media(max-width:520px){.stats{grid-template-columns:1fr}.bubble{max-width:170px}.nav-cta{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><i></i>DR.LISTNER</a>
+    <div class="links">
+      <a href="#problem">Problem</a><a href="#how">How It Works</a><a href="#gaps">Gap Types</a><a href="#who">Who It Helps</a>
+    </div>
+    <a class="btn primary sm nav-cta" href="#" data-console>▷ Launch Console</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge">IEEE Hack for Humanity · AI for Accessibility</span>
+      <h1>Catching what the <em>visit missed.</em></h1>
+      <p class="lead">AI scribes record what was said. Dr.Listner <b>flags what was never asked, answered or understood</b> — and hands the patient a plain-language plan they can actually follow.</p>
+      <div class="cta">
+        <a class="btn primary" href="#" data-console>▷ Launch Console</a>
+        <a class="btn ghost" href="#how">See How It Works →</a>
+      </div>
+      <div class="quote"><div class="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>“Sorry, what did you say?”</div>
+    </div>
+    <div>
+      <div class="shot">
+        <img src="img/visit.webp" alt="An older patient cupping her ear while a doctor speaks to her across a desk">
+        <div class="bubble"><small>PATIENT · TURN 15</small>Sorry, what did you say?</div>
+        <div class="flag">⚑ Comprehension not repaired</div>
+        <div class="tag">Outpatient chest-pain visit</div>
+      </div>
+      <p class="caption">Illustration · synthetic scenario</p>
+    </div>
+  </div>
+</header>
+
+<section id="problem" class="white">
+  <div class="wrap">
+    <div class="eyebrow">The problem</div>
+    <h2>The patients least able to catch a gap are the most exposed to it.</h2>
+    <p class="sub">Ambient scribes document the conversation. Nobody checks the conversation itself — and nobody writes for the patient.</p>
+    <div class="stats">
+      <div class="stat"><b>1 in 20</b><p>US adults is misdiagnosed in outpatient care each year.</p><small>National Academies, 2015</small></div>
+      <div class="stat"><b>55%</b><p>of adults 75+ live with disabling hearing loss.</p><small>NIDCD, NIH</small></div>
+      <div class="stat"><b>12%</b><p>of US adults have proficient health literacy.</p><small>NCES, 2003 survey</small></div>
+      <div class="stat"><b>40–80%</b><p>of medical information is forgotten immediately.</p><small>Kessels, JRSM, 2003</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Quiet during the visit. Clear at the end.</h2>
+    <div class="steps">
+      <div class="step"><h3>Listen</h3><p>Live captions from the microphone with doctor and patient labels. Only chart and comprehension badges appear mid-visit — no pop-ups, no alert fatigue.</p></div>
+      <div class="step"><h3>Check</h3><p>Chart, concern, checklist and comprehension agents read each turn against a published guideline. A verifier drops any flag without real evidence.</p></div>
+      <div class="step"><h3>Hand off</h3><p>One end-of-visit gaps list for the clinician, and a plain-language plan with read-aloud for the patient.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gaps" class="white">
+  <div class="wrap">
+    <div class="eyebrow">Four gap types</div>
+    <h2>Every flag cites the line that triggered it.</h2>
+    <div class="gaps">
+      <div class="gap"><div class="ic">❓</div><div><h3>Red-flag question not asked</h3><p>Checklist items — onset, radiation, sweating, family history — with no matching question.</p><div class="ex">Never asked whether the pain spreads to the arm or jaw.</div></div></div>
+      <div class="gap"><div class="ic">💬</div><div><h3>Concern left unanswered</h3><p>A worry the patient voiced that the clinician never addressed.</p><div class="ex">“Is this my heart?” → next question, no answer.</div></div></div>
+      <div class="gap"><div class="ic">📋</div><div><h3>Contradicts the chart</h3><p>What the patient says conflicts with the record.</p><div class="ex">“No heart problems” — chart lists a prior stent.</div></div></div>
+      <div class="gap"><div class="ic">👂</div><div><h3>Comprehension not repaired</h3><p>The patient did not hear or understand, and no repeat, rephrase or teach-back followed.</p><div class="ex">Patient answers “Okay.” to the plan, unchecked.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="who" class="who">
+  <div class="wrap">
+    <div>
+      <div class="shot"><img src="img/Gemini_Generated_Image_wsvblbwsvblbwsvb.jpeg" alt="Patient and doctor in conversation"></div>
+    </div>
+    <div>
+      <div class="eyebrow">Who it helps most</div>
+      <h2>Built for the person across the desk.</h2>
+      <ul class="checks">
+        <li><span><b>Hearing loss.</b> Captions and read-aloud summaries mean nothing depends on catching every word.</span></li>
+        <li><span><b>Low health literacy.</b> The patient plan is written at or below a 6th-grade reading level.</span></li>
+        <li><span><b>Cognitive impairment.</b> A clear list of next steps and questions to ask next time.</span></li>
+        <li><span><b>Caregivers.</b> Designed for visits with an optional caregiver in the room.</span></li>
+      </ul>
+      <div class="stack"><span>Multi-agent LLM</span><span>Deepgram diarization</span><span>FHIR-style chart</span><span>Presidio de-id</span><span>Streamlit</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <h2>See the gaps your scribe can’t.</h2>
+      <p>Run the scripted chest-pain visit, or speak live with doctor and patient labels.</p>
+      <a class="btn" href="#" data-console>▷ Launch Console</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Prototype using synthetic data only. Not a medical device. No HIPAA claim. · Dr.Listner · IEEE Hack for Humanity, Track 2</div>
+</footer>
+
+<script>
+  // Point this at the running Streamlit console (e.g. streamlit run app2.py).
+  const CONSOLE_URL = "http://localhost:8501";
+  document.querySelectorAll("[data-console]").forEach(a => a.href = CONSOLE_URL);
+</script>
+</body>
+</html>

@@ -256,3 +256,58 @@ b.onclick = () => on ? stop() : start();
 
 def mic_html() -> str:
     return MIC_HTML.replace("__PORT__", str(PORT))
+
+
+ORB_HTML = """
+<style>
+  body{margin:0;font-family:system-ui;text-align:center;background:transparent;color:__INK__}
+  #orb{width:110px;height:110px;border-radius:50%;margin:10px auto 6px;cursor:pointer;border:none;display:block;
+       background:radial-gradient(circle at 35% 30%,#fff,#d9dde6 55%,#aab1c2);transition:transform .15s}
+  #orb:hover{transform:scale(1.04)}
+  #orb.on{background:radial-gradient(circle at 35% 30%,#fff,#bcd3ff 45%,#5b8cff);box-shadow:0 0 30px rgba(91,140,255,.5);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 22px rgba(91,140,255,.4)}50%{transform:scale(1.07);box-shadow:0 0 44px rgba(91,140,255,.75)}}
+  #l{letter-spacing:.14em;font-weight:700;font-size:12px;color:__MUTED__}
+  #l.on{color:#3b6df0}
+  #s{font-size:11px;color:__MUTED__;margin-top:3px;min-height:14px}
+</style>
+<button id="orb" aria-label="Start or stop live capture"></button>
+<div id="l">TAP TO START LIVE CAPTURE</div><div id="s"></div>
+<script>
+const PORT = __PORT__;
+let ws, ctx, proc, stream, on = false;
+const o = document.getElementById('orb'), l = document.getElementById('l'), s = document.getElementById('s');
+function down(buf, inRate) {
+  const r = inRate / 16000, n = Math.floor(buf.length / r), out = new Int16Array(n);
+  for (let i = 0; i < n; i++) { const v = Math.max(-1, Math.min(1, buf[Math.floor(i * r)])); out[i] = v < 0 ? v * 0x8000 : v * 0x7fff; }
+  return out.buffer;
+}
+function ui(active, msg) { on = active; o.classList.toggle('on', active); l.classList.toggle('on', active);
+  l.textContent = active ? 'LISTENING · TAP TO STOP' : 'TAP TO START LIVE CAPTURE'; s.textContent = msg || ''; }
+async function start() {
+  try { stream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: true, noiseSuppression: true}}); }
+  catch (e) { ui(false, 'Mic blocked: ' + e.message); return; }
+  ws = new WebSocket('ws://127.0.0.1:' + PORT);
+  ws.binaryType = 'arraybuffer';
+  ws.onerror = () => { stop('Cannot reach the local STT server'); };
+  ws.onclose = () => { if (on) stop(); };
+  ws.onopen = () => {
+    ctx = new AudioContext(); ctx.resume();
+    const src = ctx.createMediaStreamSource(stream);
+    proc = ctx.createScriptProcessor(4096, 1, 1);
+    proc.onaudioprocess = e => { if (ws.readyState === 1) ws.send(down(e.inputBuffer.getChannelData(0), ctx.sampleRate)); };
+    src.connect(proc); proc.connect(ctx.destination);
+    ui(true);
+  };
+}
+function stop(msg) {
+  try { proc && proc.disconnect(); ctx && ctx.close(); stream && stream.getTracks().forEach(t => t.stop()); ws && ws.close(); } catch (e) {}
+  ui(false, msg);
+}
+o.onclick = () => on ? stop() : start();
+</script>
+"""
+
+
+def orb_html(dark: bool = False) -> str:
+    ink, muted = ("#e6ebf7", "#7f8aa8") if dark else ("#1f2a44", "#8d96ad")
+    return ORB_HTML.replace("__PORT__", str(PORT)).replace("__INK__", ink).replace("__MUTED__", muted)

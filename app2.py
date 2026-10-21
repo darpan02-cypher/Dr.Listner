@@ -1,4 +1,4 @@
-"""Dr.Listner dashboard (landing page + live console), wired to the real backends.
+"""Dr.Listner live console (landing page is landing/index.html), wired to the real backends.
 
 Synthetic data only; not a medical device. Run: streamlit run app2.py
 Backends: Scripted (hardcoded, safe on stage) or Engine (real agents on the LLM cache or live providers).
@@ -21,7 +21,7 @@ from demo.backend import EngineBackend, ScriptedBackend, load_chart, load_flag_p
 from src import config
 from src.pack import load_checklist, load_profiles
 from src.schemas import PlanItem
-from src.stt_deepgram import LiveSTT, mic_html
+from src.stt_deepgram import LiveSTT, orb_html
 
 ROOT = Path(__file__).resolve().parent
 st.set_page_config(page_title="Dr.Listner", page_icon="🩺", layout="wide", initial_sidebar_state="collapsed")
@@ -40,50 +40,62 @@ GAP_CHECKS = {"Red-flag Qs": "missed_question", "Concerns": "unanswered_concern"
 LIVE_TYPES = {"chart_contradiction", "comprehension_breakdown"}  # the only types shown during the visit
 SPEAKER_CLS = {"clinician": "doc", "patient": "pat", "caregiver": "care"}
 SPEAKER_NAME = {"clinician": "DOCTOR", "patient": "PATIENT", "caregiver": "CAREGIVER"}
-INPUTS = ["Typed", "Browser mic", "Live mic"]
-MUTED = "color:#8d96ad"
+INPUTS = ["Typed", "Browser mic"]  # fallbacks; the orb is the live (Deepgram) capture
+MUTED = "color:var(--muted)"
 
 # ------------------------------------------------------------------- styling
+THEMES = {
+    "light": "--bg:#eef1f6;--card:#fff;--ink:#1f2a44;--ink2:#2c3a5e;--muted:#8d96ad;--muted2:#6a78a0;--line:#dfe4ee;--line2:#f0f2f8;--tile:#f5f7fc;--chip:#e9edf9;--accent2:#2f4590;--ts:#5b72c4;--hit:#fff4f2;--warnbg:#fdeaea;--warntx:#a93226;--pribg:#e6f6ff;--pribd:#8fd3f4;--pritx:#1479a8;--banbg:#fff6dd;--banbd:#f0d98a;--bantx:#7a5d00;",
+    "dark": "--bg:#0f1524;--card:#182036;--ink:#e6ebf7;--ink2:#c3cce4;--muted:#7f8aa8;--muted2:#98a3c0;--line:#2a3554;--line2:#222c47;--tile:#1f2944;--chip:#26335a;--accent2:#9db4ff;--ts:#8fa6ff;--hit:#3a1f26;--warnbg:#3d1f24;--warntx:#ff9a8f;--pribg:#12344a;--pribd:#2a7fa8;--pritx:#7fd0f5;--banbg:#3a3114;--banbd:#6b5a1f;--bantx:#f1d27a;",
+}
+theme = "dark" if st.session_state.get("dark") else "light"
+st.markdown("<style>:root{" + THEMES[theme] + "}</style>", unsafe_allow_html=True)
 st.markdown("""
 <style>
 #MainMenu, header, footer {visibility:hidden;}
-.stApp {background:#eef1f6;}
+.stApp {background:var(--bg); color:var(--ink);}
+.stApp h1,.stApp h2,.stApp h3,.stApp label,.stApp p,.stApp li,[data-testid="stCaptionContainer"],div[role="radiogroup"] label p {color:var(--ink);}
+.hero h1,.hero p {color:#fff;} .hero p {color:#d8e0ff;}
+[data-baseweb="select"] > div,[data-baseweb="input"] > div,[data-baseweb="base-input"] {background:var(--card) !important; color:var(--ink) !important;}
+[data-baseweb="select"] *,[data-baseweb="input"] input {color:var(--ink) !important;}
+[data-testid="stForm"] {border-color:var(--line);}
 .block-container {padding-top:1rem; max-width:1700px;}
-.panel {background:#fff; border:1px solid #dfe4ee; border-radius:6px; margin-bottom:14px; overflow:hidden;}
+.panel {background:var(--card); border:1px solid var(--line); border-radius:6px; margin-bottom:14px; overflow:hidden;}
 .panel-h {padding:14px 20px; font-size:.78rem; font-weight:700; letter-spacing:.12em;
-          color:#1f2a44; border-bottom:1px solid #e8ecf4; text-transform:uppercase;}
-.panel-b {padding:14px 20px; font-size:.92rem; color:#2c3a5e;}
-.row {display:flex; gap:12px; padding:9px 20px; border-bottom:1px solid #f0f2f8; align-items:flex-start; font-size:.9rem;}
+          color:var(--ink); border-bottom:1px solid var(--line2); text-transform:uppercase;}
+.panel-b {padding:14px 20px; font-size:.92rem; color:var(--ink2);}
+.row {display:flex; gap:12px; padding:9px 20px; border-bottom:1px solid var(--line2); align-items:flex-start; font-size:.9rem;}
 .row.partial {opacity:.55; font-style:italic;}
-.ts {color:#5b72c4; font-size:.78rem; min-width:34px; padding-top:2px;}
+.ts {color:var(--ts); font-size:.78rem; min-width:34px; padding-top:2px;}
 .badge {font-size:.64rem; font-weight:700; color:#fff; padding:3px 8px; border-radius:3px; letter-spacing:.05em; min-width:72px; text-align:center;}
 .doc{background:#2f6b57;} .pat{background:#5b3fd1;} .care{background:#b9702a;}
 .flag-chart{background:#c0392b;} .flag-comp{background:#d68910;} .flag-gap{background:#2e4a9e;} .flag-conc{background:#8e44ad;}
-.txt {flex:1; color:#1f2a44;}
-.kv {display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #edf0f7;}
-.kv b {font-size:.72rem; letter-spacing:.1em; color:#2f4590; text-transform:uppercase;}
-.tile {display:inline-block; width:48%; background:#f5f7fc; border-radius:6px; padding:10px 12px; margin:0 1% 8px 0;}
-.tile small{display:block; color:#6a78a0; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;}
-.tile span{font-size:1.15rem; font-weight:600; color:#1f2a44;}
-.chip {display:inline-block; background:#e9edf9; color:#2f4590; border-radius:12px; padding:2px 10px; font-size:.75rem; margin:2px 4px 2px 0;}
-.chip.warn{background:#fdeaea; color:#a93226;}
-.tick{padding:3px 0; font-size:.88rem;} .ok{color:#2f6b57;} .miss{color:#9aa4bf;} .miss-final{color:#c0392b; font-weight:600;}
-.banner{background:#fff6dd; border:1px solid #f0d98a; color:#7a5d00; padding:6px 14px; border-radius:6px; font-size:.78rem; margin-bottom:10px;}
+.txt {flex:1; color:var(--ink);}
+.kv {display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--line2);}
+.kv b {font-size:.72rem; letter-spacing:.1em; color:var(--accent2); text-transform:uppercase;}
+.tile {display:inline-block; width:48%; background:var(--tile); border-radius:6px; padding:10px 12px; margin:0 1% 8px 0;}
+.tile small{display:block; color:var(--muted2); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;}
+.tile span{font-size:1.15rem; font-weight:600; color:var(--ink);}
+.chip {display:inline-block; background:var(--chip); color:var(--accent2); border-radius:12px; padding:2px 10px; font-size:.75rem; margin:2px 4px 2px 0;}
+.chip.warn{background:var(--warnbg); color:var(--warntx);}
+.tick{padding:3px 0; font-size:.88rem;} .ok{color:#2f6b57;} .miss{color:var(--muted);} .miss-final{color:#c0392b; font-weight:600;}
+.banner{background:var(--banbg); border:1px solid var(--banbd); color:var(--bantx); padding:6px 14px; border-radius:6px; font-size:.78rem; margin-bottom:10px;}
 .orb-wrap{text-align:center; padding:14px 0 6px;}
 .orb{width:120px; height:120px; border-radius:50%; margin:0 auto;
      background:radial-gradient(circle at 35% 30%, #fff, #bcd3ff 45%, #5b8cff);
      box-shadow:0 0 30px rgba(91,140,255,.5); animation:pulse 2.2s ease-in-out infinite;}
 .orb.off{background:radial-gradient(circle at 35% 30%, #fff, #d9dde6 55%, #aab1c2); box-shadow:none; animation:none;}
 @keyframes pulse{0%,100%{transform:scale(1); box-shadow:0 0 22px rgba(91,140,255,.4);}50%{transform:scale(1.07); box-shadow:0 0 44px rgba(91,140,255,.75);}}
-.orb-label{margin-top:10px; letter-spacing:.15em; font-weight:700; color:#3b6df0;} .orb-label.off{color:#8d96ad;}
-.side-h{font-size:.72rem; font-weight:700; letter-spacing:.14em; color:#1f2a44; margin:14px 0 6px; text-transform:uppercase;}
-div[data-testid="stButton"] button {width:100%; border-radius:6px; border:1px solid #dfe4ee; background:#fff; color:#1f2a44; font-size:.85rem; min-height:48px;}
-div[data-testid="stButton"] button[kind="primary"] {background:#e6f6ff; border-color:#8fd3f4; color:#1479a8;}
-.hero{background:linear-gradient(135deg,#1f2a44,#3b4f9a); color:#fff; padding:44px 40px; border-radius:10px; margin-bottom:18px;}
+.orb-label{margin-top:10px; letter-spacing:.15em; font-weight:700; color:#3b6df0;} .orb-label.off{color:var(--muted);}
+.side-h{font-size:.72rem; font-weight:700; letter-spacing:.14em; color:var(--ink); margin:14px 0 6px; text-transform:uppercase;}
+div[data-testid="stButton"] button {width:100%; border-radius:6px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:.85rem; min-height:48px;}
+div[data-testid="stButton"] button[kind="primary"] {background:var(--pribg); border-color:var(--pribd); color:var(--pritx);}
+.hero{background:linear-gradient(135deg,var(--ink),#3b4f9a); color:#fff; padding:44px 40px; border-radius:10px; margin-bottom:18px;}
 .hero h1{margin:0 0 8px; font-size:2.4rem; color:#fff;} .hero p{font-size:1.05rem; color:#d8e0ff; max-width:760px;}
-.card{background:#fff; border:1px solid #dfe4ee; border-radius:8px; padding:18px 20px; height:100%;}
-.card h4{margin:0 0 6px; color:#1f2a44;} .card p{margin:0; color:#4a5878; font-size:.9rem;}
-.hit{background:#fff4f2;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px 20px; height:100%;}
+.card h4{margin:0 0 6px; color:var(--ink);} .card p{margin:0; color:var(--ink2); font-size:.9rem;}
+.hit{background:var(--hit);}
+.scroll{height:430px; overflow-y:auto; display:flex; flex-direction:column-reverse;}  /* column-reverse keeps it pinned to the newest line */
 </style>
 """, unsafe_allow_html=True)
 
@@ -123,7 +135,6 @@ def start_visit() -> None:
     stt.reset_speakers()
 
 
-ss.setdefault("page", "landing")
 ss.setdefault("kind", "Scripted")
 ss.setdefault("mode", "DEMO")
 ss.setdefault("profile_id", next(iter(profiles)))
@@ -155,40 +166,9 @@ def add_turn(speaker: str, text: str) -> None:
         ss.be.add_turn(speaker, text)
 
 
-# ---------------------------------------------------------------- landing page
-def landing() -> None:
-    st.markdown("""<div class="hero"><h1>Dr.Listner</h1>
-    <p>AI scribes record what was said. Dr.Listner flags what was never asked or answered,
-    and hands the patient a plain-language plan they can follow.</p></div>""", unsafe_allow_html=True)
-    st.markdown('<div class="banner">Synthetic / role-play data only. Documentation completeness tool: it never diagnoses or recommends treatment.</div>', unsafe_allow_html=True)
-
-    st.subheader("Four gap types")
-    gaps = [("1 · Red-flag question not asked", "Checklist items (onset, radiation, sweating, family history...) with no matching question."),
-            ("2 · Concern left unanswered", "A worry the patient voiced that the clinician never addressed."),
-            ("3 · Contradicts the chart", "Patient says no heart history; chart lists a prior stent."),
-            ("4 · Comprehension not repaired", "Patient did not hear or understand and no repeat, rephrase or teach-back followed.")]
-    for c, (h, p) in zip(st.columns(4), gaps):
-        c.markdown(f'<div class="card"><h4>{h}</h4><p>{p}</p></div>', unsafe_allow_html=True)
-
-    st.subheader("How it works")
-    steps = [("Listen", "Live captions from the microphone with doctor and patient labels. Quiet during the visit: only chart and comprehension badges."),
-             ("Check", "Chart, concern, checklist and comprehension agents; a verifier drops any flag without real evidence."),
-             ("Hand off", "One end-of-visit gaps list for the clinician and a plain-language plan with read-aloud for the patient.")]
-    for c, (h, p) in zip(st.columns(3), steps):
-        c.markdown(f'<div class="card"><h4>{h}</h4><p>{p}</p></div>', unsafe_allow_html=True)
-
-    st.subheader("Who it helps most")
-    st.write("Older adults with hearing loss, low health literacy or cognitive impairment, with an optional caregiver in the room. Starting with outpatient chest pain.")
-    st.markdown("&nbsp;")
-    if st.button("Launch console  →", type="primary"):
-        ss.page = "console"
-        st.rerun()
-
-
 # --------------------------------------------------------------------- console
 def left_panel() -> None:
     be, p = ss.be, profiles[ss.profile_id]
-    st.markdown('<div class="banner">Role-play demo — do not speak real patient information</div>', unsafe_allow_html=True)
     by_type: dict[str, list[str]] = {}
     for e in chart.entries:
         by_type.setdefault(e.resource_type, []).append(e.display)
@@ -196,8 +176,8 @@ def left_panel() -> None:
     cited_names = [e.display for e in chart.entries if e.entry_id in cited]
     tiles = [("Age", str(chart.age)), ("Sex", chart.sex.title()), ("Hearing", p.hearing_level.title()), ("Literacy", p.literacy.title())]
     tile_html = "".join(f'<div class="tile"><small>{k}</small><span>{html.escape(v)}</span></div>' for k, v in tiles)
-    body = (f'<div style="font-size:1.25rem;font-weight:700;color:#1f2a44">{chart.age}-year-old {chart.sex}</div>'
-            f'<div style="color:#6a78a0;margin-bottom:10px">{html.escape(p.label)} · synthetic chart</div>'
+    body = (f'<div style="font-size:1.25rem;font-weight:700;color:var(--ink)">{chart.age}-year-old {chart.sex}</div>'
+            f'<div style="color:var(--muted2);margin-bottom:10px">{html.escape(p.label)} · synthetic chart</div>'
             f'<div class="kv"><b>Caregiver</b><span>{"Present" if p.caregiver_present else "Not present"}</span></div>'
             f'<div style="margin-top:12px">{tile_html}</div>'
             f'<div class="side-h">Conditions</div>{chips(by_type.get("Condition", []))}'
@@ -218,7 +198,7 @@ def left_panel() -> None:
             rows += f'<div class="tick miss-final">✖ {html.escape(it.label)} — not asked</div>'
         else:
             rows += f'<div class="tick miss">○ {html.escape(it.label)}</div>'
-    rows += '<div style="margin-top:8px;font-size:.72rem;color:#8d96ad">2021 AHA/ACC chest pain guideline; matched by Claude, not clinician-reviewed.</div>'
+    rows += '<div style="margin-top:8px;font-size:.72rem;color:var(--muted)">2021 AHA/ACC chest pain guideline; matched by Claude, not clinician-reviewed.</div>'
     st.markdown(panel("Chest-pain checklist coverage", rows), unsafe_allow_html=True)
 
 
@@ -246,7 +226,7 @@ def transcript_panel(live: bool) -> None:
         rows = f'<div class="row"><span class="txt" style="{MUTED}">Waiting for the first line. Speak, type, or play the next scripted line.</span></div>'
     if be.off_script and isinstance(be, ScriptedBackend):
         rows += f'<div class="row"><span class="txt" style="{MUTED}">{len(be.off_script)} line(s) did not match the script, so no flags can react to them.</span></div>'
-    st.markdown(panel("Live Transcript", rows, pad=False), unsafe_allow_html=True)
+    st.markdown(panel("Live Transcript", f'<div class="scroll"><div>{rows}</div></div>', pad=False), unsafe_allow_html=True)
 
 
 def flag_row(f, when: str) -> str:
@@ -332,15 +312,14 @@ def input_controls() -> None:
     if be.ended:
         return
     mode = ss.input
-    if mode != "Live mic":
-        speaker = st.radio("Speaking now", ["clinician", "patient", "caregiver"], horizontal=True, key="speaker")
+    speaker = st.radio("Speaking now (typed / browser mic)", ["clinician", "patient", "caregiver"], horizontal=True, key="speaker")
     if mode == "Typed":
         with st.form("typed", clear_on_submit=True):
             text = st.text_input("Type a line", key="typed_text")
             if st.form_submit_button("Send line"):
                 add_turn(speaker, text)
                 refresh()
-    elif mode == "Browser mic":
+    else:
         try:
             from streamlit_mic_recorder import speech_to_text
 
@@ -351,20 +330,11 @@ def input_controls() -> None:
                 refresh()
         except ImportError:
             st.caption("Browser mic needs `streamlit-mic-recorder`.")
-    else:
-        st.caption(f"Live capture: {stt.status}. Voices detected: {len(stt.speaker_role)} "
-                   "(first = doctor, second = patient; until two are heard, roles are judged from the wording).")
-        if stt.error:
-            st.error(stt.error)
 
 
 def right_panel() -> None:
     be = ss.be
     on = not be.ended
-    st.markdown(f'<div class="orb-wrap"><div class="orb {"" if on else "off"}"></div>'
-                f'<div class="orb-label {"" if on else "off"}">{"VISIT ACTIVE" if on else "VISIT ENDED"}</div></div>',
-                unsafe_allow_html=True)
-
     st.markdown('<div class="side-h">Visit control</div>', unsafe_allow_html=True)
     if st.button("▶ Play next scripted line", key="play", disabled=be.ended, help="Rehearsal helper: sends the next prepared line"):
         pos = ss.script_pos
@@ -377,7 +347,7 @@ def right_panel() -> None:
     if a.button("■ End visit", key="end", type="primary", disabled=be.ended or not be.turns):
         with st.spinner("Wrapping up…"):
             be.end_visit()
-        refresh()
+        st.rerun()  # full rerun: removes the orb, which closes the mic
     if b.button("↺ New visit", key="new"):
         start_visit()
         st.rerun()
@@ -393,11 +363,11 @@ def right_panel() -> None:
                 refresh()
 
     st.markdown('<div class="side-h">Input source</div>', unsafe_allow_html=True)
-    for c, lv in zip(st.columns(3), INPUTS):
+    for c, lv in zip(st.columns(2), INPUTS):
         if c.button(lv, key=f"lv_{lv}", type="primary" if ss.input == lv else "secondary"):
             ss.input = lv
-            st.rerun()  # full rerun: the live-mic iframe is added/removed outside the fragment
-    if ss.input == "Live mic" and st.button("⇄ Swap doctor / patient", key="swap", help="Use if the labels came out backwards"):
+            st.rerun()
+    if st.button("⇄ Swap doctor / patient", key="swap", help="Live capture: use if the labels came out backwards"):
         stt.swapped = not stt.swapped
         stt.reset_speakers()
 
@@ -410,22 +380,27 @@ def right_panel() -> None:
     st.selectbox("Profile", list(profiles), key="profile_id", format_func=lambda k: profiles[k].label, label_visibility="collapsed")
     st.markdown('<div class="side-h">View</div>', unsafe_allow_html=True)
     st.radio("View", ["Clinician", "Patient", "Evaluation"], horizontal=True, key="view", label_visibility="collapsed")
-    st.markdown("&nbsp;")
-    if st.button("← Product page", key="back"):
-        ss.page = "landing"
-        st.rerun()
 
 
 def console() -> None:
-    live = ss.input == "Live mic" and not ss.be.ended
-    if live:
-        stt.start()
-        components.html(mic_html(), height=60)  # outside the fragment so it never remounts
+    be0 = ss.be
+    live = not be0.ended
+    top_l, top_r = st.columns([9.8, 2.2], gap="medium")
+    with top_l:
+        st.markdown(f'<div style="color:var(--muted2);font-size:.9rem">Tap the orb to start live captions: the first voice heard is the doctor, '
+                    f'the second the patient; until two voices are heard, roles are judged from the wording. '
+                    f'Typed or browser-mic input stays available below as a fallback.</div>', unsafe_allow_html=True)
+    with top_r:
+        if live:
+            stt.start()
+            components.html(orb_html(bool(ss.get("dark"))), height=170)  # outside the fragment so it never remounts
+        else:
+            st.markdown('<div class="orb-wrap"><div class="orb off"></div><div class="orb-label off">VISIT ENDED</div></div>', unsafe_allow_html=True)
 
     @st.fragment(run_every=1 if live else None)
     def body() -> None:
         be = ss.be
-        if live:
+        if live and not be.ended:
             for role, text in stt.collect([(t.speaker, t.text) for t in be.turns]):
                 add_turn(role, text)
         L, M, R = st.columns([4.2, 5.4, 2.6], gap="medium")
@@ -438,14 +413,17 @@ def console() -> None:
                 evaluation_view()
             else:
                 phase = "Ended" if be.ended else ("In visit" if be.turns else "Not started")
+                capture = f"{stt.status} · {len(stt.speaker_role)} voice(s)" if stt.status != "idle" else "idle"
                 st.markdown(panel("Visit Status",
                     f'<div class="kv"><b>Backend</b><span>{ss.cfg[0]}{" · " + ss.cfg[2] if ss.cfg[0] == "Engine" else ""}</span></div>'
-                    f'<div class="kv"><b>Input</b><span>{ss.input}</span></div>'
+                    f'<div class="kv"><b>Live capture</b><span>{capture}</span></div>'
                     f'<div class="kv"><b>Profile</b><span>{html.escape(profiles[ss.cfg[1]].label)}</span></div>'
                     f'<div class="kv"><b>Turns</b><span>{len(be.turns)}</span></div>'
                     f'<div class="kv"><b>Phase</b><span>{phase}</span></div>'
                     + (f'<div class="kv"><b>Engine notes</b><span>{html.escape("; ".join(be.errors))}</span></div>' if be.errors else "")),
                     unsafe_allow_html=True)
+                if stt.error:
+                    st.error(stt.error)
                 transcript_panel(live)
                 input_controls()
                 flags_panel()
@@ -456,4 +434,6 @@ def console() -> None:
     body()
 
 
-(landing if ss.page == "landing" else console)()
+_, _tog = st.columns([9, 1])
+_tog.toggle("🌙 Dark", key="dark")
+console()

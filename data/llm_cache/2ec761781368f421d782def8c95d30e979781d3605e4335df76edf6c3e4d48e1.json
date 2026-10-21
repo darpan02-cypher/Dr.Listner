@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":30,\"quote\":\"Okay.\",\"cue\":\"bare_ack\",\"preceding_question\":\"Before you go, let me go over the plan. First, see the heart specialist within two weeks. Second, come back to this clinic in one week. Third, take one baby aspirin every morning.\",\"reply_answers_question\":false}]}"}

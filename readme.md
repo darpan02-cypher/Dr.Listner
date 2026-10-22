@@ -91,13 +91,15 @@ pip install -r requirements.txt
 ### 3. Launch the application
 
 ```bash
-streamlit run app2.py
+./run.sh
 ```
 
-The alternative Streamlit interface is also available:
+This opens the landing page at `http://localhost:8800`. Launch the console from there.
+
+To jump straight to the Streamlit console, run:
 
 ```bash
-streamlit run app.py
+streamlit run app2.py
 ```
 
 ### 4. Explore the demo

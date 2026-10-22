@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient answered the clinician\u2019s question about radiation to the arms or neck with a different symptom location (jaw), showing non\u2011understanding that was not repaired.\"}"}

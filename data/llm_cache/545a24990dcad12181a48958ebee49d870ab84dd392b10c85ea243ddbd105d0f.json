@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The patient\u2019s answer about jaw does not address the clinician\u2019s question about arm or neck pain and is not later repaired, indicating a comprehension breakdown.\"}"}

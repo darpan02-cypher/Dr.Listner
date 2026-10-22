@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":20,\"quote\":\"I did not catch most of what the nurse told me earlier.\",\"cue\":\"off_topic\",\"preceding_question\":\"Any heart problems in your close relatives?\",\"reply_answers_question\":false}]}"}

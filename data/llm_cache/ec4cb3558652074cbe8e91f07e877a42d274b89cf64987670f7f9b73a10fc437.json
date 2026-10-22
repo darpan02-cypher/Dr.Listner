@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The quoted turn is a statement about not catching earlier nurse information, not a non\u2011understanding response to a clinician question, so it does not meet the comprehension_breakdown criteria.\"}"}

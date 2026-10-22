@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"No clinician question or patient statement addresses exertional precipitating factors, so the checklist topic is truly not covered.\"}"}

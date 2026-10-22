@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The caregiver\u2019s reply \\\"I am here with her, she asked me to come.\\\" does not address the clinician\u2019s prior question about being too quiet and is not later repaired, indicating a comprehension breakdown.\"}"}

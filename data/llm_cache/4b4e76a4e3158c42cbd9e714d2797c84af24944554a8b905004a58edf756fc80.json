@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"concerns\":[{\"turn_idx\":4,\"quote\":\"Something is wrong with my chest, I think.\",\"addressed\":true,\"addressed_by\":5},{\"turn_idx\":35,\"quote\":\"I did not catch most of what the nurse told me earlier.\",\"addressed\":true,\"addressed_by\":36}]}"}

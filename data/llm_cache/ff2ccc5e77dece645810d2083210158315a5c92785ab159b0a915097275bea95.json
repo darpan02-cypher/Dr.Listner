@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":11,\"quote\":\"My daughter lives far away. I am afraid to be alone if this happens again.\",\"cue\":\"off_topic\",\"preceding_question\":\"Have you taken anything for it?\",\"reply_answers_question\":false}]}"}

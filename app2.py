@@ -103,7 +103,8 @@ div[data-testid="stButton"] button[kind="primary"] {background:var(--pribg); bor
 # ------------------------------------------------------------------- data
 @st.cache_resource
 def _static():
-    return load_checklist(), load_profiles(), load_chart(), load_script()
+    profs = {k: v for k, v in load_profiles().items() if not v.caregiver_present}  # mock visit has no caregiver
+    return load_checklist(), profs, load_chart(), load_script()
 
 
 @st.cache_resource
@@ -179,7 +180,6 @@ def left_panel() -> None:
     tile_html = "".join(f'<div class="tile"><small>{k}</small><span>{html.escape(v)}</span></div>' for k, v in tiles)
     body = (f'<div style="font-size:1.25rem;font-weight:700;color:var(--ink)">{chart.age}-year-old {chart.sex}</div>'
             f'<div style="color:var(--muted2);margin-bottom:10px">{html.escape(p.label)} · synthetic chart</div>'
-            f'<div class="kv"><b>Caregiver</b><span>{"Present" if p.caregiver_present else "Not present"}</span></div>'
             f'<div style="margin-top:12px">{tile_html}</div>'
             f'<div class="side-h">Conditions</div>{chips(by_type.get("Condition", []))}'
             f'<div class="side-h">Medications</div>{chips(by_type.get("MedicationRequest", []))}'
@@ -315,14 +315,14 @@ def input_controls() -> None:
     mode = ss.input if DEV else "Typed"
     if not DEV:
         with st.expander("Type instead"):
-            speaker = st.radio("Speaking now", ["clinician", "patient", "caregiver"], horizontal=True, key="speaker")
+            speaker = st.radio("Speaking now", ["clinician", "patient"], horizontal=True, key="speaker")
             with st.form("typed", clear_on_submit=True):
                 text = st.text_input("Type a line", key="typed_text")
                 if st.form_submit_button("Send line"):
                     add_turn(speaker, text)
                     refresh()
         return
-    speaker = st.radio("Speaking now (typed / browser mic)", ["clinician", "patient", "caregiver"], horizontal=True, key="speaker")
+    speaker = st.radio("Speaking now (typed / browser mic)", ["clinician", "patient"], horizontal=True, key="speaker")
     if mode == "Typed":
         with st.form("typed", clear_on_submit=True):
             text = st.text_input("Type a line", key="typed_text")
@@ -361,9 +361,10 @@ def right_panel() -> None:
     if b.button("↺ New visit", key="new"):
         start_visit()
         st.rerun()
-    if st.button("⇄ Swap doctor / patient", key="swap", help="Use if the speaker labels came out backwards"):
-        stt.swapped = not stt.swapped
-        stt.reset_speakers()
+    # Swap button hidden for now; re-enable if speaker labels come out backwards.
+    # if st.button("⇄ Swap doctor / patient", key="swap", help="Use if the speaker labels came out backwards"):
+    #     stt.swapped = not stt.swapped
+    #     stt.reset_speakers()
 
     st.markdown('<div class="side-h">Patient</div>', unsafe_allow_html=True)
     st.selectbox("Profile", list(profiles), key="profile_id", format_func=lambda k: profiles[k].label, label_visibility="collapsed")

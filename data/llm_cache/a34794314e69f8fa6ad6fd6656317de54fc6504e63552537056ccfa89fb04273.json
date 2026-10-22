@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s brief acknowledgement \\\"Mm-hm, okay.\\\" does not demonstrate non\u2011understanding or a lack of teach\u2011back, so it does not meet the comprehension_breakdown criteria.\"}"}

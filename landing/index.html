@@ -87,18 +87,104 @@ h2{font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;font-weight:700;letter-
 .gap .ex{margin-top:12px;font-size:.85rem;color:var(--muted);border-left:3px solid var(--line);padding-left:12px;font-style:italic}
 
 /* who */
-.who .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
-.who .shot img{aspect-ratio:1/1;object-position:30% 40%}
-.checks{list-style:none;margin-top:28px;display:grid;gap:14px}
+.who .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.who .shot{position:relative}
+.who .shot img{height:auto;aspect-ratio:896/1199;object-fit:contain}
+.audiences{display:flex;flex-direction:column;gap:24px}
+.who .stack{grid-column:1/-1;justify-content:center;gap:8px 28px;margin-top:16px;position:relative;z-index:1}
+.who .stack span{background:none;border:0;padding:0;border-radius:0;font-size:.85rem;color:var(--muted)}
+.fact{display:block;margin-top:4px;font-size:.82rem;color:var(--blue);font-weight:600}
+.checks{list-style:none;margin-top:28px;display:grid;gap:16px}
 .checks li{display:flex;gap:14px;align-items:flex-start}
 .checks li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:.8rem;display:grid;place-items:center;margin-top:2px}
 .checks b{color:var(--ink)}
+.audience{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:28px 32px}
+.audience h2{font-size:clamp(1.4rem,2.4vw,1.9rem);margin-bottom:0}
+.audience .checks{margin-top:20px}
+.revolution{padding:80px 0}
+.revolution h2{margin-bottom:32px}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.impact-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:28px}
+.impact-card h3{font-size:1.2rem}
+.impact-card .checks{margin-top:18px}
+@media(max-width:900px){.impact-grid{grid-template-columns:1fr}}
 .stack{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 .stack span{background:#fff;border:1px solid var(--line);padding:11px 20px;border-radius:999px;font:600 .88rem Poppins,sans-serif;color:var(--ink)}
 .final{background:linear-gradient(135deg,#0F3D3E,#0B6E6E);border-radius:24px;padding:64px 48px;text-align:center;color:#d3ebe7}
 .final h2{color:#fff;margin:0 auto 14px}
 .final .btn{background:#fff;color:var(--navy);margin-top:30px}
 footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center}
+
+
+/* under the hood */
+.hood-head{margin-bottom:44px}
+.hood-head h2{max-width:760px}
+.pipe{display:grid;grid-template-columns:.8fr 1.2fr;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
+.pipe-l{padding:36px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.pill-badge{display:inline-flex;font:700 .65rem Poppins,sans-serif;letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 11px;margin-bottom:12px;width:fit-content}
+.pipe-l h3{font-size:1.35rem;margin-bottom:8px}
+.pipe-l p{font-size:.92rem}
+.legend{display:grid;gap:8px;font-size:.84rem}
+.legend div{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:10px;border:1px solid transparent;cursor:default;transition:.2s}
+.legend i{width:10px;height:10px;border-radius:50%;flex:none}
+.legend div:hover{background:var(--bg);border-color:var(--line)}
+.pipe-r{padding:28px 32px;display:flex;align-items:center;justify-content:center}
+.pipe-r svg{width:100%;max-width:560px;height:auto;display:block}
+.pipe-r text{font-family:Poppins,sans-serif}
+.nd{fill:#fff;stroke:#cfd6e4;stroke-width:1.2;transition:.25s}
+.nd-t{font-size:10.5px;font-weight:700;fill:var(--ink);letter-spacing:.04em}
+.nd-s{font-size:8.5px;fill:var(--muted);font-weight:500}
+.nd-core{fill:url(#cg);stroke:none}
+.fl{stroke:#c3cbdc;stroke-width:1.4;stroke-dasharray:5 4;fill:none;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.ag rect{transition:.25s}
+.ag:hover rect,.ag.on rect{fill:var(--c-soft);stroke:var(--c)}
+.ag:hover .nd-t,.ag.on .nd-t{fill:var(--c)}
+.pipe-r .ag{cursor:default}
+
+.arch{margin-top:28px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.orch{display:grid;grid-template-columns:1fr 1.6fr;border-bottom:1px solid var(--line);min-height:180px}
+.orch-l{padding:30px 34px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.orch-l h3{font-size:1.25rem;margin-bottom:8px}
+.orch-l p{font-size:.88rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:600 .66rem Poppins,sans-serif;padding:4px 10px;border-radius:999px;color:var(--muted);border:1px solid var(--line)}
+.orch-r{padding:24px 32px;display:flex;align-items:center}
+.orch-r svg{width:100%;height:auto}
+.pl{fill:#dfe3ee;transition:fill .35s}.pl.hi{fill:#c3cadb}
+.orch:hover .pl{fill:#b5d9d4}.orch:hover .pl.hi{fill:var(--blue)}
+.agents{display:grid;grid-template-columns:repeat(3,1fr)}
+.agent{--c:var(--blue);--c-soft:rgba(11,110,110,.06);padding:24px 24px 26px;border-right:1px solid var(--line);display:flex;flex-direction:column;transition:background .25s}
+.agent:nth-child(3n){border-right:none}.agent:nth-child(n+4){border-top:1px solid var(--line)}
+.agent:hover{background:var(--c-soft)}
+.agent .num{font:600 .65rem Poppins,sans-serif;letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;width:fit-content;margin-bottom:10px}
+.agent .vis{height:112px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.agent .vis svg{height:100%;width:auto;max-width:150px;fill:none;stroke:#c3cadb;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.agent .vis .f{fill:#dfe3ee;stroke:none;transition:fill .3s}
+.agent:hover .vis svg{stroke:var(--c)}.agent:hover .vis .f{fill:var(--c);opacity:.35}
+.agent .when{font:700 .62rem Poppins,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.agent h3{font-size:1.02rem;margin-bottom:6px}
+.agent p{font-size:.86rem;margin-bottom:14px}
+.agent .tags{margin-top:auto}
+.a1{--c:#0B6E6E;--c-soft:rgba(11,110,110,.07)}.a2{--c:#e0795a;--c-soft:rgba(245,154,128,.14)}
+.a3{--c:#6366f1;--c-soft:rgba(99,102,241,.07)}.a4{--c:#0891b2;--c-soft:rgba(8,145,178,.07)}
+.a5{--c:#c0392b;--c-soft:rgba(192,57,43,.06)}.a6{--c:#059669;--c-soft:rgba(5,150,105,.07)}
+
+.tech{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.tc{padding:26px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .25s;--c:var(--blue)}
+.tc:nth-child(4n){border-right:none}.tc:nth-last-child(-n+4){border-bottom:none}
+.tc svg{display:block;width:30px;height:30px;margin-bottom:16px;fill:none;stroke:#c3cadb;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.tc:hover{background:color-mix(in srgb,var(--c) 6%,transparent)}.tc:hover svg{stroke:var(--c)}
+.tc b{display:block;font:700 .9rem Poppins,sans-serif;color:var(--ink);margin-bottom:4px}
+.tc span{font-size:.8rem;color:var(--body)}
+@media(max-width:900px){
+  .pipe,.orch{grid-template-columns:1fr}.pipe-l,.orch-l{border-right:none;border-bottom:1px solid var(--line)}
+  .agents{grid-template-columns:1fr}.agent{border-right:none;border-top:1px solid var(--line)}.agent:first-child{border-top:none}
+  .tech{grid-template-columns:repeat(2,1fr)}
+  .tc:nth-child(4n){border-right:1px solid var(--line)}.tc:nth-child(2n){border-right:none}
+  .tc:nth-last-child(-n+4){border-bottom:1px solid var(--line)}.tc:nth-last-child(-n+2){border-bottom:none}
+}
+@media(prefers-reduced-motion:reduce){.fl{animation:none}}
 
 @media(max-width:900px){
   .links{display:none}
@@ -115,7 +201,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center
   <div class="wrap">
     <a class="logo" href="#" aria-label="Dr. Listener"><img src="logo/dr-listener-logo.svg" alt="Dr. Listener"></a>
     <div class="links">
-      <a href="#problem">Problem</a><a href="#how">How It Works</a><a href="#gaps">Gap Types</a><a href="#who">Who It Helps</a>
+      <a href="#problem">Problem</a><a href="#how">How It Works</a><a href="#gaps">Gap Types</a><a href="#tech">Tech Stack</a><a href="#who">Who It Helps</a>
     </div>
     <a class="btn primary sm nav-cta" href="#" data-console>▷ Launch Console</a>
   </div>
@@ -126,7 +212,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center
     <div>
       <span class="badge">IEEE Hack for Humanity · AI for Accessibility</span>
       <h1>Catching what the <em>visit missed.</em></h1>
-      <p class="lead">AI scribes record what was said. Dr.Listner <b>flags what was never asked, answered or understood</b> — and hands the patient a plain-language plan they can actually follow.</p>
+      <p class="lead">AI scribes record what was said. Dr.Listner <b>flags what was never asked, answered or understood</b></p>
       <div class="cta">
         <a class="btn primary" href="#" data-console>▷ Launch Console</a>
         <a class="btn ghost" href="#how">See How It Works →</a>
@@ -140,7 +226,6 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center
         <div class="flag">⚑ Comprehension not repaired</div>
         <div class="tag">Outpatient chest-pain visit</div>
       </div>
-      <p class="caption">Illustration · synthetic scenario</p>
     </div>
   </div>
 </header>
@@ -184,21 +269,138 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:.84rem;text-align:center
   </div>
 </section>
 
-<section id="who" class="who">
+
+<section id="tech">
   <div class="wrap">
-    <div>
-      <div class="shot"><img src="img/Gemini_Generated_Image_wsvblbwsvblbwsvb.jpeg" alt="Patient and doctor in conversation"></div>
+    <div class="hood-head">
+      <div class="eyebrow">Under the hood</div>
+      <h2>One coordinator. Six specialists.</h2>
+      <p class="sub">Each specialist does one small job. A plain, rule-based coordinator decides who runs and when — so nothing is guessed, and nothing reaches the screen without proof.</p>
     </div>
-    <div>
-      <div class="eyebrow">Who it helps most</div>
-      <h2>Built for the person across the desk.</h2>
-      <ul class="checks">
-        <li><span><b>Hearing loss.</b> Captions and read-aloud summaries mean nothing depends on catching every word.</span></li>
-        <li><span><b>Low health literacy.</b> The patient plan is written at or below a 6th-grade reading level.</span></li>
-        <li><span><b>Cognitive impairment.</b> A clear list of next steps and questions to ask next time.</span></li>
-        <li><span><b>Caregivers.</b> Designed for visits with an optional caregiver in the room.</span></li>
-      </ul>
-      <div class="stack"><span>Multi-agent LLM</span><span>Deepgram diarization</span><span>FHIR-style chart</span><span>Presidio de-id</span><span>Streamlit</span></div>
+
+    <div class="pipe">
+      <div class="pipe-l">
+        <div>
+          <div class="pill-badge">PIPELINE</div>
+          <h3>From spoken words to a safer visit</h3>
+          <p>Hover a specialist to see where it sits in the flow.</p>
+        </div>
+        <div class="legend">
+          <div><i style="background:#0B6E6E"></i>Listens and cleans the speech first</div>
+          <div><i style="background:#e0795a"></i>Specialists look for gaps</div>
+          <div><i style="background:#c0392b"></i>Verifier removes anything unproven</div>
+          <div><i style="background:#059669"></i>Two outputs: clinician and patient</div>
+        </div>
+      </div>
+      <div class="pipe-r">
+        <svg viewBox="0 0 520 360" role="img" aria-label="Pipeline: live speech goes to the coordinator, then four detector agents, then the verifier, then the clinician gap list and patient plan">
+          <defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#0F3D3E"/><stop offset="1" stop-color="#0B6E6E"/></linearGradient></defs>
+          <path class="fl" d="M260 46V68"/>
+          <path class="fl" d="M60 112V142M180 112V142M300 112V142M420 112V142" transform="translate(0 0)"/>
+          <path class="fl" d="M60 190V212M180 190V212M300 190V212M420 190V212"/>
+          <path class="fl" d="M180 250V270M390 250V270" transform="translate(0 0)"/>
+          <g><rect class="nd" x="150" y="6" width="220" height="40" rx="8"/><text class="nd-t" x="260" y="25" text-anchor="middle">LIVE SPEECH</text><text class="nd-s" x="260" y="38" text-anchor="middle">Doctor and patient labelled · names scrubbed</text></g>
+          <g><rect class="nd-core" x="10" y="68" width="500" height="44" rx="8"/><text x="260" y="87" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" letter-spacing=".08em">COORDINATOR</text><text x="260" y="102" text-anchor="middle" font-size="8.5" fill="#bfe3de">Plain rules decide who runs when · no AI guesswork</text></g>
+          <g class="ag" style="--c:#0B6E6E;--c-soft:rgba(11,110,110,.1)"><rect class="nd" x="10" y="142" width="100" height="48" rx="8"/><text class="nd-t" x="60" y="164" text-anchor="middle">CHECKLIST</text><text class="nd-s" x="60" y="177" text-anchor="middle">wrap-up</text></g>
+          <g class="ag" style="--c:#e0795a;--c-soft:rgba(245,154,128,.18)"><rect class="nd" x="130" y="142" width="100" height="48" rx="8"/><text class="nd-t" x="180" y="164" text-anchor="middle">CONCERN</text><text class="nd-s" x="180" y="177" text-anchor="middle">wrap-up</text></g>
+          <g class="ag" style="--c:#6366f1;--c-soft:rgba(99,102,241,.1)"><rect class="nd" x="250" y="142" width="100" height="48" rx="8"/><text class="nd-t" x="300" y="164" text-anchor="middle">CHART</text><text class="nd-s" x="300" y="177" text-anchor="middle">live</text></g>
+          <g class="ag" style="--c:#0891b2;--c-soft:rgba(8,145,178,.1)"><rect class="nd" x="370" y="142" width="100" height="48" rx="8"/><text class="nd-t" x="420" y="164" text-anchor="middle" style="font-size:8.6px">COMPREHENSION</text><text class="nd-s" x="420" y="177" text-anchor="middle">live</text></g>
+                    <g class="ag" style="--c:#c0392b;--c-soft:rgba(192,57,43,.08)"><rect class="nd" x="10" y="212" width="500" height="38" rx="8"/><text class="nd-t" x="260" y="229" text-anchor="middle">VERIFIER</text><text class="nd-s" x="260" y="242" text-anchor="middle">Must quote the line that triggered the flag</text></g>
+          <g class="ag" style="--c:#059669;--c-soft:rgba(5,150,105,.1)"><rect class="nd" x="60" y="270" width="240" height="44" rx="8"/><text class="nd-t" x="180" y="289" text-anchor="middle">CLINICIAN GAP LIST</text><text class="nd-s" x="180" y="304" text-anchor="middle">Every flag cites its evidence</text></g>
+          <g class="ag" style="--c:#059669;--c-soft:rgba(5,150,105,.1)"><rect class="nd" x="320" y="270" width="140" height="44" rx="8"/><text class="nd-t" x="390" y="289" text-anchor="middle">PATIENT PLAN</text><text class="nd-s" x="390" y="304" text-anchor="middle">Plain words · read-aloud</text></g>
+          <text class="nd-s" x="260" y="345" text-anchor="middle">Summary Agent writes the patient plan once the visit ends</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="arch">
+      <div class="orch">
+        <div class="orch-l">
+          <div>
+            <div class="pill-badge">COORDINATOR</div>
+            <h3>Dr.Listner Coordinator</h3>
+            <p>Follows the conversation turn by turn. Quick checks run live; omission checks wait until the wrap-up, so the clinician is never interrupted mid-sentence.</p>
+          </div>
+          <div class="tags"><span>Quiet during the visit</span><span>Rule-based</span><span>6 specialists</span></div>
+        </div>
+        <div class="orch-r">
+          <svg viewBox="0 0 430 120" aria-hidden="true"><rect x="4" y="50.0" width="8" height="20" rx="4" class="pl"/><rect x="20" y="41.5" width="8" height="37" rx="4" class="pl hi"/><rect x="36" y="35.0" width="8" height="50" rx="4" class="pl"/><rect x="52" y="33.5" width="8" height="53" rx="4" class="pl"/><rect x="68" y="36.5" width="8" height="47" rx="4" class="pl hi"/><rect x="84" y="44.0" width="8" height="32" rx="4" class="pl"/><rect x="100" y="47.5" width="8" height="25" rx="4" class="pl"/><rect x="116" y="39.0" width="8" height="42" rx="4" class="pl hi"/><rect x="132" y="34.0" width="8" height="52" rx="4" class="pl"/><rect x="148" y="33.5" width="8" height="53" rx="4" class="pl"/><rect x="164" y="38.5" width="8" height="43" rx="4" class="pl hi"/><rect x="180" y="46.5" width="8" height="27" rx="4" class="pl"/><rect x="196" y="45.0" width="8" height="30" rx="4" class="pl"/><rect x="212" y="37.5" width="8" height="45" rx="4" class="pl hi"/><rect x="228" y="33.5" width="8" height="53" rx="4" class="pl"/><rect x="244" y="34.5" width="8" height="51" rx="4" class="pl"/><rect x="260" y="40.5" width="8" height="39" rx="4" class="pl hi"/><rect x="276" y="49.0" width="8" height="22" rx="4" class="pl"/><rect x="292" y="42.5" width="8" height="35" rx="4" class="pl"/><rect x="308" y="35.5" width="8" height="49" rx="4" class="pl hi"/><rect x="324" y="33.5" width="8" height="53" rx="4" class="pl"/><rect x="340" y="36.0" width="8" height="48" rx="4" class="pl"/><rect x="356" y="42.5" width="8" height="35" rx="4" class="pl hi"/><rect x="372" y="49.0" width="8" height="22" rx="4" class="pl"/><rect x="388" y="40.0" width="8" height="40" rx="4" class="pl"/><rect x="404" y="34.5" width="8" height="51" rx="4" class="pl hi"/></svg>
+        </div>
+      </div>
+      <div class="agents"><div class="agent a1"><div class="num">01</div><div class="vis"><svg viewBox="0 0 120 100"><rect x="14" y="10" width="92" height="80" rx="8"/><path d="M28 32l6 6 10-12M28 58l6 6 10-12" /><path d="M54 32h40M54 58h40"/><rect class="f" x="54" y="42" width="30" height="6" rx="3"/><rect class="f" x="54" y="72" width="40" height="6" rx="3"/></svg></div><div class="when">At wrap-up</div><h3>Checklist Agent</h3><p>Compares the visit against a published chest-pain checklist and notes every red-flag question never asked.</p><div class="tags"><span>10 guideline items</span><span>Missed questions</span></div></div><div class="agent a2"><div class="num">02</div><div class="vis"><svg viewBox="0 0 120 100"><path d="M18 14h84a6 6 0 016 6v40a6 6 0 01-6 6H56l-16 16V66H18a6 6 0 01-6-6V20a6 6 0 016-6z"/><path d="M60 28a8 8 0 114 7c-3 2-4 3-4 7"/><circle class="f" cx="60" cy="52" r="3"/></svg></div><div class="when">At wrap-up</div><h3>Concern Agent</h3><p>Finds worries the patient voiced — “Is this my heart?” — that the clinician never answered.</p><div class="tags"><span>Patient worries</span><span>Unanswered</span></div></div><div class="agent a3"><div class="num">03</div><div class="vis"><svg viewBox="0 0 120 100"><rect x="28" y="8" width="64" height="84" rx="8"/><path d="M40 28h40M40 44h40M40 60h24"/><rect class="f" x="40" y="68" width="40" height="10" rx="5"/><path d="M84 66l10 10M94 66l-10 10"/></svg></div><div class="when">Live, each turn</div><h3>Chart Agent</h3><p>Checks what the patient says against their record, like a prior stent or listed medication.</p><div class="tags"><span>FHIR-style chart</span><span>Contradictions</span></div></div><div class="agent a4"><div class="num">04</div><div class="vis"><svg viewBox="0 0 120 100"><path d="M44 78c-10-8-14-18-14-30a24 24 0 0148 0c0 10-8 14-12 20-4 6-2 14-12 14"/><path d="M54 48a8 8 0 0116 0c0 6-8 8-8 14"/><path d="M96 34q8 14 0 28M106 24q14 24 0 48"/><rect class="f" x="14" y="46" width="8" height="14" rx="4"/></svg></div><div class="when">Live, each turn</div><h3>Comprehension Agent</h3><p>Notices “sorry, what?” and bare “okay” replies, then checks that a repeat or teach-back followed.</p><div class="tags"><span>Hearing</span><span>Teach-back</span></div></div><div class="agent a5"><div class="num">05</div><div class="vis"><svg viewBox="0 0 120 100"><path d="M60 8l38 14v26c0 22-16 38-38 46C38 86 22 70 22 48V22z"/><path d="M42 50l14 14 24-28"/><rect class="f" x="30" y="30" width="60" height="8" rx="4"/></svg></div><div class="when">Before anything shows</div><h3>Verifier</h3><p>Every flag must quote the exact line that triggered it. No evidence, no flag.</p><div class="tags"><span>Evidence quotes</span><span>Zero guesses</span></div></div><div class="agent a6"><div class="num">06</div><div class="vis"><svg viewBox="0 0 120 100"><rect x="18" y="8" width="84" height="84" rx="8"/><path d="M32 28h30"/><rect class="f" x="32" y="40" width="56" height="7" rx="3.5"/><rect class="f" x="32" y="54" width="48" height="7" rx="3.5"/><rect class="f" x="32" y="68" width="36" height="7" rx="3.5"/><path d="M82 24a8 8 0 010 12M88 20a14 14 0 010 20"/></svg></div><div class="when">After the visit</div><h3>Summary Agent</h3><p>Writes the patient’s plan in plain words, re-checks the reading level, and rewrites until it is easy to follow.</p><div class="tags"><span>≤ 6th-grade</span><span>Read-aloud</span></div></div></div>
+    </div>
+
+    <div class="tech">
+      <div class="tc" style="--c:#0B6E6E"><svg viewBox="0 0 32 32"><path d="M16 3a4 4 0 00-4 4v8a4 4 0 008 0V7a4 4 0 00-4-4zM7 14v1a9 9 0 0018 0v-1M16 24v5"/></svg><b>Deepgram</b><span>Live speech-to-text with doctor / patient labels</span></div>
+      <div class="tc" style="--c:#6366f1"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="4"/><circle cx="16" cy="5" r="2"/><circle cx="16" cy="27" r="2"/><circle cx="5" cy="16" r="2"/><circle cx="27" cy="16" r="2"/><path d="M16 7v5M16 20v5M7 16h5M20 16h5"/></svg><b>Multi-agent LLM</b><span>Groq gpt-oss-120b, with Gemini as backup</span></div>
+      <div class="tc" style="--c:#059669"><svg viewBox="0 0 32 32"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 6-8"/></svg><b>Presidio + spaCy</b><span>Removes names and identifiers before any AI call</span></div>
+      <div class="tc" style="--c:#d97706"><svg viewBox="0 0 32 32"><rect x="7" y="4" width="18" height="24" rx="3"/><path d="M12 11h8M12 16h8M12 21h5"/></svg><b>FHIR-style chart</b><span>Synthea synthetic patient records</span></div>
+      <div class="tc" style="--c:#0891b2"><svg viewBox="0 0 32 32"><path d="M6 9h20M6 16h20M6 23h12"/><circle cx="25" cy="23" r="3"/></svg><b>Pydantic</b><span>Every agent answer must match a strict format</span></div>
+      <div class="tc" style="--c:#c0392b"><svg viewBox="0 0 32 32"><path d="M5 26V12M12 26V6M19 26V16M26 26V10"/></svg><b>textstat</b><span>Scores reading grade of the patient plan</span></div>
+      <div class="tc" style="--c:#e0795a"><svg viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="18" rx="3"/><path d="M4 12h24M10 28h12"/></svg><b>Streamlit</b><span>The live console clinicians and patients see</span></div>
+      <div class="tc" style="--c:#0B6E6E"><svg viewBox="0 0 32 32"><path d="M10 9l-6 7 6 7M22 9l6 7-6 7M18 6l-4 20"/></svg><b>Python</b><span>Plus a full automated test suite</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="who" class="who white">
+  <div class="wrap">
+    <div class="shot"><img src="img/Gemini_Generated_Image_wsvblbwsvblbwsvb.jpeg" alt="Patient and doctor in conversation"></div>
+    <div class="audiences">
+      <div class="audience">
+        <div class="eyebrow">For patients</div>
+        <h2>Older adults with hearing loss, low health literacy, or too much to remember.</h2>
+        <ul class="checks">
+          <li><span><b>Hearing loss.</b> Captions and read-aloud, so nothing depends on catching every word.<small class="fact">55% of adults 75+ have disabling hearing loss</small></span></li>
+          <li><span><b>Low health literacy.</b> Plans written at or below a 6th-grade level, checked on every summary.<small class="fact">Only 12% of US adults are proficient (2003 survey)</small></span></li>
+          <li><span><b>Memory load.</b> A short list of next steps, warning signs, and questions for next time.<small class="fact">40–80% of what clinicians say is forgotten right away</small></span></li>
+          <li><span><b>Caregivers.</b> A spouse or daughter in the room gets the same plain-language plan.</span></li>
+        </ul>
+      </div>
+      <div class="audience">
+        <div class="eyebrow">For clinicians</div>
+        <h2>A safety net that stays out of the way.</h2>
+        <ul class="checks">
+          <li><span><b>Quiet by design.</b> No live pop-ups or alert fatigue. One end-of-visit list, with a passive badge only for chart contradictions and unrepaired confusion.</span></li>
+          <li><span><b>Four catches.</b> Red-flag questions not asked, worries not answered, chart contradictions, and confusion nobody repaired.</span></li>
+          <li><span><b>Verifiable in seconds.</b> Every flag cites its transcript line or chart entry and dismisses in one tap.</span></li>
+          <li><span><b>Documentation only.</b> Never suggests a diagnosis or treatment. The clinician decides.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="stack"><span>Multi-agent LLM</span><span>Deepgram diarization</span><span>FHIR-style chart</span><span>Presidio de-id</span><span>Streamlit</span></div>
+  </div>
+</section>
+
+<section class="revolution">
+  <div class="wrap">
+    <div class="eyebrow">The impact</div>
+    <h2>A quiet revolution for patients and healthcare.</h2>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3>System Success &amp; Revolution</h3>
+        <ul class="checks">
+          <li><span><b>Scalable Empathy:</b> Bridging the gap between clinical data and patient understanding at scale.</span></li>
+          <li><span><b>Zero-Risk Adoption:</b> Secure, offline-first architecture removes barriers.</span></li>
+          <li><span><b>AI as a Partner:</b> Augments workflows with deterministic, verifiable outputs.</span></li>
+        </ul>
+      </div>
+      <div class="impact-card">
+        <h3>Direct Patient Impact</h3>
+        <ul class="checks">
+          <li><span><b>Empowered Understanding:</b> Transforms jargon into actionable, 6th-grade level knowledge.</span></li>
+          <li><span><b>Reduced Anxiety &amp; Errors:</b> Clear instructions lead to better adherence.</span></li>
+          <li><span><b>A Voice That’s Heard:</b> Ensures every concern is captured and addressed.</span></li>
+        </ul>
+      </div>
+      <div class="impact-card">
+        <h3>Clinician &amp; Domain Impact</h3>
+        <ul class="checks">
+          <li><span><b>Alleviated Burnout:</b> Offloads translation and documentation burden.</span></li>
+          <li><span><b>Enhanced Trust &amp; Rapport:</b> Fosters stronger patient-provider relationships.</span></li>
+          <li><span><b>Data-Driven Insights:</b> Structured data for future analysis and quality improvement.</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

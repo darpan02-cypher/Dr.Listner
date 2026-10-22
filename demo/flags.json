@@ -1,27 +1,117 @@
 {
  "note": "Hardcoded flags for the scripted demo. trigger_turn is the script turn that must be spoken before the flag appears live; null means it appears at End visit.",
  "flags": [
-  {"trigger_turn": 16, "type": "comprehension_breakdown", "rationale": "The patient asked for the question to be repeated, and it was not repeated or rephrased.",
-   "evidence": [{"source": "transcript", "ref": "15", "quote": "Sorry, what did you say?"}]},
-  {"trigger_turn": 21, "type": "chart_contradiction", "rationale": "The patient said she has had no heart problems, but the chart lists a coronary stent.",
-   "evidence": [{"source": "transcript", "ref": "21", "quote": "No, I have never had any heart problems."},
-                {"source": "chart", "ref": "proc-stent", "quote": "Coronary artery stent placement"}]},
-  {"trigger_turn": null, "type": "missed_question", "rationale": "Not asked: whether the pain spreads to the arm, jaw or back.",
-   "evidence": [{"source": "checklist", "ref": "radiation"}]},
-  {"trigger_turn": null, "type": "unanswered_concern", "rationale": "The patient said she was scared this could be her heart, and the worry was never answered.",
-   "evidence": [{"source": "transcript", "ref": "7", "quote": "I am really scared this is my heart, like my husband."}]},
-  {"trigger_turn": null, "type": "comprehension_breakdown", "rationale": "The plan was given without asking the patient to say it back in her own words.",
-   "evidence": [{"source": "transcript", "ref": "22", "quote": "come back to this clinic in one week"}]}
+  {
+   "trigger_turn": 15,
+   "type": "chart_contradiction",
+   "rationale": "The patient said she has never had heart surgery, but the chart lists a coronary stent.",
+   "evidence": [
+    {
+     "source": "transcript",
+     "ref": "15",
+     "quote": "I’ve never had heart surgery."
+    },
+    {
+     "source": "chart",
+     "ref": "proc-stent",
+     "quote": "Coronary artery stent placement"
+    }
+   ]
+  },
+  {
+   "trigger_turn": 17,
+   "type": "comprehension_breakdown",
+   "rationale": "The patient does not remember the heart procedure and says her daughter keeps track. It was not explained or checked with her.",
+   "evidence": [
+    {
+     "source": "transcript",
+     "ref": "17",
+     "quote": "I don’t remember that."
+    }
+   ]
+  },
+  {
+   "trigger_turn": 19,
+   "type": "comprehension_breakdown",
+   "rationale": "The patient asked where she is going, and the transfer plan was not repeated.",
+   "evidence": [
+    {
+     "source": "transcript",
+     "ref": "19",
+     "quote": "I’m sorry, I didn’t catch the last part."
+    }
+   ]
+  },
+  {
+   "trigger_turn": null,
+   "type": "missed_question",
+   "rationale": "Not asked: whether she is sweating (diaphoresis) with the pressure.",
+   "evidence": [
+    {
+     "source": "checklist",
+     "ref": "diaphoresis"
+    }
+   ]
+  },
+  {
+   "trigger_turn": null,
+   "type": "unanswered_concern",
+   "rationale": "The patient said she is frightened this is a heart attack like her husband’s. The clinician acknowledged it but never said what is being done about it or what it might be.",
+   "evidence": [
+    {
+     "source": "transcript",
+     "ref": "5",
+     "quote": "I’m frightened something similar might happen to me."
+    }
+   ]
+  },
+  {
+   "trigger_turn": null,
+   "type": "unanswered_concern",
+   "rationale": "The patient asked if her daughter can come with her, and it was never answered.",
+   "evidence": [
+    {
+     "source": "transcript",
+     "ref": "21",
+     "quote": "Will my daughter be able to come with me?"
+    }
+   ]
+  },
+  {
+   "trigger_turn": null,
+   "type": "comprehension_breakdown",
+   "rationale": "She said she gets confused with too much information, yet the plan was not simplified and she was not asked to say it back.",
+   "evidence": [
+    {
+     "source": "transcript",
+     "ref": "21",
+     "quote": "I get confused when there’s too much information."
+    }
+   ]
+  }
  ],
- "coverage": {"onset": 4, "nature": 6, "exertional": 8, "relieving": 10, "dyspnea": 12, "diaphoresis": 12, "syncope": 14, "risk_factors": 16, "family_history": 18},
+ "coverage": {
+  "onset": 3,
+  "nature": 5,
+  "exertional": 7,
+  "dyspnea": 9,
+  "syncope": 11,
+  "risk_factors": 13
+ },
  "plan_items": [
-  {"item_id": "return", "text": "Come back to the clinic in one week."},
-  {"item_id": "bring-meds", "text": "Bring your medicine bottles to the next visit."}
+  {
+   "item_id": "ecg",
+   "text": "Get an ECG."
+  },
+  {
+   "item_id": "ed",
+   "text": "Go to the emergency department for a check today."
+  }
  ],
  "clarify": [
-  "Ask: does the pain spread to your arm, jaw or back?",
-  "Answer her worry about her heart.",
-  "Ask her to say the plan back in her own words."
+  "Ask: are you sweating when the pressure comes on?",
+  "Answer her question: can her daughter come with her?",
+  "Say the plan again, and ask her to say it back."
  ],
- "summary": "You came in because of pressure in your chest. It started yesterday and gets worse when you climb stairs.\n\nYour plan:\n1. Come back to the clinic in one week.\n2. Bring all of your medicine bottles with you.\n\nQuestions to ask next time:\n- Does my chest pain spread to my arm or jaw?\n- Is my chest pain from my heart? I have a stent, and I am worried.\n\nCall for help right away if the pain gets worse, or if you faint or cannot catch your breath."
+ "summary": "You came in because of pressure in your chest. It started yesterday and gets worse when you climb stairs.\n\nYour plan:\n1. Get an ECG, a heart test.\n2. Go to the emergency department today. Your care team will help you get there.\n\nQuestions to ask:\n- Where am I going, and who will take me?\n- Can my daughter come with me?\n- I had a heart procedure before. Does that matter now?\n\nCall for help right away if the pain gets worse, or if you faint or cannot catch your breath."
 }

@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient\u2019s answer to the onset question provides a time of onset rather than showing non\u2011understanding or a different topic, so there is no unrepaired comprehension breakdown.\"}"}

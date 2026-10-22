@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":13,\"quote\":\"Only when I hurry.\",\"cue\":\"off_topic\",\"preceding_question\":\"Does doing chores around the house set it off?\",\"reply_answers_question\":false}]}"}

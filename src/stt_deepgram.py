@@ -2,7 +2,8 @@
 
 Browser mic -> ws://127.0.0.1:PORT (this module) -> Deepgram. The API key stays on the server.
 Finished utterances land in `LiveSTT.finals`; the app drains them into `Backend.add_turn`.
-Role mapping: the first voice heard is the clinician, the second the patient, the third the caregiver.
+Role mapping: the first voice heard is the clinician, the second the patient. Any extra voice id is a diarization split
+of one of them (no caregiver in this demo), so it inherits the role of whoever spoke just before.
 """
 from __future__ import annotations
 
@@ -20,7 +21,7 @@ from websockets.asyncio.client import connect
 from websockets.asyncio.server import serve
 
 PORT = int(os.environ.get("STT_PORT", "8765"))
-ROLES = ["clinician", "patient", "caregiver"]
+ROLES = ["clinician", "patient"]
 IDLE_FLUSH_S = 2.5
 ANSWER_START = re.compile(r"^(no|nope|yes|yeah|yep|okay|ok|oh|well|sure)\b[.,!]", re.I)
 
@@ -52,13 +53,16 @@ class LiveSTT:
     pending: str = ""  # fragments waiting to form a full sentence
     pending_role: str = ""
     pending_ts: float = 0.0
+    _last_role: str = ""
     _lock: threading.Lock = field(default_factory=threading.Lock)
 
     def role_for(self, speaker: int) -> str:
         with self._lock:
             if speaker not in self.speaker_role:
-                self.speaker_role[speaker] = ROLES[min(len(self.speaker_role), len(ROLES) - 1)]
+                known = len(set(self.speaker_role.values()))
+                self.speaker_role[speaker] = ROLES[known] if known < len(ROLES) else (self._last_role or ROLES[0])
             role = self.speaker_role[speaker]
+            self._last_role = role
         if self.swapped and role in ("clinician", "patient"):
             role = "patient" if role == "clinician" else "clinician"
         return role
@@ -66,6 +70,7 @@ class LiveSTT:
     def reset_speakers(self) -> None:
         with self._lock:
             self.speaker_role.clear()
+            self._last_role = ""
         self.partial = None
 
     def collect(self, history: list[tuple[str, str]]) -> list[tuple[str, str]]:

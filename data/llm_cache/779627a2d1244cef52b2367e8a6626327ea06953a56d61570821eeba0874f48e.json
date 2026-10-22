@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":2,\"quote\":\"I drove her over, I will listen along.\",\"cue\":\"off_topic\",\"preceding_question\":\"Let me know if I am too quiet.\",\"reply_answers_question\":false}]}"}

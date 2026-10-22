@@ -1,42 +1,56 @@
 {
  "visit_id": "demo-roleplay-01",
- "wrap_up_turn": 22,
+ "wrap_up_turn": 18,
  "profile_id": "hoh_lowlit_alone",
  "expected": [
   {
    "type": "missed_question",
-   "checklist_item_id": "radiation",
+   "checklist_item_id": "diaphoresis",
    "turn_indices": [],
-   "note": "Clinician never asks whether the pain spreads to the arm or jaw."
+   "note": "Never asks about sweating."
   },
   {
    "type": "unanswered_concern",
    "turn_indices": [
-    7
+    5
    ],
-   "note": "Patient fears it is her heart; clinician never responds to the worry."
+   "note": "Fear of a heart attack acknowledged, not addressed."
   },
   {
-   "type": "comprehension_breakdown",
+   "type": "unanswered_concern",
    "turn_indices": [
-    15
+    21
    ],
-   "note": "Patient asks what was said; clinician moves on without repeating."
+   "note": "Daughter question never answered."
   },
   {
    "type": "chart_contradiction",
    "turn_indices": [
-    21
+    15
    ],
    "chart_entry_id": "proc-stent",
-   "note": "Patient denies heart problems; chart lists a coronary stent."
+   "note": "Denies heart procedure; chart lists a stent."
   },
   {
    "type": "comprehension_breakdown",
    "turn_indices": [
-    22
+    17
    ],
-   "note": "Plan given with no teach-back; patient replies with a bare 'Okay'."
+   "note": "Does not remember procedure; not explained."
+  },
+  {
+   "type": "comprehension_breakdown",
+   "turn_indices": [
+    19
+   ],
+   "note": "Asks for transfer plan again; not restated."
+  },
+  {
+   "type": "comprehension_breakdown",
+   "turn_indices": [
+    21
+   ],
+   "note": "Confused by too much info; no simplification or teach-back."
   }
  ]
 }

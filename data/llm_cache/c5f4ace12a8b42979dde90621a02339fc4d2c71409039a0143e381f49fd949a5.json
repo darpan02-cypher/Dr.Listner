@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"No question or patient statement about relieving factors appears in the transcript, so the checklist topic is truly not covered.\"}"}

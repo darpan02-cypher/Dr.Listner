@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":6,\"quote\":\"I feel it in my jaw sometimes.\",\"cue\":\"off_topic\",\"preceding_question\":\"Does it move into your arms or up toward your neck?\",\"reply_answers_question\":false}]}"}

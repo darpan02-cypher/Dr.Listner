@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":false,\"reason\":\"The patient asked a direct question about hospital stay and the clinician answered it, indicating understanding rather than a comprehension breakdown.\"}"}

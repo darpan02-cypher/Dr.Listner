@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"supported\":true,\"reason\":\"The caregiver\u2019s turn ('I drove her over, I will listen along.') does not address the clinician\u2019s prior request ('Let me know if I am too quiet') and is not later repaired, fitting the definition of a comprehension breakdown.\"}"}

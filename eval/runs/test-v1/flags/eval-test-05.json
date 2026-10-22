@@ -1,0 +1,34 @@
+[
+  {
+    "flag_id": "eval-test-05-h-2",
+    "visit_id": "eval-test-05",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "2",
+        "quote": "I drove her over, I will listen along."
+      }
+    ],
+    "rationale": "The patient may not have heard or understood this and it was not repaired.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 3
+  },
+  {
+    "flag_id": "eval-test-05-h-6",
+    "visit_id": "eval-test-05",
+    "type": "comprehension_breakdown",
+    "evidence": [
+      {
+        "source": "transcript",
+        "ref": "6",
+        "quote": "I feel it in my jaw sometimes."
+      }
+    ],
+    "rationale": "The patient may not have heard or understood this and it was not repaired.",
+    "verified": true,
+    "dismissed": false,
+    "raised_at_turn": 7
+  }
+]

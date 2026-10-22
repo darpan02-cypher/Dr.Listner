@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"conflicts\":[{\"chart_entry_id\":\"med-aspirin\",\"turn_quote\":\"I will bring my medicine bottles next time and take one baby aspirin each morning.\",\"rationale\":\"Patient says they will take baby aspirin each morning, but the chart does not list aspirin as a medication.\"}]}"}

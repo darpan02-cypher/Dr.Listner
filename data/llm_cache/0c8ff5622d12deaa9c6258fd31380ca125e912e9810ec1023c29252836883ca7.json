@@ -1,0 +1,1 @@
+{"model": "openai/gpt-oss-120b", "response": "{\"breakdowns\":[{\"turn_idx\":33,\"quote\":\"I will remind her.\",\"cue\":\"off_topic\",\"preceding_question\":\"Any other questions before you go?\",\"reply_answers_question\":false}]}"}

@@ -1,4 +1,4 @@
-# Dr. Listener
+# Dr. Listener - A Second Ear For Care
 
 **AI scribes capture what was said. Dr. Listener catches what was missed.**
 

@@ -149,6 +149,7 @@ The guideline-referenced checklist has not been clinician-reviewed, and speech r
 
 ## Documentation
 
+- [Solution Architecture and Diagrams](docs/architecture/README.md) — source-grounded current design, proposed APIs and database, security, deployment, and contributor maintenance guide
 - [Project Specification](SPEC.md)
 - [Implementation Progress](PROGRESS.md)
 - [Project Report](docs/PROJECT_REPORT.md)
